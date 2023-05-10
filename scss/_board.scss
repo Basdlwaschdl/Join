@@ -101,6 +101,7 @@ body {
                 height: 70vh;
                 border-radius: 18px;
                 border: 2px solid transparent;
+                overflow-y: scroll;
             }
 
             .single-task {
@@ -219,12 +220,13 @@ input[type="date"] {
 }
 
 .edit_subtask {
-    margin-top: 10px;
-    height: 75px;
-    width: 450px;
+    position: absolute;
+    bottom: 200px;
 }
 
 .board-detail-view {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -315,7 +317,7 @@ input[type="date"] {
                 margin-top: 24px;
                 display: flex;
                 flex-direction: column;
-                gap: 24px;
+                gap: 6px;
 
                 .single-editor {
                     display: flex;
@@ -476,8 +478,9 @@ input[type="date"] {
                 font-weight: bold;
                 font-size: 20px;
                 transition: 200ms;
+
                 &:hover {
-                    background-color: $lightblue; 
+                    background-color: $lightblue;
                     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
                 }
             }
@@ -567,11 +570,6 @@ input[type="date"] {
         box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.41)
     }
 }
-
-// @keyframes slide-in-from-right {
-//     from {left: 100%;}
-//     to {left: 0%;}
-// }
 
 @keyframes slide-in-from-right {
     from {

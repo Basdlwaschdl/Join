@@ -75,42 +75,41 @@
         </div>
 
     </div>
-
     <div id="taskDetailView" class="board-detail-view d-none" onclick="closeDetailView()"></div>
-
     <div id="overlayAddTask" class="d-none" onclick="closeOverlay()">
         <div class="add-task" onclick="noClose(event)">
             <div class="close">
                 <img src="./assets/img/close.png" onclick="closeOverlay()">
             </div>
-            
+
             <!-- ToDo: Render include/render AddTask -->
             <div id="overlay" class="overlay"></div>
         </div>
     </div>
     <!-- ---------------------------------------------------------Animation Div's----------------------------------------------------------------------->
-    <div class="addBord_box" id="addBordBox">
+    <div class="addBord_box" id="addBordBox" style="display: none;">
         Task added to Board
         <img src="assets/img/board.png" class="add_board_image">
     </div>
-    <div class="addBord_box" id="pleaseEnterName">
+    <div class="addBord_box" id="pleaseEnterName" style="display: none;">
         Please enter a Task Name
     </div>
-    <div class="addBord_box" id="pleaseCategoryName">
-        Please enter a color and a category 
+    <div class="addBord_box" id="pleaseCategoryName" style="display: none;">
+        Please enter a color and a category
     </div>
-    <div class="addBord_box" id="missing">
+    <div class="addBord_box" id="missing" style="display: none;">
         Something is missing
     </div>
-    <div class="addBord_box" id="emailSent">
+    <div class="addBord_box" id="emailSent" style="display: none;">
         Email sent
     </div>
-    <div class="addBord_box" id="enterEmail">
-       Please enter a E-Mail
+    <div class="addBord_box" id="enterEmail" style="display: none;">
+        Please enter a E-Mail
     </div>
-    <div class="mobile_create_overlay" onclick="createTask()" id="mobileCreate">Create<img src="assets/img/haken.png"></div>
+    <div class="mobile_create_overlay" onclick="createTask()" id="mobileCreate">Create<img src="assets/img/haken.png">
+    </div>
     <!-----------------------------------------------------------Animation Div's-------------------------------------------------------------------- -->
-</div>
+    </div>
 </body>
 
 </html>

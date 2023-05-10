@@ -557,6 +557,9 @@ span {
 
 .initials_box {
     width: 422px;
+    position: absolute;
+    top: 540px;
+    z-index: -1;
     display: flex;
     flex-wrap: wrap;
     padding-left: 15px;

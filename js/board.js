@@ -186,7 +186,7 @@ function renderSubtasks(task) {
 
 function htmlTaskDetailView(task) {
     return `
-        <div class="content" onclick="noClose(event)">
+        <div class="content flip-card-front" onclick="noClose(event)">
             <div class="close">
                 <img src="./assets/img/close.png" onclick="closeDetailView()">
             </div>
@@ -232,8 +232,9 @@ async function editTask(index) {
     content.classList.remove('task-details');
     content.classList.add('edit-task');
     icons.innerHTML = htmlCheckIcon(index);
-    content.innerHTML = htmlEditTask(tasks[index]);
-    renderEditSubtask(tasks[index]);
+    content.innerHTML = htmlEditTask(index);
+    renderEditSubtask(index);
+    checkSubtaskStatus(index)
     setPrioInEditTask(tasks[index]);
     renderEditorsInitials();
     pushEditorstoContacts();
@@ -276,19 +277,19 @@ function editPrio(prio) {
     document.getElementById(`editPrio${capitalizeFirstLetter(currentPrioEditTask)}`).classList.add(`prio_button_${currentPrioEditTask}`);
 }
 
-function htmlEditTask(task) {
-    return `
+function htmlEditTask(i) {
+    return `<div class="flip-card-back">
             <div class="title">
                 Title
-                <input type="text" id="editTaskTitle" value="${task['title']}">
+                <input type="text" id="editTaskTitle" value="${tasks[i]['title']}">
             </div>
             <div class="description">
                 Description
-                <textarea id="editTaskDescription" rows="5" required>${task['description']}</textarea>
+                <textarea id="editTaskDescription" rows="5" required>${tasks[i]['description']}</textarea>
             </div>
             <div class="date">
                 Due date:
-                <input type="date" id="editTaskDueDate" value="${task['date']}">
+                <input type="date" id="editTaskDueDate" value="${tasks[i]['date']}">
             </div>
             <div class="priority">
                 Prio
@@ -309,7 +310,7 @@ function htmlEditTask(task) {
             </div>
             <div class="editors">
                 Assigned to
-                <div id="contactBox">
+                <div id="contactBox" style="z-index: 5;">
                     <div class="drop_down" id="dropDownEditContacts" onclick="openEditTaskContacts()">
                         Select contacts to assign
                         <img class="down_image" src="assets/img/drop-down-arrow.png">
@@ -317,21 +318,60 @@ function htmlEditTask(task) {
                     <div id="editContacts" class="render_categorys_box"></div>
                 </div>
                 <div id="initials" class="initials_box"></div>
-                Subtasks
-                <div id="editSubtask" class="edit_subtask"></div>
+                <div class="subtasks_edit">
+                <span>Subtasks</span>
+                    <input type="text" placeholder="Add new subtask" id="subTask" maxlength="29" style class="input_edit">
+                    <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
+                    <div class="subtask_box" id="editSubtask"></div>
+                </div>
+            </div>
             </div>
     `;
+};
+
+
+function checkSubtaskStatus(i) {
+    for (let j = 0; j < tasks[i]['done'].length; j++) {
+        if (tasks[i]['done'][j] == true) document.getElementById('CheckboxTask' + j).checked = true;
+    }
 }
 
 
-function renderEditSubtask(task) {
-    for (let i = 0; i < task['subtasks'].length; i++) {
-        const subTask = task['subtasks'][i];
+function addSubtask_edit(i) {
+    let subtask = document.getElementById('subTask').value;
+    if (subtask.length < 1) showNotice('pleaseEnterName');
+    else {
+        tasks[i]['done'].push(false);
+        tasks[i]['subtasks'].push(subtask);
+        editTask([i]);
+    }
+};
+
+
+function deleteSubtaskEdit(i, index) {
+    document.getElementById('subTask' + i).classList.add('slide-out-right');
+    setTimeout(() => {
+        tasks[index]['subtasks'].splice(i, 1)
+        editTask([index]);
+    }, 400);
+};
+
+
+function setSubtaskStatusEdit(i, index) {
+    if (document.getElementById('CheckboxTask' + i).checked == true) tasks[index]['done'][i] = true;
+    else tasks[index]['done'][i] = false;
+}
+
+
+function renderEditSubtask(index) {
+    document.getElementById('editSubtask').innerHTML = ``;
+    for (let i = 0; i < tasks[index]['subtasks'].length; i++) {
+        let subTask = tasks[index]['subtasks'][i];
         document.getElementById('editSubtask').innerHTML += `
         <div class="subtask_child" id="subTask${i}">
-            <input type="checkbox" id="CheckboxTask${i}" class="checkbox_subtask" onclick="setSubtaskStatus(${i})")>
+            <input type="checkbox" id="CheckboxTask${i}" class="checkbox_subtask" onclick="setSubtaskStatusEdit(${i}, ${index})">
             <div class ="subTask_Text">${subTask}</div>
-            <img src="assets/img/x.svg" onclick="deleteSubtask(${i})">
+            <img src="assets/img/x.svg" onclick="deleteSubtaskEdit(${i}, ${index})">
         </div>`;
     };
 };

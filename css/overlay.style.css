@@ -206,6 +206,7 @@ span {
 }
 
 .render_categorys {
+    z-index: 1;
     position: relative;
     border-top: 1px solid #D1D1D1;
     font-size: 21px;
@@ -385,6 +386,27 @@ span {
     position: relative;
 }
 
+.subtasks_edit {
+    top: 694px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.input_edit {
+    width: 382px;
+}
+
+.plus_image_edit {
+    position: absolute;
+    top: 50px;
+    left: 349px;
+}
+
+.plus_image_edit:hover {
+    cursor: pointer;
+}
+
 .plus_image {
     position: absolute;
     top: 13px;
@@ -462,7 +484,7 @@ span {
 
 .subtask_child img {
     position: absolute;
-    left: 400px;
+    left: 352px;
     top: 1px;
 }
 
@@ -472,7 +494,7 @@ span {
 
 .subtask_box {
     overflow-x: hidden;
-    width: 435px;
+    width: 384px;
     min-height: 110px;
     max-height: 111px;
     overflow-y: scroll;
@@ -524,6 +546,9 @@ span {
 }
 
 .initials_box {
+    position: absolute;
+    top: 640px;
+    z-index: 0;
     overflow-x: auto;
     width: 422px;
     display: flex;
@@ -582,7 +607,7 @@ span {
 }
 
 .slide-out-right {
-    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    animation: slide-out-right 0.4s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }
 
 @keyframes slide-in-bottom {
