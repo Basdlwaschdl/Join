@@ -30,6 +30,7 @@
   }
   span {
     font-size: 16px;
+    margin-top: 9px !important;
   }
   input {
     margin-bottom: 9px;
@@ -40,9 +41,6 @@
     margin-bottom: 9px;
     font-size: 16px;
     height: 93px;
-  }
-  span {
-    margin-top: 9px !important;
   }
   .addBord_box {
     bottom: 250px;

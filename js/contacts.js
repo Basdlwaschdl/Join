@@ -1,6 +1,6 @@
 let contactsA = [];
 let activID;
-let contact_exist;
+let contact_exist = false;
 let contact = {};
 let allUsersDB = [];
 let regUser = localStorage.getItem('currentUser');
@@ -54,7 +54,7 @@ async function insertContactsToContactList() {
             }
         }
     }
-}
+};
 
 /**
  * Sort Contacts by Firstname from A to Z
@@ -82,8 +82,7 @@ function orderContacts() {
         letter = letter.charCodeAt(0) - 97;
         orderedContacts[letter].push(contactsA[i]);
     }
-}
-
+};
 
 /**
  * Retrunt a random Color-Hexcode 
@@ -98,16 +97,7 @@ function getRandomColor() {
     return color;
 }
 
-/**
- * The function returns the first letter of the first name and last name.
- * If the last name does not exist, then only the first letter of the first name is output
- * @example
- * getInitial('Max Mustermann');
- * @returns {String} MM
- * @param {String} username The name of the person you want to get the initials of.
- * @returns first letter of the first name and last name or only the first letter of the first name.
- * 
- */
+
 function getInitial(username) {
     if (username.includes(' ')) {
         return username.charAt(0).toUpperCase() + username.charAt(username.lastIndexOf(' ') + 1).toUpperCase();
@@ -116,19 +106,6 @@ function getInitial(username) {
     }
 }
 
-/**
- * shows the first Contact at the details
- */
-/* async function showContact(id) {
-    let btnContainer = document.getElementById('contacts-list');
-    let btns = btnContainer.getElementsByClassName('list-contact');
-    let contactId = id || btns[0].id;
-    let contactElement = document.getElementById(contactId);
-    Array.from(document.querySelectorAll('.list-contact.list-contact-activ')).forEach((el) => el.classList.remove('list-contact-activ'));
-    contactElement.className += " list-contact-activ";
-    showDetails(contactId);
-};
-*/
 
 function delContact(userId) {
     showNotice('delete');
@@ -161,15 +138,19 @@ function pushNewContactToUser(name, email, phone) {
 };
 
 
-function saveContacts() {
-    setItem('users', JSON.stringify(users));
+async function saveContacts() {
+    await setItem('users', JSON.stringify(users));
 };
 
 
 function checkIfContactExist(email) {
+    contact_exist = false;
     users[userArryId]['contacts'].forEach(function users(value, index) {
-        if (value.mail === email) contact_exist = true;
-        else contact_exist = false;
+        if (value.mail === email) {
+            showNotice('emailExist');
+            contact_exist = true;
+            return;
+        }
     });
 };
 
@@ -182,15 +163,23 @@ function editContact(id) {
     let email = document.getElementById('email-input').value;
     let phone = document.getElementById('phone-input').value;
     let initials = getInitial(name);
+    saveEditContact(id, name, email, phone, initials);
+};
+
+
+function saveEditContact(id, name, email, phone, initials) {
     contactsA[id].name = name;
     contactsA[id].mail = email;
     contactsA[id].phone = phone;
     contactsA[id].initials = initials;
+    users[userArryId]['contacts'] = contactsA;
     animationAndPushToServer();
+    showDetails(id)
 };
 
 
-function animationAndPushToServer() {
+ function animationAndPushToServer() {
+     saveContacts();
     closeEditContact()
     insertContactsToContactList();
 };
@@ -313,6 +302,7 @@ function closeOverlay() {
 
 
 function editShowContact(contact) {
+    document.getElementById('overlayContent').classList.add('slide-in-blurred-right');
     document.getElementById('overlayContent').classList.remove('d-none')
     document.getElementById('overlayContent').classList.remove('overlay-closed');
     document.getElementById('overlayContent').innerHTML = '';
@@ -322,8 +312,10 @@ function editShowContact(contact) {
 
 
 function closeEditContact() {
-    document.getElementById('overlayContent').classList.add('overlay-closed');
-    setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 200);
+    document.getElementById('overlayContent').classList.remove('slide-in-blurred-right');
+    document.getElementById('overlayContent').classList.add('slide-out-blurred-right');
+    //document.getElementById('overlayContent').classList.add('overlay-closed');
+    //setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 200);
 }
 
 

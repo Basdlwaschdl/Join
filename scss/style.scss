@@ -1,15 +1,3 @@
-@import './predefinedStyle';
-@import './fonts';
-
-@import './login';
-@import './forgotpaswd';
-@import './desktop_template';
-@import './legal_notice';
-@import './contacts';
-@import './board';
-@import './summary';
-
-
 
 body {
     margin: 0;
@@ -38,4 +26,12 @@ body {
 
 .d-none {
     display: none !important;
+}
+
+.add_task {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
 }

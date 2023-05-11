@@ -1073,6 +1073,14 @@
   background-color: #2A3647 !important;
 }
 
+.slide-out-blurred-right {
+  animation: slide-out-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.slide-in-blurred-right {
+  animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
 #overlayContent {
   position: absolute;
   top: 0;
@@ -1084,7 +1092,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 #overlayContent .overlay-left {
   width: 453px;
@@ -1251,7 +1258,7 @@
 .overlay-closed {
   position: absolute;
   height: 100%;
-  animation: slide-out-from-left 0.3s normal !important;
+  animation: slide-out-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .animate {
@@ -1325,6 +1332,20 @@
     background-color: rgba(0, 0, 0, 0.3);
   }
 }
+@keyframes slide-out-blurred-right {
+  0% {
+    transform: translateX(0) scaleY(1) scaleX(1);
+    transform-origin: 50% 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1000px) scaleX(2) scaleY(0.2);
+    transform-origin: 0% 50%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+  }
+}
 @keyframes slide-in-right {
   0% {
     transform: translateX(1000px);
@@ -1341,10 +1362,6 @@
 
 body {
   overflow-x: hidden;
-}
-
-.d-none {
-  display: none;
 }
 
 .board-content {
@@ -1783,9 +1800,7 @@ input[type=date]:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  left: 0;
   top: 0;
-  right: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1810,8 +1825,7 @@ input[type=date]:hover {
 .overlay-closed {
   position: absolute;
   height: 100%;
-  animation: slide-out-from-left 0.3s normal !important;
-  background-color: rgba(0, 0, 0, 0.2) !important;
+  animation: slide-out-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
 .overflow-hidden {
@@ -2261,4 +2275,12 @@ body {
 
 .d-none {
   display: none !important;
+}
+
+.add_task {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
 }/*# sourceMappingURL=style.css.map */

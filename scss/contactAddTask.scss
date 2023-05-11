@@ -19,6 +19,7 @@
         visibility: visible;
         z-index: 99;
     }
+    
     .form {
         left: calc(50% - 180px);
         top: 150px;
@@ -33,6 +34,7 @@
 
     span {
         font-size: 16px;
+        margin-top: 9px !important;
     }
 
     input {
@@ -45,10 +47,6 @@
         margin-bottom: 9px;
         font-size: 16px;
         height: 93px;
-    }
-
-    span {
-        margin-top: 9px !important;
     }
 
     .addBord_box {
