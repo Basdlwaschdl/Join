@@ -547,7 +547,7 @@ span {
 
 .initials_box {
     position: absolute;
-    top: 640px;
+    top: 570px;
     z-index: 0;
     overflow-x: auto;
     width: 422px;
@@ -661,4 +661,8 @@ span {
         top: 485px;
         right: 0;
     }
+}
+
+@media (max-width: 1800px) {
+    
 }

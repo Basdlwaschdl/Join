@@ -2,27 +2,63 @@
     overflow: auto !important;
 }
 
-@media (max-width: 600px) {
-    .form {
-        top: 150px ;
+.mobile_create_overlay {
+    visibility: hidden !important;
+    top: 93px !important;
+}
+
+.overlay-add-task {
+    z-index: 11 !important;
+}
+
+.close-contact-add {
+    height: 40px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+
+    &:hover {
+        cursor: pointer;
     }
 }
 
-@media (min-width: 1351px) {
+@media (max-width: 600px) {
+    .form {
+        top: 150px;
+    }
+
+    .overlay-add-task {
+        z-index: 0 !important;
+    }
+
+    .form {
+        left: calc(50% - 167px) !important;
+    }
+
     .mobile_create_overlay {
-        visibility: hidden !important;
+        visibility: visible !important;
+    }
+
+    .close-contact-add {
+        top: 99px !important;
+        left: 20px;
     }
 }
 
 @media (max-width: 1350px) {
-    .mobile_create_overlay {
-        visibility: visible;
-        z-index: 99;
+
+    .close-contact-add {
+        top: 120px;
+        right: 40px;
     }
-    
+
+    .initials_box {
+        position: unset;
+    }
+
     .form {
-        left: calc(50% - 180px);
-        top: 150px;
+        left: calc(50% - 80px);
+        top: 250px;
         margin-left: unset;
     }
 
@@ -125,10 +161,6 @@
         height: 41px;
     }
 
-    .clear_create_task {
-        display: none;
-    }
-
     .render_categorys_box {
         margin-bottom: 9px;
         max-height: 165px;
@@ -144,5 +176,9 @@
 
     .form_right {
         margin-top: 0px;
+    }
+
+    .overlay-add-task {
+        z-index: 10 !important;
     }
 }

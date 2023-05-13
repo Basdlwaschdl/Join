@@ -26,6 +26,10 @@
 
 <body onload="includeHTML(), init()">
     <div w3-include-html="desktop_template.html"></div>
+    <div class="new-contact" onclick="editShowContact()">
+        New Contact
+        <img src="./assets/img/contacts-icons/addContact.png" alt="">
+    </div>
     <div id="contacts-container">
         <div class="contacts-list" id="contacts-list">
             <div class="list-contact list-contact-activ"></div>
@@ -41,17 +45,16 @@
             <div class="contact-details" id="contactDetails"></div>
 
         </div>
-        <div class="new-contact" onclick="editShowContact()">
-            New Contact
-            <img src="./assets/img/contacts-icons/addContact.png" alt="">
-        </div>
     </div>
 
     <div id="overlayContent" class="d-none"></div>
     <div id="overlayAddTask" class="d-none add_task" onclick="closeOverlay()">
         <div class="add-task" onclick="noClose(event)">
-            <div class="close">
-                <img src="./assets/img/close.png" onclick="closeOverlay()">
+            <div class="mobile_create_overlay" onclick="createTask()" id="mobileCreate">Create<img
+                    src="assets/img/haken.png">
+            </div>
+            <div>
+                <img src="./assets/img/close.png" onclick="closeOverlay()" class="close-contact-add">
             </div>
             <div id="overlay"></div>
         </div>
@@ -84,8 +87,6 @@
     </div>
     <div class="addBord_box" id="enterEmail">
         Please enter a E-Mail
-    </div>
-    <div class="mobile_create_overlay" onclick="createTask()" id="mobileCreate">Create<img src="assets/img/haken.png">
     </div>
     <!-----------------------------------------------------------Animation Div's-------------------------------------------------------------------- -->
 </body>

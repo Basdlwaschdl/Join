@@ -7,7 +7,7 @@
     float: left;
     width: 200px;
     font-size: 16px;
-    z-index: 1;
+    z-index: 11;
 
     .menu-content {
         display: flex;
@@ -73,6 +73,7 @@
 }
 
 .header {
+    z-index: 11;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -176,6 +177,7 @@
     }
 
     .header {
+        z-index: 11;
         margin-left: unset;
         justify-content: flex-end;
         background-color: white;
@@ -208,5 +210,12 @@
     .nav-text {
         padding-right: 3px !important;
         padding-left: 3px !important;
+    }
+}
+
+@media (max-width: 1250px) {
+    .log-out-field {
+        top: 40px !important;
+        right: 67px !important;
     }
 }

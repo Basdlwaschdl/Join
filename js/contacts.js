@@ -187,7 +187,7 @@ function saveEditContact(id, name, email, phone, initials) {
 
 function showDetailsAtMobile() {
     let windowWidth = window.innerWidth;
-    if (windowWidth < 1000) {
+    if (windowWidth < 1251) {
         document.getElementById('contacts-list').classList.add('d-none')
         document.getElementsByClassName('contact-info')[0].classList.remove('d-none-mobile')
         document.getElementsByClassName('new-contact')[0].classList.add('d-none')
@@ -261,6 +261,7 @@ function showDetails(id) {
             <div class="add-task" onclick="addScroll()"> + Add Task</div>
         </div>
         </div>
+        <div class="contact-info-box">
         <div class="contact-info-head">
             <p>Contact Information</p>
             <div class="contact-edit">
@@ -277,6 +278,7 @@ function showDetails(id) {
                 <span class="contact-info-title">Phone</span>
                 <a href="tel:+4915166456">${contactsA[id].phone}</a>
             </div>
+        </div>
         </div>
         <div id="mobile-menu" onclick="editShowContact(${editname})"></div>`;
     document.getElementById('contactDetails').classList.add('slide-in-right');
@@ -343,7 +345,7 @@ function showCreateContact() {
                 </button>
             </div>
             </form>
-                <div class="close">
+                <div class="close-contact">
                 <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact('overlayContent')" class="dark">
                 </div>
             </div>`;
@@ -374,7 +376,7 @@ function showEditContact(id) {
             </button>
         </div>        
     </form>
-    <div class="close">
+    <div class="close-contact">
         <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact()" class="dark">
     </div>
     </div>`
