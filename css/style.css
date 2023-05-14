@@ -116,6 +116,7 @@
   animation: start-fade-out-background 0.5s ease-in-out both 1s;
 }
 .start-animation .logo-animation {
+  scale: 2;
   display: block;
   position: absolute;
   top: 50%;
@@ -351,7 +352,7 @@
   @keyframes start-mobile-animation {
     0% {
       opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
+      transform: translate(-50%, -50%) scale(3);
     }
     70% {
       opacity: 0.5;
@@ -606,7 +607,7 @@
 .header .log-out-field {
   z-index: 20;
   position: absolute;
-  top: 100%;
+  top: 72px;
   right: calc(3% + 20px);
   transform: translate(0, -50%);
   color: white;

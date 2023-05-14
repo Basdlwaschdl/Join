@@ -9,6 +9,7 @@
 
     
     .logo-animation {
+        scale: (2);
         display: block;
         position: absolute;
         top: 50%;
@@ -234,7 +235,7 @@
     @keyframes start-mobile-animation {
         0% {
             opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+            transform: translate(-50%, -50%) scale(3);
         }
 
         70% {
