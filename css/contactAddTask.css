@@ -22,15 +22,17 @@
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 400px) {
   .form {
-    top: 150px;
+    left: calc(50% - 157px) !important;
   }
+}
+@media only screen and (max-width: 600px) {
   .overlay-add-task {
     z-index: 0 !important;
   }
   .form {
-    left: calc(50% - 167px) !important;
+    left: calc(50% - 176px);
   }
   .mobile_create_overlay {
     visibility: visible !important;
@@ -40,7 +42,7 @@
     left: 20px;
   }
 }
-@media (max-width: 1350px) {
+@media only screen and (max-width: 1350px) {
   .close-contact-add {
     top: 120px;
     right: 40px;
@@ -48,19 +50,10 @@
   .initials_box {
     position: unset;
   }
-  .form {
-    left: calc(50% - 80px);
-    top: 250px;
-    margin-left: unset;
-  }
   h1 {
     left: calc(50% - 180px);
     font-size: 47px;
     top: 117px;
-  }
-  span {
-    font-size: 16px;
-    margin-top: 9px !important;
   }
   input {
     margin-bottom: 9px;
