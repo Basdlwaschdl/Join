@@ -1,3 +1,15 @@
+@media only screen and (max-width: 400px) {
+  .user_icon {
+    position: unset !important;
+    margin-bottom: -50px;
+  }
+  .initial-circle {
+    position: unset !important;
+  }
+  .right_left {
+    width: 340px !important;
+  }
+}
 @media only screen and (max-width: 470px) {
   .arrowLeftMobile {
     left: 330px !important;
@@ -12,6 +24,9 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .initial-circle {
+    top: -15px !important;
+  }
   .contactInfo {
     width: 50%;
   }
@@ -28,23 +43,14 @@
     display: none !important;
   }
   .user_icon {
-    top: -31px !important;
-    left: 130px !important;
+    top: -50px !important;
   }
   .close-contact {
     top: -355px !important;
     right: 195px !important;
   }
-  .initial-circle {
-    left: 351px !important;
-  }
   #overlayContent {
-    position: unset !important;
     left: 0 !important;
-  }
-  .overlay-left {
-    align-items: center;
-    width: 100% !important;
   }
   .arrowLeftMobile {
     top: 45px !important;
@@ -71,6 +77,10 @@
   }
 }
 @media only screen and (max-width: 1250px) {
+  #overlayContent {
+    animation: unset !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+  }
   .contact-info {
     padding: 0px !important;
   }
@@ -145,16 +155,20 @@
   }
 }
 @media only screen and (max-width: 1500px) {
+  .right_left {
+    width: 381px;
+    flex-direction: column;
+  }
   .user_icon {
-    top: -20px;
-    left: 125px;
+    top: -50px;
+    left: 125px !important;
   }
   .initial-circle {
     top: 0;
-    left: 166px;
+    left: 166px !important;
   }
   .add-contact-btn {
-    width: 201px !important;
+    width: 190px !important;
   }
   #overlayContent .overlay-right [class*=-input] {
     width: 300px !important;
@@ -170,27 +184,31 @@
     flex-direction: column !important;
     border-top-right-radius: 32px !important;
     height: 279px !important;
-    width: 260px;
   }
   .overlay-right {
+    padding-left: 0 !important;
     flex-direction: column !important;
     gap: 0px !important;
     border-bottom-left-radius: 32px !important;
     border-bottom-right-radius: 32px !important;
-    padding: 0px 24px;
-    width: 332px !important;
+    width: unset !important;
     border-top-right-radius: 0px !important;
+    height: 475px !important;
   }
   .close-contact {
-    position: absolute;
-    right: 30px;
-    top: -353px;
+    right: 30px !important;
+    top: -202px !important;
   }
   .close-contact img {
     filter: brightness(0) invert(1);
   }
   #overlayContent {
     flex-direction: column !important;
+  }
+  .form_overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 /**---------------------------------------------------------------------------------------Media Query End-----------------------------------------------------**/
@@ -234,7 +252,6 @@
 }
 
 #contacts-container {
-  height: 100%;
   margin-left: 200px;
   display: flex;
 }
@@ -490,6 +507,10 @@
   justify-content: center;
 }
 
+.right_left {
+  display: flex;
+}
+
 .overlay-left {
   height: 594px;
   display: flex;
@@ -529,8 +550,10 @@
 }
 
 .close-contact {
-  height: 100%;
-  margin-top: 115px;
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  height: max-content;
 }
 .close-contact img {
   height: 30px;
@@ -543,9 +566,9 @@
 }
 
 .overlay-right {
-  padding-left: 30px;
+  padding-left: 173px;
   position: relative;
-  width: 753px;
+  width: 490px;
   height: 594px;
   border-top-right-radius: 32px;
   border-bottom-right-radius: 32px;
@@ -556,13 +579,14 @@
 }
 
 .phone-input {
+  padding: 0px 0px 0px 10px !important;
   margin-bottom: 25px;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #D1D1D1;
   background: white url("../assets/img/phone-icon.png") right no-repeat;
   background-position: 94% 55%;
-  font-size: 14px !important;
+  font-size: 21px !important;
   box-sizing: unset !important;
 }
 .phone-input form {
@@ -589,7 +613,7 @@
   transition: 200ms;
   font-weight: 400;
   font-size: 21px;
-  height: 55px;
+  height: 51px;
   width: 105px;
 }
 .cancel-contact-btn:hover {
@@ -605,7 +629,7 @@
 
 .add-contact-btn {
   width: 218px;
-  height: 55px;
+  height: 51px;
   background-color: #2A3647;
   color: white;
   padding: 10px 32px;

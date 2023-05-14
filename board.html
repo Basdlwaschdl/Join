@@ -22,7 +22,7 @@
 
 <body onload="includeHTML(), initBoard()" ondragend="markDraggableArea('')">
     <div class="sticky" w3-include-html="desktop_template.html"></div>
-    <div class="board-content">
+    <div class="board-content" id="boardContent">
         <div class="board-header">
             <h1>Board</h1>
             <div class="search-container">
@@ -76,10 +76,10 @@
 
     </div>
     <div id="taskDetailView" class="board-detail-view d-none" onclick="closeDetailView()"></div>
-    <div id="overlayAddTask" class="d-none" onclick="closeOverlay()">
+    <div id="overlayAddTask" class="d-none" onclick="closeOverlay('bc')">
         <div class="add-task" onclick="noClose(event)">
             <div class="close">
-                <img src="./assets/img/close.png" onclick="closeOverlay()">
+                <img src="./assets/img/close.png" onclick="closeOverlay('bc')">
             </div>
 
             <!-- ToDo: Render include/render AddTask -->

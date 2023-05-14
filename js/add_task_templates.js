@@ -76,7 +76,7 @@ function renderContactsHTML(i, userName) {
 
 function renderOverlayHTML() {
     document.getElementById('overlay').innerHTML = `
-    <div class="form">
+    <div class="form form_contact">
     <div class="overlay_headline">Add Task</div>
         <div class="form_left">
 
@@ -143,9 +143,9 @@ function renderOverlayHTML() {
             </div>
             <div class="subtask_box" id="subtaskBox"></div>
             <div class="clear_create_task">
-                <div class="clear_button" onclick="clearAll()">Clear x</div>
-                <div class="create_button" onclick="createTaskonBoard()">Create Task ✔</div>
-            </div>
+            <div class="clear_button" onclick="clearAll()">Clear x</div>
+            <div class="create_button" onclick="createTaskonBoard()">Create Task ✔</div>
+        </div>
         </div>`;
 }
 

@@ -1,5 +1,3 @@
-
-
 .board-content {
     margin-left: 200px;
     padding-left: 56px;
@@ -17,6 +15,7 @@
         }
 
         .search-container {
+            width: 500px;
             display: flex;
             align-items: center;
             $heightInput: 48px;
@@ -51,11 +50,12 @@
             align-items: center;
             padding-left: 16px;
             padding-right: 16px;
-            height: 48px;
+            height: 46px;
             font-size: 20px;
             position: absolute;
             right: 0;
-            top: 8.5px;
+            top: 10px;
+            gap: 8px;
         }
     }
 
@@ -218,6 +218,18 @@ input[type="date"] {
     bottom: 200px;
 }
 
+.highlight-button {
+    background-color: #29ABE2 !important;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+}
+
+.status_buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+    gap: 5px;
+}
+
 .board-detail-view {
     transition: transform 0.8s;
     transform-style: preserve-3d;
@@ -234,12 +246,14 @@ input[type="date"] {
     animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 
     .content {
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
         position: relative;
         min-width: 580px;
-        height: 1000px;
+        height: 1050px;
         background-color: $pagebackground;
         border-radius: 32px;
         overflow-x: hidden;
+        overflow-y: scroll;
         padding-left: 70px;
 
         .close {
@@ -312,26 +326,6 @@ input[type="date"] {
                 display: flex;
                 flex-direction: column;
                 gap: 6px;
-
-                .single-editor {
-                    display: flex;
-                    align-items: center;
-                    gap: 24px;
-
-                    .ed-initials {
-                        font-weight: 400;
-                        font-size: 21px;
-                        color: #FFFFFF;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        border-radius: 100%;
-                        height: 24px;
-                        width: 24px;
-                        padding: 8px;
-                        font-size: 16px;
-                    }
-                }
             }
         }
 
@@ -482,6 +476,42 @@ input[type="date"] {
     }
 }
 
+.status-button {
+    @include button-darkblue;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.single-editor {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.ed-initials {
+    font-weight: 400;
+    font-size: 21px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    height: 24px;
+    width: 24px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+.editors_edit {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 24px;
+    height: 300px;
+    overflow-y: scroll;
+}
+
+
 .font {
     font-weight: 400;
     font-size: 21px;
@@ -535,7 +565,7 @@ input[type="date"] {
 .mobile_create_overlay {
     visibility: hidden;
     position: absolute;
-    top: 12px;
+    top: 87px;
     right: 20px;
     justify-content: center;
     width: 124px;
@@ -560,6 +590,18 @@ input[type="date"] {
         transition: 300ms;
         box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.41)
     }
+}
+
+.initials_box_edit {
+    width: 363px;
+    position: absolute;
+    top: 630px;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    height: 70px;
+    overflow: scroll;
 }
 
 @keyframes slide-in-from-right {
@@ -606,7 +648,11 @@ input[type="date"] {
 
 @media only screen and (max-width: 1405px) {
     .tasks {
-        width: calc(31%) !important;
+        width: 100% !important;
+    }
+
+    .task-body {
+        height: max-content !important;
     }
 }
 
@@ -630,14 +676,14 @@ input[type="date"] {
 
     .close {
         position: absolute;
-        top: 100px;
+        top: 125px;
         left: 90%;
     }
 }
 
-@media  only screen and (max-width: 1130px) {
-    .tasks {
-        width: calc(47%) !important;
+@media only screen and (max-width: 1250px) {
+    .overlay-add-task {
+        animation: none;
     }
 }
 
@@ -651,6 +697,7 @@ input[type="date"] {
     }
 
     .search-container {
+        width: 365px !important;
         margin-right: 16px !important;
     }
 }
@@ -662,27 +709,47 @@ input[type="date"] {
     }
 }
 
-@media only screen and (max-width: 855px) {
-    .tasks {
-        width: 100% !important;
+@media only screen and (max-width: 700px) {
+    .content {
+        min-width: unset !important;
+        width: 85%;
+    }
+
+    textarea {
+        height: 60px;
+    }
+
+    .initials_box_edit {
+        top: 580px !important;
+        width: 50%;
+    }
+
+    .input_edit {
+        position: relative;
+        width: 100%;
+    }
+
+    .plus_image_edit {
+        bottom: 350px;
+    }
+
+    .prio_button {
+        font-size: 15px;
     }
 }
 
 @media only screen and (max-width: 600px) {
 
-    .overlay-add-task {
-        animation: none;
+    .search-container {
+        width: unset !important
     }
+
     .mobile_create_overlay {
-        z-index: 30;
+        z-index: 19;
     }
 
     .overlay {
         position: unset;
-    }
-
-    .close {
-        left: 80%;
     }
 
     .board-content {
@@ -695,16 +762,18 @@ input[type="date"] {
     }
 
     .board-detail-view {
+        animation: unset;
         background-color: unset;
 
         .content {
             width: 100%;
-            height: calc(100vh - 82px - 75px);
+            height: calc(100vh - 82px - 68px);
             position: absolute;
-            top: 82px;
+            top: 75px;
             border-radius: 0;
             background-color: $pagebackground;
             min-width: unset;
+            padding: 0;
 
             .edit-task {
                 padding: 32px;
@@ -720,5 +789,38 @@ input[type="date"] {
                 bottom: 32px;
             }
         }
+    }
+
+    .initials_box_edit {
+        position: unset;
+        width: 95%;
+    }
+
+    .subtask_box {
+        width: 100% !important;
+        min-height: 60px !important;
+    }
+
+    .icons {
+        position: unset !important;
+        margin-bottom: 15px;
+        margin-left: 70%;
+    }
+
+    .subtask_box {
+        width: 336px;
+    }
+
+    .subtask_child img {
+        left: 230px;
+    }
+
+    .plus_image_edit {
+        top: 648px;
+        right: 44px;
+    }
+
+    .close {
+        right: 30px !important;
     }
 }

@@ -5,34 +5,40 @@
 @import './forgotpaswd';
 @import './desktop_template';
 @import './legal_notice';
-@import './contacts';
 @import './board';
 @import './summary';
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    height: 100vh;
     background-color: $pagebackground;
 }
 
 //Global styles
 
 .name-input {
+    padding: 0px 0px 0px 10px !important;
+    width: 422px;
     margin-bottom: 25px;
-    width: 60%;
     @include inputForm('../assets/img/person-icon.png', 94%, 55%);
-    font-size: 14px !important;
+    font-size: 21px !important;
     box-sizing: unset !important;
 }
 
 .email-input {
+    padding: 0px 0px 0px 10px !important;
+    width: 422px;
     margin-bottom: 25px;
-    width: 60%;
     @include inputForm('../assets/img/letter-icon.png', 94%, 55%);
-    font-size: 14px !important;
+    font-size: 21px !important;
     box-sizing: unset !important;
+}
+
+input::placeholder {
+    position: absolute;
+    top: 14px;
+    color: #D1D1D1;
 }
 
 .d-none {
@@ -47,10 +53,14 @@ body {
     right: 0;
 }
 
-@media only screen and (max-width: 600px) {
-    body {
-        overflow-y: scroll;
+@media only screen and (max-width: 1350px) {
+    input::placeholder {
+        top: 10px;
     }
+}
+
+@media only screen and (max-width: 600px) {
+
 }
 
 @keyframes slide-in-blurred-right {

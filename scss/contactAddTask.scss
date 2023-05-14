@@ -4,7 +4,7 @@
 
 .mobile_create_overlay {
     visibility: hidden !important;
-    top: 93px !important;
+    top: 13px !important;
 }
 
 .overlay-add-task {
@@ -23,7 +23,7 @@
 }
 
 @media only screen and (max-width: 400px) {
-    .form {
+    .form_contact {
         left: calc(50% - 157px) !important;
     }
 }
@@ -34,17 +34,19 @@
         z-index: 0 !important;
     }
 
-    .form {
+    .form_contact {
+        top: 150px;
         left: calc(50% - 176px);
     }
 
     .mobile_create_overlay {
+
         visibility: visible !important;
     }
 
     .close-contact-add {
-        top: 99px !important;
-        left: 20px;
+        top: 20px !important;
+        left: 34px;
     }
 }
 
@@ -78,6 +80,7 @@
     }
 
     .addBord_box {
+        left: calc(50% - 55px);
         bottom: 250px;
         font-size: 16px;
         width: 290px;
@@ -159,7 +162,7 @@
     }
 
     .subtask_box {
-        min-height: 150px;
+        height: 100px;
     }
 
     .custom_checkBox {
@@ -171,6 +174,8 @@
     }
 
     .overlay-add-task {
+        margin-top: 78px;
+        height: unset !important;
         z-index: 10 !important;
     }
 }

@@ -205,7 +205,7 @@ function htmlTaskDetailView(task) {
                         <img src="./assets/img/prio${capitalizeFirstLetter(task['prio'])}.png">
                     </div>
                 </div>
-                <div class="editors">
+                <div class="editors_edit">
                     Assigned To:
                     ${htmlAllEditors(task)}
                 </div>
@@ -233,12 +233,44 @@ async function editTask(index) {
     content.classList.add('edit-task');
     icons.innerHTML = htmlCheckIcon(index);
     content.innerHTML = htmlEditTask(index);
+    highlightedButton(index);
     renderEditSubtask(index);
     checkSubtaskStatus(index)
     setPrioInEditTask(tasks[index]);
     renderEditorsInitials();
     pushEditorstoContacts();
 };
+
+/**
+ * highlights the button that the task had as status
+ */
+
+function highlightedButton(i) {
+    if (tasks[i]['status'] == 'todo') document.getElementById('status1').classList.add('highlight-button')
+    if (tasks[i]['status'] == 'progress') document.getElementById('status2').classList.add('highlight-button')
+    if (tasks[i]['status'] == 'feedback') document.getElementById('status3').classList.add('highlight-button')
+    if (tasks[i]['status'] == 'done') document.getElementById('status4').classList.add('highlight-button')
+}
+
+/**
+ * changes the status of the task
+ */
+
+function setEditStatus(i, status) {
+    if (status == 'todo') tasks[i]['status'] = 'todo';
+    if (status == 'progress') tasks[i]['status'] = 'progress';
+    if (status == 'feedback') tasks[i]['status'] = 'feedback';
+    if (status == 'done') tasks[i]['status'] = 'done';
+    removeHighLighted();
+    highlightedButton(i);
+}
+
+function removeHighLighted() {
+    document.getElementById('status1').classList.remove('highlight-button')
+    document.getElementById('status2').classList.remove('highlight-button')
+    document.getElementById('status3').classList.remove('highlight-button')
+    document.getElementById('status4').classList.remove('highlight-button')
+}
 
 
 function pushEditorstoContacts() {
@@ -317,13 +349,20 @@ function htmlEditTask(i) {
                     </div>
                     <div id="editContacts" class="render_categorys_box"></div>
                 </div>
-                <div id="initials" class="initials_box"></div>
+                <div id="initials" class="initials_box_edit"></div>
                 <div class="subtasks_edit">
-                <span>Subtasks</span>
+                <span class="editors">Subtasks</span>
                     <input type="text" placeholder="Add new subtask" id="subTask" maxlength="29" style class="input_edit">
                     <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
                     <div class="subtask_box" id="editSubtask"></div>
                 </div>
+            </div>
+            <span class="editors">Status</span>
+            <div class="status_buttons">
+                <div class="status-button" onclick="setEditStatus(${i}, 'todo')" id="status1">To do</div>
+                <div class="status-button" onclick="setEditStatus(${i}, 'progress')" id="status2">In progress</div>
+                <div class="status-button" onclick="setEditStatus(${i}, 'feedback')" id="status3">Feedback</div>
+                <div class="status-button" onclick="setEditStatus(${i}, 'done')" id="status4">Done</div>
             </div>
             </div>
     `;
@@ -410,8 +449,9 @@ function saveChangedDataLocal(idx) {
 
 
 async function deleteTask(index) {
+    document.body.classList.remove('overflow-hidden');
     tasks.splice(index, 1);
-    document.getElementById('taskDetailView').classList.add('d-none');
+    animateOut('taskDetailView');
     await saveData('tasks', tasks);
     await initBoard();
 }
@@ -507,6 +547,8 @@ function markDraggableArea(style) {
 }
 
 function overlayAddTask() {
+    let windowWidth = window.innerWidth;
+    if (windowWidth < 1351) document.getElementById('boardContent').classList.add('d-none');
     document.getElementById('overlayAddTask').classList.remove('overlay-closed');
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
@@ -526,6 +568,7 @@ function closeDetailView() {
 
 function noClose(event) {
     event.stopPropagation();
+    
 };
 
 

@@ -176,24 +176,24 @@ function saveEditContact(id, name, email, phone, initials) {
 };
 
 
- function animationAndPushToServer() {
-     saveContacts();
+function animationAndPushToServer() {
+    saveContacts();
     closeEditContact()
     insertContactsToContactList();
 };
 
 
-function showDetailsAtMobile() {
+function showDetailsAtMobile(i) {
     let windowWidth = window.innerWidth;
     if (windowWidth < 1251) {
         document.getElementById('contacts-list').classList.add('d-none')
         document.getElementsByClassName('contact-info')[0].classList.remove('d-none-mobile')
-        document.getElementsByClassName('new-contact')[0].classList.add('d-none') 
+        document.getElementsByClassName('new-contact')[0].classList.add('d-none')
     }
     if (windowWidth < 600) document.getElementById('mobileIcon').style.display = `block`;
     document.getElementById('mobileIcon').innerHTML = `
-        <img src="./assets/img/contacts-icons/pen-white.png" class="edit_img">
-        <img src="assets/img/board-icons/delete.png" class="trash">`;
+        <img src="./assets/img/contacts-icons/pen-white.png" class="edit_img" onclick="editShowContact(${i})">
+        <img src="assets/img/board-icons/delete.png" class="trash" onclick="delContact(${i})">`;
 };
 
 
@@ -294,8 +294,9 @@ function removeHighlighted() {
 }
 
 
-function closeOverlay() {
+function closeOverlay(i) {
     clearAll();
+    if (i == 'bc') document.getElementById('boardContent').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-closed');
     setTimeout(() => document.getElementById('overlayAddTask').classList.add('d-none'), 250);
     document.body.classList.remove('overflow-hidden');
@@ -325,6 +326,7 @@ function closeEditContact() {
 
 function showCreateContact() {
     document.getElementById('overlayContent').innerHTML =  /*html */`
+    <div class="right_left">
     <div class="close-top">
         <img src="./assets/img/contacts-icons/close-white.png" alt="" onclick="toggleDNone('overlayContent')" class="white">
     </div><div class="overlay-left">        
@@ -336,7 +338,7 @@ function showCreateContact() {
     <!-- createContact -->
         <div class="overlay-right">
         <img src="./assets/img/contacts-icons/userIcon.png" alt="" class="user_icon">
-        <form action="#" onsubmit="addContact(); return false">
+        <form class="form_overlay" action="#" onsubmit="addContact(); return false">
             <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required>
             <input class="email-input" id="email-input" placeholder="Email" type="email" required>
             <input class="phone-input" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required>
@@ -350,13 +352,14 @@ function showCreateContact() {
                 <div class="close-contact">
                 <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact('overlayContent')" class="dark">
                 </div>
+            </div>
             </div>`;
 };
 
 function showEditContact(id) {
     let userId = id;
     document.getElementById('overlayContent').innerHTML = `
-    
+    <div class="right_left">
     <div class="overlay-left">
         <div class="close-top">
         <img src="./assets/img/contacts-icons/close-white.png" alt="" onclick="toggleDNone('overlayContent')" class="white">
@@ -367,7 +370,7 @@ function showEditContact(id) {
     </div>
     <div class="overlay-right">
     <span class="initial-circle" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
-    <form action="#" onsubmit="editContact(${userId}); return false">
+    <form class="form_overlay" action="#" onsubmit="editContact(${userId}); return false">
         <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required value="${contactsA[id].name}">
         <input class="email-input" id="email-input" placeholder="Email" type="email" required value="${contactsA[id].mail}">
         <input class="phone-input" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required value="${contactsA[id].phone}">
@@ -381,5 +384,7 @@ function showEditContact(id) {
     <div class="close-contact">
         <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact()" class="dark">
     </div>
+    </div>
     </div>`
+
 }

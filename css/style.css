@@ -565,14 +565,13 @@
 }
 
 .header {
-  z-index: 11;
+  margin-bottom: 3px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-left: 200px;
   box-shadow: -2px 0px 6px 0px rgba(0, 0, 0, 0.2);
   height: 75px;
-  position: relative;
 }
 .header .header-headline {
   margin-left: 50px;
@@ -665,7 +664,6 @@
     display: block !important;
     height: 50px;
     position: absolute;
-    top: 16%;
     left: 5%;
     cursor: pointer;
   }
@@ -728,6 +726,7 @@
   margin: unset;
 }
 .board-content .board-header .search-container {
+  width: 500px;
   display: flex;
   align-items: center;
   margin-right: 100px;
@@ -763,11 +762,12 @@
   align-items: center;
   padding-left: 16px;
   padding-right: 16px;
-  height: 48px;
+  height: 46px;
   font-size: 20px;
   position: absolute;
   right: 0;
-  top: 8.5px;
+  top: 10px;
+  gap: 8px;
 }
 .board-content .board-header .btn-add-task:hover {
   cursor: pointer;
@@ -910,6 +910,18 @@ input[type=date]:hover {
   bottom: 200px;
 }
 
+.highlight-button {
+  background-color: #29ABE2 !important;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+}
+
+.status_buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 5px;
+}
+
 .board-detail-view {
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -926,12 +938,14 @@ input[type=date]:hover {
   animation: slide-in-blurred-right 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 .board-detail-view .content {
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   position: relative;
   min-width: 580px;
-  height: 1000px;
+  height: 1050px;
   background-color: #F6F7F8;
   border-radius: 32px;
   overflow-x: hidden;
+  overflow-y: scroll;
   padding-left: 70px;
 }
 .board-detail-view .content .close {
@@ -997,24 +1011,6 @@ input[type=date]:hover {
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-.board-detail-view .content .task-details .editors .single-editor {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-.board-detail-view .content .task-details .editors .single-editor .ed-initials {
-  font-weight: 400;
-  font-size: 21px;
-  color: #FFFFFF;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 100%;
-  height: 24px;
-  width: 24px;
-  padding: 8px;
-  font-size: 16px;
 }
 .board-detail-view .content .edit-task {
   font-size: 20px;
@@ -1139,6 +1135,53 @@ input[type=date]:hover {
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
 
+.status-button {
+  background-color: #2A3647;
+  color: white;
+  padding: 10px 32px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  transition: 200ms;
+  font-size: 15px;
+  padding: 10px;
+}
+.status-button:hover {
+  cursor: pointer;
+  background: #29ABE2;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+}
+
+.single-editor {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ed-initials {
+  font-weight: 400;
+  font-size: 21px;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  height: 24px;
+  width: 24px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.editors_edit {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
 .font {
   font-weight: 400;
   font-size: 21px;
@@ -1190,7 +1233,7 @@ input[type=date]:hover {
 .mobile_create_overlay {
   visibility: hidden;
   position: absolute;
-  top: 12px;
+  top: 87px;
   right: 20px;
   justify-content: center;
   width: 124px;
@@ -1213,6 +1256,18 @@ input[type=date]:hover {
   background: #29ABE2;
   transition: 300ms;
   box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.41);
+}
+
+.initials_box_edit {
+  width: 363px;
+  position: absolute;
+  top: 630px;
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 15px;
+  height: 70px;
+  overflow: scroll;
 }
 
 @keyframes slide-in-from-right {
@@ -1251,7 +1306,10 @@ input[type=date]:hover {
 }
 @media only screen and (max-width: 1405px) {
   .tasks {
-    width: 31% !important;
+    width: 100% !important;
+  }
+  .task-body {
+    height: max-content !important;
   }
 }
 @media only screen and (max-width: 1350px) {
@@ -1270,13 +1328,13 @@ input[type=date]:hover {
   }
   .close {
     position: absolute;
-    top: 100px;
+    top: 125px;
     left: 90%;
   }
 }
-@media only screen and (max-width: 1130px) {
-  .tasks {
-    width: 47% !important;
+@media only screen and (max-width: 1250px) {
+  .overlay-add-task {
+    animation: none;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -1287,6 +1345,7 @@ input[type=date]:hover {
     margin-left: unset !important;
   }
   .search-container {
+    width: 365px !important;
     margin-right: 16px !important;
   }
 }
@@ -1296,23 +1355,38 @@ input[type=date]:hover {
     gap: 32px;
   }
 }
-@media only screen and (max-width: 855px) {
-  .tasks {
-    width: 100% !important;
+@media only screen and (max-width: 700px) {
+  .content {
+    min-width: unset !important;
+    width: 85%;
+  }
+  textarea {
+    height: 60px;
+  }
+  .initials_box_edit {
+    top: 580px !important;
+    width: 50%;
+  }
+  .input_edit {
+    position: relative;
+    width: 100%;
+  }
+  .plus_image_edit {
+    bottom: 350px;
+  }
+  .prio_button {
+    font-size: 15px;
   }
 }
 @media only screen and (max-width: 600px) {
-  .overlay-add-task {
-    animation: none;
+  .search-container {
+    width: unset !important;
   }
   .mobile_create_overlay {
-    z-index: 30;
+    z-index: 19;
   }
   .overlay {
     position: unset;
-  }
-  .close {
-    left: 80%;
   }
   .board-content {
     margin: unset !important;
@@ -1322,16 +1396,18 @@ input[type=date]:hover {
     width: 100% !important;
   }
   .board-detail-view {
+    animation: unset;
     background-color: unset;
   }
   .board-detail-view .content {
     width: 100%;
-    height: calc(100vh - 82px - 75px);
+    height: calc(100vh - 82px - 68px);
     position: absolute;
-    top: 82px;
+    top: 75px;
     border-radius: 0;
     background-color: #F6F7F8;
     min-width: unset;
+    padding: 0;
   }
   .board-detail-view .content .edit-task {
     padding: 32px;
@@ -1343,6 +1419,32 @@ input[type=date]:hover {
   .board-detail-view .content .icons {
     right: 32px;
     bottom: 32px;
+  }
+  .initials_box_edit {
+    position: unset;
+    width: 95%;
+  }
+  .subtask_box {
+    width: 100% !important;
+    min-height: 60px !important;
+  }
+  .icons {
+    position: unset !important;
+    margin-bottom: 15px;
+    margin-left: 70%;
+  }
+  .subtask_box {
+    width: 336px;
+  }
+  .subtask_child img {
+    left: 230px;
+  }
+  .plus_image_edit {
+    top: 648px;
+    right: 44px;
+  }
+  .close {
+    right: 30px !important;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -1595,35 +1697,42 @@ a {
 }
 
 body {
-  overflow: hidden;
+  overflow-x: hidden;
   margin: 0;
   font-family: "Open Sans", sans-serif;
-  height: 100vh;
   background-color: #F6F7F8;
 }
 
 .name-input {
+  padding: 0px 0px 0px 10px !important;
+  width: 422px;
   margin-bottom: 25px;
-  width: 60%;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #D1D1D1;
   background: white url("../assets/img/person-icon.png") right no-repeat;
   background-position: 94% 55%;
-  font-size: 14px !important;
+  font-size: 21px !important;
   box-sizing: unset !important;
 }
 
 .email-input {
+  padding: 0px 0px 0px 10px !important;
+  width: 422px;
   margin-bottom: 25px;
-  width: 60%;
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #D1D1D1;
   background: white url("../assets/img/letter-icon.png") right no-repeat;
   background-position: 94% 55%;
-  font-size: 14px !important;
+  font-size: 21px !important;
   box-sizing: unset !important;
+}
+
+input::placeholder {
+  position: absolute;
+  top: 14px;
+  color: #D1D1D1;
 }
 
 .d-none {
@@ -1638,9 +1747,9 @@ body {
   right: 0;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    overflow-y: scroll;
+@media only screen and (max-width: 1350px) {
+  input::placeholder {
+    top: 10px;
   }
 }
 @keyframes slide-in-blurred-right {
