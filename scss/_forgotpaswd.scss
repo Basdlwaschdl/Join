@@ -39,7 +39,7 @@
 }
 
 /*** MEDIA QUERY ***/
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .text-center {
         word-wrap: break-word;
         overflow-wrap: break-word;
@@ -55,7 +55,7 @@
     }
 }
 
-@media (max-width: 460px) {
+@media only screen and (max-width: 460px) {
     .arrow-left-icon {
         left: 3%;
         height: 20px !important;

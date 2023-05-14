@@ -440,7 +440,7 @@ function allFilled() {
 // displays a notice from the bottom edge of the screen
 
 function showNotice(id) {
-    document.getElementById(id).style.display = '';
+    document.getElementById(id).style.display = 'flex';
     document.getElementById(id).style.zIndex = '20';
     setTimeout(() => {
         document.getElementById(id).style.display = ''

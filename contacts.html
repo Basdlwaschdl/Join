@@ -8,8 +8,7 @@
     <title>Join</title>
 
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/contacts.style.css">
     <link rel="stylesheet" href="./css/overlay.style.css">
     <link rel="stylesheet" href="./css/media.querys.addTask.css">
     <link rel="stylesheet" href="./css/contactAddTask.css">
@@ -36,6 +35,7 @@
         </div>
         <div class="contact-info d-none-mobile">
             <div class="contact-headline">
+                <span class="sub-headline" style="display: none;">Kanban Project Management Tool</span>
                 <img src="./assets/img/contacts-icons/arrow-left.png" class="arrowLeftMobile" style="display: none;"
                     onclick="hideContactInfo()">
                 <h3>Contacts</h3>
@@ -46,17 +46,17 @@
 
         </div>
     </div>
-
+    <div class="mobile-icon" id="mobileIcon"></div>
     <div id="overlayContent" class="d-none"></div>
-    <div id="overlayAddTask" class="d-none add_task" onclick="closeOverlay()">
-        <div class="add-task" onclick="noClose(event)">
+    <div id="overlayAddTask" class="d-none" onclick="closeOverlay()">
+        <div onclick="noClose(event)" class="add-task">
             <div class="mobile_create_overlay" onclick="createTask()" id="mobileCreate">Create<img
                     src="assets/img/haken.png">
             </div>
             <div>
                 <img src="./assets/img/close.png" onclick="closeOverlay()" class="close-contact-add">
             </div>
-            <div id="overlay"></div>
+            <div id="overlay" class="overlay"></div>
         </div>
     </div>
     <!-- ---------------------------------------------------------Animation Div's----------------------------------------------------------------------->

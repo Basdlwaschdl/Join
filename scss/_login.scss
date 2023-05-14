@@ -189,7 +189,7 @@
 
 
 /*** MEDIA QUERY ***/
-@media (max-width: 600px) {
+@media only screen and (max-width: 600px) {
 
     /*** Mobile Animation ***/
     .start-animation {
@@ -329,7 +329,7 @@
 
 }
 
-@media (max-height: 700px) {
+@media only screen and (max-height: 700px) {
     .log-in-logo {
         height: 75px;
         top: 1% !important;

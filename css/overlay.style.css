@@ -45,9 +45,9 @@ button {
 
 .overlay_headline {
     position: absolute;
-    top: -100px;
+    top: -80px;
     font-weight: 700;
-    font-size: 61px;
+    font-size: 50px;
 }
 
 .initial-circle {
@@ -569,6 +569,7 @@ span {
 }
 
 .addBord_box {
+    display: none;
     z-index: 10;
     bottom: 400px;
     position: absolute;
@@ -576,7 +577,6 @@ span {
     color: white;
     font-weight: 400;
     font-size: 21px;
-    display: flex;
     text-align: center;
     flex-direction: column;
     justify-content: center;

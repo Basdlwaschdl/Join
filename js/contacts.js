@@ -15,8 +15,6 @@ let orderedContacts = new Array([], [], [], [], [], [], [], [], [], [], [], [], 
 async function init() {
     await getAllUsers();
     insertContactsToContactList();
-    /* showContact(0); */
-    document.body.classList.add('overflow');
 };
 
 
@@ -190,15 +188,17 @@ function showDetailsAtMobile() {
     if (windowWidth < 1251) {
         document.getElementById('contacts-list').classList.add('d-none')
         document.getElementsByClassName('contact-info')[0].classList.remove('d-none-mobile')
-        document.getElementsByClassName('new-contact')[0].classList.add('d-none')
-        document.getElementById('mobile-menu').innerHTML = /*html */`
-                <div class="mobile-icon"><img src="./assets/img/contacts-icons/pen-white.png" alt=""></div>
-        `;
+        document.getElementsByClassName('new-contact')[0].classList.add('d-none') 
     }
+    if (windowWidth < 600) document.getElementById('mobileIcon').style.display = `block`;
+    document.getElementById('mobileIcon').innerHTML = `
+        <img src="./assets/img/contacts-icons/pen-white.png" class="edit_img">
+        <img src="assets/img/board-icons/delete.png" class="trash">`;
 };
 
 
 function hideContactInfo() {
+    document.getElementById('mobileIcon').style.display = `none`;
     document.getElementById('contacts-list').classList.remove('d-none')
     document.getElementsByClassName('contact-info')[0].classList.add('d-none-mobile')
     document.getElementsByClassName('new-contact')[0].classList.remove('d-none')
@@ -258,7 +258,7 @@ function showDetails(id) {
         <span class="list-contact-frame" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
         <div class="contactInfo">
             <span class="contact-name">${contactsA[id].name}</span>
-            <div class="add-task" onclick="addScroll()"> + Add Task</div>
+            <div class="add_task_contact" onclick="addScroll()"> + Add Task</div>
         </div>
         </div>
         <div class="contact-info-box">
@@ -306,6 +306,7 @@ function closeOverlay() {
 function editShowContact(contact) {
     document.getElementById('overlayContent').classList.add('slide-in-blurred-right');
     document.getElementById('overlayContent').classList.remove('d-none')
+    document.getElementById('overlayContent').classList.remove('slide-out-blurred-right');
     document.getElementById('overlayContent').classList.remove('overlay-closed');
     document.getElementById('overlayContent').innerHTML = '';
     if (typeof contact !== 'undefined') showEditContact(contact);
@@ -316,6 +317,7 @@ function editShowContact(contact) {
 function closeEditContact() {
     document.getElementById('overlayContent').classList.remove('slide-in-blurred-right');
     document.getElementById('overlayContent').classList.add('slide-out-blurred-right');
+    setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 250);
     //document.getElementById('overlayContent').classList.add('overlay-closed');
     //setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 200);
 }

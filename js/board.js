@@ -511,7 +511,6 @@ function overlayAddTask() {
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
     document.getElementById('mobileCreate').style.visibility = 'visible';
-    document.body.classList.add('overflow-hidden');
     renderOverlayAddTask();
     getDateOverlay();
 };

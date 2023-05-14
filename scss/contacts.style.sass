@@ -1,0 +1,681 @@
+$lightblue: #29ABE2
+$lightblueHover: #1188bb
+$darkblue: #2A3647
+$blue: #0038FF
+$orange: #FF7A00
+$lightgreen: #1FD7C1
+$green: #93E751
+$pagebackground: #F6F7F8
+$gray: #a8a8a8
+
+@mixin button-White()
+    color: $darkblue
+    background-color: white
+    cursor: pointer
+    padding: 10px 8px
+    border-radius: 6px
+    font-weight: 700
+    border: 1px solid $darkblue
+    &:hover
+        color: $lightblue
+        border: 1px solid $lightblue
+
+@mixin button-darkblue()
+    background-color: $darkblue
+    color: white
+    padding: 10px 32px
+    cursor: pointer
+    font-weight: bold
+    border-radius: 10px
+    border: none
+    transition: 200ms
+    &:hover
+        cursor: pointer
+        background: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+
+@mixin inputForm($imgurl, $posx, $posy)
+    padding: 10px
+    border-radius: 8px
+    border: 1px solid #D1D1D1
+    background: white url($imgurl) right no-repeat
+    background-position: $posx $posy
+
+@media only screen and (max-width: 470px)
+    .arrowLeftMobile
+        left: 330px !important
+    .mobile-icon
+        left: 250px !important
+
+@media only screen and (min-width: 601px)
+    .mobile-icon
+        display: none !important
+
+@media only screen and (max-width: 600px)
+    .contactInfo
+        width: 50%
+    .sub-headline
+        display: block !important
+
+    .contact-details-head
+        margin-top: 35px !important
+
+    .list-contact-frame
+        scale: 2 !important
+
+    .contact-edit
+        display: none !important
+
+    .user_icon
+        top: -31px !important
+        left: 130px !important
+
+    .close-contact
+        top: -355px !important
+        right: 195px !important
+
+    .initial-circle
+        left: 351px !important
+
+    #overlayContent
+        position: unset !important
+        left: 0 !important
+
+    .overlay-left
+        align-items: center
+        width: 100% !important
+
+    .arrowLeftMobile
+        top: 45px !important
+        left: 430px
+
+    #contacts-container
+        margin-left: 1px !important
+        position: fixed !important
+
+        .contacts-list
+            height: calc(100vh - 220px) !important
+            padding-top: 75px
+
+    .new-contact
+        height: 60px !important
+        top: 96px !important
+        right: 20px !important
+        z-index: 10
+
+@media only screen and (max-width: 750px)
+    .contact-name
+        font-size: 30px !important
+
+@media only screen and (max-width: 1250px)
+    .contact-info
+        padding: 0px !important
+
+    .seperator
+        display: block !important
+        width: 32px
+        height: 2px
+        background-color: $lightblue
+        margin-bottom: 16px
+
+    .contact-headline
+        margin-left: 40px
+        margin-top: 50px
+        padding-left: 24px !important
+        display: block !important
+
+        h3
+            margin: 0px !important
+            font-size: 47px !important
+            border-right: none !important
+
+        p
+            margin: 10px 0px !important
+
+    .arrowLeftMobile
+        display: block !important
+        position: absolute
+        top: 105px
+        width: 30px
+        right: 32px
+        cursor: pointer
+
+    .contacts-list
+        width: 100vw !important
+        // padding-top: 5rem !important;
+        height: calc(100vh - 75px) !important
+        padding-top: 75px
+
+    .new-contact
+        height: 60px !important
+
+    .d-none-mobile
+        display: none !important
+
+    #mobile-menu
+        display: flex
+        flex: 1
+        justify-content: flex-end
+        margin-right: 16px
+        margin-top: 37px
+
+    .new-contact
+        padding: 2px 15px !important
+
+    #contactDetails
+        margin-left: 50px
+
+    .contact-details-head
+        margin-top: 70px
+        gap: 50px !important
+        margin-left: 26px !important
+
+    .contactInfo
+        margin-top: -10px
+
+    .user-icon
+        transform: translate(0px, -50px) !important
+        top: 22rem !important
+
+    form
+        transform: translate(0px, -100px) !important
+        margin-top: 10rem
+
+@media only screen and (max-width: 1500px)
+    .user_icon
+        top: -20px
+        left: 125px
+
+    .initial-circle
+        top: 0
+        left: 166px
+
+    .add-contact-btn
+        width: 201px !important
+
+    #overlayContent .overlay-right [class*=-input]
+        width: 300px !important
+
+    .overlay-title
+        font-size: 47px !important
+
+    #logo
+        display: none !important
+
+    .overlay-left
+        border-bottom-left-radius: 0px !important
+        flex-direction: column !important
+        border-top-right-radius: 32px !important
+        height: 279px !important
+        width: 260px
+
+    .overlay-right
+        flex-direction: column !important
+        gap: 0px !important
+        border-bottom-left-radius: 32px !important
+        border-bottom-right-radius: 32px !important
+        padding: 0px 24px
+        width: 332px !important
+        border-top-right-radius: 0px !important
+
+    .close-contact
+        position: absolute
+        right: 30px
+        top: -353px
+
+        img
+            filter: brightness(0) invert(1)
+
+    #overlayContent
+        flex-direction: column !important
+
+/**---------------------------------------------------------------------------------------Media Query End-----------------------------------------------------**/
+.mobile-icon
+    display: flex
+    position: absolute
+    top: 700px
+    left: 350px
+    display: none
+
+.edit_img
+    width: 20px
+    height: 30px
+    border-radius: 10px
+    padding: 10px 15px
+    background-color: $darkblue
+    &:hover
+        cursor: pointer
+
+.trash
+    width: 30px
+    height: 30px
+    border-radius: 10px
+    border: 1px solid $darkblue
+    padding: 10px
+    &:hover
+        cursor: pointer
+
+.contact-details-head
+    display: flex
+    justify-content: space-between
+
+.overflow
+    overflow: hidden !important
+
+#contacts-container
+    height: 100%
+    margin-left: 200px
+    display: flex
+
+.contacts-list
+    height: calc(100vh - 75px)
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: white
+    width: 30vw
+    overflow-y: scroll
+    overflow-x: hidden
+    &::-webkit-scrollbar
+        width: 5px
+        height: 5px
+        &::-webkit-scrollbar-thumb
+            border-radius: 7px
+            background: #A8A8A8
+
+.list-header
+    text-align: start
+    width: 80%
+    padding-top: 8px
+    padding-bottom: 16px
+    font-size: 21px
+    font-weight: 400
+    border-bottom: 1px solid gray
+    margin-bottom: 16px
+
+.list-contact
+    transition: 0.3s
+    display: flex
+    flex-direction: row
+    align-items: flex-start
+    height: fit-content
+    padding: 15px 25px
+    margin-left: 48px
+    margin-right: 48px
+    gap: 35px
+    width: 357px
+    box-sizing: border-box
+    border-radius: 10px
+    font-size: 16px
+    cursor: pointer
+    &:hover
+        background-color: #E6E6E6
+
+.contact-frame
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    width: fit-content
+    min-width: 42px
+    height: 42px
+    color: #FFFFFF
+    border-radius: 100%
+    border: 1px solid #fff
+    margin-bottom: 0
+    margin-top: 5px
+
+.list-contact-info
+    min-width: 150px
+    p
+        margin: 5px
+        font-size: 16px
+    p:first-child
+        font-size: 21px
+    p:last-child
+        color: $lightblue
+
+.list-contact-activ
+    background-color: $darkblue
+    color: white
+    &:hover
+        background-color: $darkblue
+        translate: 5px
+
+.contact-info
+    padding-left: 32px
+
+.contact-headline
+    display: flex
+    align-items: center
+    gap: 24px
+
+    h3
+        font-size: 61px
+        border-right: 3px solid $lightblue
+        padding-right: 24px
+
+        p
+            font-size: 27px
+
+.contact-details
+    margin-left: 24px
+
+    &-head
+        display: flex
+        align-items: center
+        gap: 100px
+        margin-left: 38px
+
+.contactInfo
+    margin-left: 0px
+
+.contact-name
+    font-size: 47px
+    margin-bottom: 16px
+
+.add_task_contact
+    margin-top: 18px
+    cursor: pointer
+    font-size: 16px
+    color: $lightblue
+    transition: 200ms
+    &:hover
+        cursor: pointer
+        color: #007CEE
+
+.contact-info-head
+    margin-top: 24px
+    display: flex
+    align-items: center
+    gap: 50px
+    &>p
+        font-size: 21px
+
+.contact-edit
+    display: flex
+    gap: 10px
+    align-items: center
+    cursor: pointer
+    img
+        width: 21px
+        height: 30px
+    p
+        color: $lightblue !important
+        &:hover
+            color: $lightblueHover
+            img
+                filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(97%) contrast(82%)
+
+.contact-info-segment
+    width: max-content
+    display: flex
+    flex-direction: column
+    gap: 8px
+    margin-bottom: 24px
+    a
+        color: $lightblue !important
+        &:hover
+            color: $lightblueHover
+
+.contact-info-title
+    font-weight: 700
+
+.list-contact-frame
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 10px
+    width: fit-content
+    min-width: 42px
+    height: 42px
+    color: #FFFFFF
+    border-radius: 100%
+    scale: 3
+
+.new-contact
+    display: flex
+    position: absolute
+    justify-content: center
+    align-items: center
+    gap: 8px
+    bottom: 50px
+    right: 50px
+    @include button-darkblue
+    box-sizing: border-box
+
+.highlighted
+    color: #FFFFFF
+    background-color: #2A3647 !important
+    &:hover
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+
+.slide-out-blurred-right
+    animation: slide-out-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
+
+.slide-in-blurred-right
+    animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
+
+#overlayContent
+    position: absolute
+    top: 0
+    left: 186px
+    right: 0
+    bottom: 0
+    z-index: 10
+    background-color: rgba(0, 0, 0, 0.712)
+    display: flex
+    align-items: center
+    justify-content: center
+
+.overlay-left
+    height: 594px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    background-color: $darkblue
+    color: white
+    padding-left: 60px
+    padding-right: 60px
+    border-bottom-left-radius: 32px
+    border-top-left-radius: 32px
+    img
+        height: 66px
+        width: 55px
+
+.overlay-title
+    font-size: 61px
+    font-weight: 700
+    margin: 0px
+    p
+        margin: 0px
+        font-size: 27px
+
+.overlay-sep
+    margin-top: 16px
+    width: 80px
+    height: 3px
+    background-color: $lightblue
+
+.close-top
+    display: none
+
+.close-contact
+    height: 100%
+    margin-top: 115px
+    img
+        height: 30px
+        width: 30px
+        cursor: pointer
+
+.white
+    display: none
+
+.overlay-right
+    padding-left: 30px
+    position: relative
+    width: 753px
+    height: 594px
+    border-top-right-radius: 32px
+    border-bottom-right-radius: 32px
+    background-color: $pagebackground
+    display: flex
+    align-items: center
+    justify-content: center
+
+.phone-input
+    margin-bottom: 25px
+    @include inputForm('../assets/img/phone-icon.png', 94%, 55%)
+    font-size: 14px !important
+    box-sizing: unset !important
+    form
+        display: flex
+        flex-direction: column
+
+.buttons
+    display: flex
+    gap: 16px
+
+.cancel-contact-btn
+    @include button-White
+    display: flex
+    justify-content: center
+    align-items: center
+    transition: 200ms
+    font-weight: 400
+    font-size: 21px
+    height: 55px
+    width: 105px
+    &:hover
+        cursor: pointer
+        color: #29ABE2
+        border-color: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+
+.add-contact-btn
+    width: 218px
+    height: 55px
+    @include button-darkblue
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 10px 8px
+    font-weight: 700
+    font-size: 21px
+    transition: 300ms
+    &:hover
+        cursor: pointer
+        background: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+
+    [class*="-input"]
+        width: 422px
+        height: 31px !important
+
+.alert
+    display: flex
+    position: absolute
+    bottom: -50px
+    align-items: center
+    justify-content: center
+    width: 100%
+    opacity: 0
+    &-content
+        @include button-darkblue
+
+.overlay-closed
+    position: absolute
+    height: 100%
+    animation: slide-out-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
+
+.animate
+    animation: slide-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards
+
+.slide-in-right
+    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+
+.slide-out-right
+    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
+
+@keyframes slide-out-right
+    0%
+        transform: translateX(0)
+        opacity: 1
+
+    100%
+        transform: translateX(1000px)
+        opacity: 0
+
+@keyframes slide-out-from-left
+    from
+        left: 0%
+
+    to
+        left: 100%
+
+/**
+ * ----------------------------------------
+ * animation slide-top
+ * ----------------------------------------
+ */
+@keyframes slide-top
+    0%
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+        opacity: 0
+
+    50%
+        -webkit-transform: translateY(-200px)
+        transform: translateY(-200px)
+        opacity: 1
+
+    100%
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+        opacity: 0
+
+/**
+ * ----------------------------------------
+ * animation slide-in-blurred-right
+ * ----------------------------------------
+ */
+@keyframes slide-in-blurred-right
+    0%
+        transform: translateX(300px) scaleX(2.5) scaleY(0.2)
+        transform-origin: 0% 50%
+        opacity: 0
+        background-color: rgba(0, 0, 0, 0.3)
+
+    100%
+        transform: translateX(0) scaleY(1) scaleX(1)
+        transform-origin: 50% 50%
+        opacity: 1
+        background-color: rgba(0, 0, 0, 0.3)
+
+@keyframes slide-out-blurred-right
+    0%
+        transform: translateX(0) scaleY(1) scaleX(1)
+        transform-origin: 50% 50%
+        background-color: rgba(0, 0, 0, 0.3)
+        opacity: 1
+
+    100%
+        transform: translateX(300px) scaleX(2) scaleY(0.2)
+        transform-origin: 0% 50%
+        background-color: rgba(0, 0, 0, 0.3)
+        opacity: 0
+
+@keyframes slide-in-right
+    0%
+        transform: translateX(1000px)
+        opacity: 0
+
+    100%
+        transform: translateX(0)
+        opacity: 1
+
+.d-none-mobile
+    display: block
+
+.d-none
+    display: none
