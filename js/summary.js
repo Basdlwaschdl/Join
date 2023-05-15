@@ -10,7 +10,6 @@ let upcomingDeadline = '';
 
 
 async function greet() {
-    await init();
     currentlyDate = new Date();
     curentlyHour = currentlyDate.getHours();
     if (curentlyHour >= 3 && curentlyHour < 12) document.getElementById('hallo').innerHTML = `Good Morning,`;
@@ -22,8 +21,8 @@ async function greet() {
 
 
 async function init() {
-    await getItem('tasks')
-    await getItem('currentUser_name')
+    await getItem('tasks');
+    await getItem('currentUser_name');
     if (tasks !== null) {
         taskInBoard = tasks.length;
         tasks.forEach(task => {
@@ -33,18 +32,18 @@ async function init() {
         dateDeatline(dates);
     }
     genHtmlToSeite();
-}
+    greet();
+};
 
 function checkPrioAndDate(task) {
     if (task.prio === 'urgent') {
         urgentCount++;
-        dates.push(task.date);
     }
+    dates.push(task.date);
 }
 
 function dateDeatline(array) {
     var today = new Date();
-
     var nextDate = array
         .filter(function (datum) {
             return new Date(datum) <= today;
@@ -53,7 +52,6 @@ function dateDeatline(array) {
             return new Date(b) - new Date(a);
         })
         .shift();
-
     formatDate(nextDate);
 }
 

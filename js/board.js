@@ -370,10 +370,12 @@ function htmlEditTask(i) {
 
 
 function checkSubtaskStatus(i) {
-    for (let j = 0; j < tasks[i]['done'].length; j++) {
-        if (tasks[i]['done'][j] == true) document.getElementById('CheckboxTask' + j).checked = true;
+    if (tasks[i]['done'] != []) {
+        for (let j = 0; j < tasks[i]['done'].length; j++) {
+            if (tasks[i]['done'][j] == true) document.getElementById('CheckboxTask' + j).checked = true;
+        }
     }
-}
+};
 
 
 function addSubtask_edit(i) {
@@ -391,6 +393,7 @@ function deleteSubtaskEdit(i, index) {
     document.getElementById('subTask' + i).classList.add('slide-out-right');
     setTimeout(() => {
         tasks[index]['subtasks'].splice(i, 1)
+        tasks[index]['done'].splice(i, 1)
         editTask([index]);
     }, 400);
 };
@@ -568,7 +571,7 @@ function closeDetailView() {
 
 function noClose(event) {
     event.stopPropagation();
-    
+
 };
 
 

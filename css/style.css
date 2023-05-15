@@ -106,336 +106,6 @@
   src: url("../assets/fonts/open-sans-v34-latin-800italic.eot"); /* IE9 Compat Modes */
   src: url("../assets/fonts/open-sans-v34-latin-800italic.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/open-sans-v34-latin-800italic.woff2") format("woff2"), url("../assets/fonts/open-sans-v34-latin-800italic.woff") format("woff"), url("../assets/fonts/open-sans-v34-latin-800italic.ttf") format("truetype"), url("../assets/fonts/open-sans-v34-latin-800italic.svg#OpenSans") format("svg"); /* Legacy iOS */
 }
-.start-animation {
-  background-color: #F6F7F8;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 5;
-  animation: start-fade-out-background 0.5s ease-in-out both 1s;
-}
-.start-animation .logo-animation {
-  scale: 2;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  animation: start-desktop-animation 1s ease-in-out both 1s;
-}
-@keyframes start-fade-out-background {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    z-index: 0;
-  }
-}
-@keyframes start-desktop-animation {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  70% {
-    opacity: 0.5;
-    transform: scale(0.1);
-    top: 5%;
-    left: 5%;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0);
-    z-index: 0;
-    top: 5%;
-    left: 5%;
-  }
-}
-
-.mobile-logo-animation {
-  display: none;
-}
-
-.log-in {
-  display: flex;
-  position: relative;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-}
-.log-in .log-in-logo {
-  position: absolute;
-  top: 8%;
-  left: 8%;
-}
-.log-in .sign-up {
-  position: absolute;
-  right: 8%;
-  top: 5%;
-}
-.log-in .sign-up .sign-up-button {
-  background-color: #2A3647;
-  color: white;
-  padding: 10px 32px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
-  transition: 200ms;
-  font-size: 16px;
-  text-decoration: none;
-  font-weight: 700;
-  margin-left: 32px;
-}
-.log-in .sign-up .sign-up-button:hover {
-  cursor: pointer;
-  background: #29ABE2;
-  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
-}
-.log-in .form-class {
-  height: 400px;
-  width: 500px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.0392156863);
-  position: relative;
-}
-.log-in .form-class .log-in-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.log-in .form-class .log-in-form .log-in-headline {
-  font-size: 50px;
-  font-weight: 700;
-  border-bottom: 3px solid #29ABE2;
-  padding-bottom: 10px;
-  margin-bottom: 25px;
-  margin-top: 16px;
-}
-.log-in .form-class .log-in-form .name-input {
-  margin-bottom: 25px;
-  width: 60%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #D1D1D1;
-  background: white url("../assets/img/person-icon.png") right no-repeat;
-  background-position: 94% 55%;
-}
-.log-in .form-class .log-in-form .email-input {
-  margin-bottom: 25px;
-  width: 60%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #D1D1D1;
-  background: white url("../assets/img/letter-icon.png") right no-repeat;
-  background-position: 94% 55%;
-}
-.log-in .form-class .log-in-form .password-input {
-  margin-bottom: 25px;
-  width: 60%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #D1D1D1;
-  background: white url("../assets/img/lock-icon.png") right no-repeat;
-  background-position: 94% 55%;
-}
-.log-in .form-class .log-in-form ::placeholder {
-  opacity: 0.5;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div {
-  font-size: 13px;
-  display: flex;
-  margin-bottom: 25px;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div .remember-me {
-  margin-left: 8px;
-  font-style: normal;
-  font-weight: 500;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div .forgot-password-link {
-  text-decoration: none;
-  color: #29ABE2;
-  margin-left: 25px;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div .forgot-password-link:hover {
-  color: #1188bb;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div input[type=checkbox] {
-  cursor: pointer;
-  accent-color: #2A3647;
-}
-.log-in .form-class .log-in-form .log-in-checkbox-div input:focus {
-  outline: none;
-}
-.log-in .form-class .log-in-form .log-in-button {
-  background-color: #2A3647;
-  color: white;
-  padding: 10px 32px;
-  cursor: pointer;
-  font-weight: bold;
-  border-radius: 10px;
-  border: none;
-  transition: 200ms;
-  font-size: 16px;
-  text-decoration: none;
-  margin-right: 24px;
-}
-.log-in .form-class .log-in-form .log-in-button:hover {
-  cursor: pointer;
-  background: #29ABE2;
-  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
-}
-.log-in .form-class .log-in-form .guest-log-in-button {
-  color: #2A3647;
-  background-color: white;
-  cursor: pointer;
-  padding: 10px 8px;
-  border-radius: 6px;
-  font-weight: 700;
-  border: 1px solid #2A3647;
-  font-size: 16px;
-}
-.log-in .form-class .log-in-form .guest-log-in-button:hover {
-  color: #29ABE2;
-  border: 1px solid #29ABE2;
-}
-.log-in .login-popup {
-  color: white;
-  background-color: #2A3647;
-  padding: 8px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-  border: none;
-  margin-top: 16px;
-  text-align: center;
-}
-
-/*** MEDIA QUERY ***/
-@media only screen and (max-width: 600px) {
-  /*** Mobile Animation ***/
-  .start-animation {
-    display: none;
-  }
-  .logo-animation {
-    display: none;
-  }
-  .mobile-start-animation {
-    background-color: #2A3647;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 5;
-    animation: fade-out-background 0.5s ease-in-out both 1s;
-  }
-  @keyframes fade-out-background {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      z-index: 0;
-    }
-  }
-  .mobile-logo-animation {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    animation: start-mobile-animation 1s ease-in-out both 1s;
-  }
-  @keyframes start-mobile-animation {
-    0% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(3);
-    }
-    70% {
-      opacity: 0.5;
-      transform: scale(0.1);
-      top: 5%;
-      left: 5%;
-    }
-    100% {
-      opacity: 0;
-      transform: scale(0);
-      z-index: 0;
-      top: 5%;
-      left: 5%;
-    }
-  }
-  /*** Login Page ***/
-  .form-class {
-    height: 450px !important;
-  }
-  .form-width-mobile {
-    margin-right: 8px;
-    margin-left: 8px;
-  }
-  .log-in-logo {
-    top: 3% !important;
-    height: 100px;
-  }
-  .log-in-checkbox-div {
-    flex-direction: column;
-    text-align: center;
-  }
-  .mobile-remember-me {
-    display: flex;
-    text-align: center;
-    margin-bottom: 16px;
-  }
-  #remember-checkbox {
-    margin: 0;
-  }
-  .forgot-password-link {
-    margin: 0 !important;
-  }
-  .mobile-login-buttons {
-    display: flex;
-    flex-direction: column;
-  }
-  .log-in-button {
-    color: white !important;
-    background-color: #2A3647 !important;
-    cursor: pointer;
-    padding: 10px 8px !important;
-    border-radius: 6px !important;
-    font-weight: 700 !important;
-    border: none !important;
-    margin-right: 0 !important;
-    margin-bottom: 16px;
-  }
-  .log-in-button:hover {
-    background-color: #29ABE2 !important;
-  }
-  .sign-up {
-    top: 81% !important;
-    right: 0% !important;
-    left: 0% !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 48px !important;
-  }
-  /*** Sign-Up Page ***/
-  .mobile-button-width {
-    width: 150px;
-  }
-  .mobile-space-bottom {
-    margin-bottom: 40px !important;
-  }
-}
-@media only screen and (max-height: 700px) {
-  .log-in-logo {
-    height: 75px;
-    top: 1% !important;
-  }
-}
 .arrow-left-icon {
   position: absolute;
   top: 5%;
@@ -443,7 +113,30 @@
   cursor: pointer;
 }
 
+.forgot-button {
+  width: 265px;
+  height: 49px;
+  background-color: #2A3647;
+  color: white;
+  padding: 10px 32px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  transition: 200ms;
+  font-weight: 700;
+  font-size: 21px;
+  text-decoration: none;
+  margin-right: 24px;
+}
+.forgot-button:hover {
+  cursor: pointer;
+  background: #29ABE2;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+}
+
 .text-center {
+  width: 80%;
   text-align: center;
   margin-bottom: 25px;
 }
@@ -455,8 +148,8 @@
 }
 
 .forgot-password-height {
-  height: 300px !important;
-  width: 600px !important;
+  width: 826px;
+  height: 462px;
   margin-left: 8px;
   margin-right: 8px;
 }
@@ -804,12 +497,14 @@
   filter: invert(77%) sepia(50%) saturate(5605%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
 .board-content .board-tasks .tasks .task-body {
+  padding: 10px;
   height: 70vh;
   border-radius: 18px;
   border: 2px solid transparent;
   overflow-y: scroll;
 }
 .board-content .board-tasks .tasks .single-task {
+  transition: 0.2s;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -818,6 +513,9 @@
   box-shadow: 0px 1px 6px -2px rgba(0, 0, 0, 0.2);
   margin-bottom: 16px;
   cursor: pointer;
+}
+.board-content .board-tasks .tasks .single-task:hover {
+  transform: scale(1.05);
 }
 .board-content .board-tasks .tasks .single-task h4 {
   margin: 8px 0px;
@@ -924,8 +622,7 @@ input[type=date]:hover {
 }
 
 .board-detail-view {
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+  transition: 0.3s;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -941,13 +638,10 @@ input[type=date]:hover {
 .board-detail-view .content {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
   position: relative;
-  min-width: 580px;
-  height: 1050px;
+  min-width: 460px;
   background-color: #F6F7F8;
   border-radius: 32px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  padding-left: 70px;
+  padding-left: 22px;
 }
 .board-detail-view .content .close {
   position: absolute;
@@ -1016,7 +710,7 @@ input[type=date]:hover {
 .board-detail-view .content .edit-task {
   font-size: 20px;
   font-weight: normal;
-  padding: 48px 150px 48px 48px;
+  padding: 42px 41px 113px 21px;
 }
 .board-detail-view .content .edit-task .title {
   display: flex;
@@ -1179,7 +873,7 @@ input[type=date]:hover {
   flex-direction: column;
   gap: 8px;
   margin-top: 24px;
-  height: 300px;
+  max-height: 250px;
   overflow-y: scroll;
 }
 
@@ -1203,7 +897,7 @@ input[type=date]:hover {
 .overlay-add-task .add-task {
   position: relative;
   width: 1116px;
-  height: 914px;
+  height: 920px;
   background-color: #F6F7F8;
   border-radius: 32px;
 }
@@ -1268,7 +962,7 @@ input[type=date]:hover {
   flex-wrap: wrap;
   padding-left: 15px;
   height: 70px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 @keyframes slide-in-from-right {
@@ -1356,29 +1050,6 @@ input[type=date]:hover {
     gap: 32px;
   }
 }
-@media only screen and (max-width: 700px) {
-  .content {
-    min-width: unset !important;
-    width: 85%;
-  }
-  textarea {
-    height: 60px;
-  }
-  .initials_box_edit {
-    top: 580px !important;
-    width: 50%;
-  }
-  .input_edit {
-    position: relative;
-    width: 100%;
-  }
-  .plus_image_edit {
-    bottom: 350px;
-  }
-  .prio_button {
-    font-size: 15px;
-  }
-}
 @media only screen and (max-width: 600px) {
   .search-container {
     width: unset !important;
@@ -1401,6 +1072,7 @@ input[type=date]:hover {
     background-color: unset;
   }
   .board-detail-view .content {
+    overflow-y: scroll;
     width: 100%;
     height: calc(100vh - 82px - 68px);
     position: absolute;
@@ -1441,7 +1113,7 @@ input[type=date]:hover {
     left: 230px;
   }
   .plus_image_edit {
-    top: 648px;
+    top: 681px;
     right: 44px;
   }
   .close {

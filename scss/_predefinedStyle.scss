@@ -18,6 +18,7 @@ $gray: #a8a8a8;
     border: 1px solid $darkblue;
 
     &:hover {
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
         color: $lightblue;
         border: 1px solid $lightblue;
     }

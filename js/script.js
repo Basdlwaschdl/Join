@@ -4,22 +4,23 @@ let currentUserEmail;
 /**
  * fill your empty array with users from the Server
  */
+
 async function initUsers() {
     getItem('users');
 }
 
-
 /**
  * delete all User from your Array
  */
+
 function deleteUser() {
     backend.deleteItem('users');
 }
 
-
 /**
 * hash a string with SHA-256
 */
+
 async function hashWithSHA256(string) {
     const encoder = new TextEncoder();
     const data = encoder.encode(string);
@@ -30,10 +31,10 @@ async function hashWithSHA256(string) {
         .join("");
 }
 
-
 /**
  * register User on sign_up.html including hashed Password 
  */
+
 async function addUser() {
     let nameInput = document.getElementById('register-name');
     let emailInput = document.getElementById('register-email');
@@ -43,7 +44,6 @@ async function addUser() {
         handleEmailAlreadyRegisteredError(nameInput, emailInput, passwordInput);
         return;
     }
-
     let hashedPassword = await hashWithSHA256(passwordInput.value);
     let newUser = { name: nameInput.value, mail: emailInput.value, password: hashedPassword.toString(), initials: getInitial(nameInput.value), color: getRandomColor(), contacts: []};
     addNewUser(newUser);
@@ -67,9 +67,9 @@ function handleEmailAlreadyRegisteredError(nameInput, emailInput, passwordInput)
 }
 
 
-function addNewUser(newUser) {
+async function addNewUser(newUser) {
     users.push(newUser);
-    setItem('users', JSON.stringify(users));
+    await setItem('users', JSON.stringify(users));
 }
 
 
@@ -78,27 +78,27 @@ function showSuccessMessage() {
     successMessage.style.display = 'block';
 }
 
-
 /**
  * add/remove class d-none to your Object
  * @param {string} id - need the id from your Object
  */
+
 function toggleDNone(id) {
     document.getElementById(`${id}`).classList.toggle('d-none');
 }
 
-
 /**
  * go to index.html
  */
+
 function goToLogin() {
     window.location.href = "index.html"
 }
 
-
 /**
  * Login Function including hashed Password and remember me functionality
  */
+
 async function login() {
     let email = document.getElementById('login-email').value;
     let password = document.getElementById('login-password').value;
@@ -118,13 +118,13 @@ async function isPasswordValid(password, hashedPassword) {
 }
 
 
-function handleLoginSuccess(email, password, rememberMe, user) {
+async function handleLoginSuccess(email, password, rememberMe, user) {
     if (rememberMe) {
         saveLoginData(email, password);
     } else {
         clearLoginData();
     }
-    setCurrentUser(user);
+    await setCurrentUser(user);
     goToSummary();
 }
 
@@ -149,9 +149,9 @@ function clearLoginData() {
 }
 
 
-function setCurrentUser(user) {
+async function setCurrentUser(user) {
     localStorage.setItem("currentUser", user.mail);
-    setItem("currentUser_name", user.name);
+    await setItem("currentUser_name", user.name);
 }
 
 
@@ -166,17 +166,16 @@ function clearLoginFields() {
     document.getElementById('login-password').value = '';
 }
 
-
 /**
  * Remember Me Checkbox on index.html load
  */
+
 function loadLoginData() {
     let storedEmail = localStorage.getItem("login-email");
     let storedPassword = localStorage.getItem("login-password");
     let rememberMe = document.querySelector('input[name="remember-me"]');
     let rememberMeChecked = localStorage.getItem("rememberMeChecked");
     rememberMeChecked = rememberMeChecked === "true";
-
     if (storedEmail && storedPassword && rememberMeChecked) {
         document.getElementById("login-email").value = storedEmail;
         document.getElementById("login-password").value = storedPassword;
@@ -186,10 +185,10 @@ function loadLoginData() {
     }
 }
 
-
 /**
  * Guest Login
  */
+
 function guestLogin() {
     event.preventDefault();
     currentUser = 'Guest';
@@ -197,36 +196,35 @@ function guestLogin() {
     goToSummary();
 }
 
-
 /**
  * Logout 
  */
+
 function logout() {
     localStorage.removeItem("currentUser");
     window.location.href = "index.html"
 }
 
-
-
 /**
  * hide "false Login" Message
  */
+
 function hideFalseData() {
     document.getElementById('login-false').style.display = 'none';
 }
 
-
 /**
  * hide "Mail already registered" Message
  */
+
 function hideMailAlreadyUsed() {
     document.getElementById('register-error').style.display = 'none';
 }
 
-
 /**
  * show and hide Log out Button in desktop_template.html
  */
+
 function openProfilIconMenu() {
     let logOutField = document.getElementById('log-out-field');
 
@@ -237,18 +235,18 @@ function openProfilIconMenu() {
     }
 }
 
-
 /**
  * go to sign_up.html
  */
+
 function goToSignUp() {
     window.location.href = "sign_up.html"
 }
 
-
 /**
  * show and hide E-Mail sent Popup
  */
+
 function showEmailSentMessage() {
     let popup = document.getElementById('email-sent-popup');
     popup.style.display = 'flex';
@@ -260,10 +258,10 @@ function hideEmailSentMessage() {
     document.getElementById('email-sent-popup').style.display = 'none';
 }
 
-
 /**
  * show and hide reset Password Popup
  */
+
 function showResetPasswordMessage() {
     let popup = document.getElementById('reset-password-message');
     popup.style.display = 'block';
@@ -278,6 +276,7 @@ function hideResetPasswordMessage() {
 /**
  * go to Page and save status in local storage for bg
  */
+
 function goToSummary() {
     window.location.href = 'summary.html';
     localStorage.setItem('selectedMenuItem', 'summary');
@@ -310,6 +309,7 @@ function goToLegalNotice() {
 /**
  * highlight the Menu Nav with a Bg. necessary because on Page change CSS Classes are resettet and now we get status from Local Storage
  */
+
 function highlightSelectedMenuItem() {
     const selectedMenuItem = localStorage.getItem('selectedMenuItem');
     const bgSummary = document.getElementById('bg-summary');
@@ -339,7 +339,6 @@ function highlightSelectedMenuItem() {
     }
 }
 
-
 /**
  * The function returns the first letter of the first name and last name.
  * If the last name does not exist, then only the first letter of the first name is output
@@ -358,11 +357,11 @@ function getInitial(username) {
     }
 }
 
-
 /**
  * Retrunt a random Color-Hexcode 
  * @returns random color hexcode (#7D735F)
  */
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';

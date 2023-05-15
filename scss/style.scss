@@ -1,7 +1,5 @@
 @import './predefinedStyle';
 @import './fonts';
-
-@import './login';
 @import './forgotpaswd';
 @import './desktop_template';
 @import './legal_notice';
@@ -59,9 +57,7 @@ input::placeholder {
     }
 }
 
-@media only screen and (max-width: 600px) {
-
-}
+@media only screen and (max-width: 600px) {}
 
 @keyframes slide-in-blurred-right {
     0% {

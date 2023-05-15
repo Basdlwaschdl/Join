@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="./js/backend.js"></script>
     <script src="./js/includeHTML.js"></script>
-    <script src="./js/mini_backend.js"></script>   
     <script src="./js/summary.js"></script>
     <script src="./js/script.js"></script>
 </head>
 
-<body onload="includeHTML(), greet()">
+<body onload="includeHTML(), init()">
     <div w3-include-html="desktop_template.html"></div>
 <div class="main_box">
     <div class="overview" id="overview">
@@ -25,7 +24,7 @@
     </div>
     <div class="greeting">
         <span id="hallo" class="hallo"></span>
-        <span class="name" id="greetName"> John Doe</span>
+        <span class="name" id="greetName"></span>
 
     </div>
 </div>

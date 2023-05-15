@@ -1,0 +1,391 @@
+$lightblue: #29ABE2
+$lightblueHover: #1188bb
+$darkblue: #2A3647
+$blue: #0038FF
+$orange: #FF7A00
+$lightgreen: #1FD7C1
+$green: #93E751
+$pagebackground: #F6F7F8
+$gray: #a8a8a8
+
+@mixin button-White()
+    color: $darkblue
+    background-color: white
+    cursor: pointer
+    padding: 10px 8px
+    border-radius: 6px
+    font-weight: 700
+    border: 1px solid $darkblue
+
+    &:hover
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+        color: $lightblue
+        border: 1px solid $lightblue
+
+@mixin button-darkblue()
+    background-color: $darkblue
+    color: white
+    padding: 10px 32px
+    cursor: pointer
+    font-weight: bold
+    border-radius: 10px
+    border: none
+    transition: 200ms
+
+    &:hover
+        cursor: pointer
+        background: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+
+@mixin inputForm($imgurl, $posx, $posy)
+    padding: 10px
+    border-radius: 8px
+    border: 1px solid #D1D1D1
+    background: white url($imgurl) right no-repeat
+    background-position: $posx $posy
+
+    [type="checkbox"]
+        height: 16px
+        width: 16px !important
+
+input
+    outline: none
+
+input::placeholder
+    font-weight: 400
+    font-size: 21px
+
+.start-animation
+    background-color: $pagebackground
+    position: absolute
+    width: 100%
+    height: 100vh
+    overflow: hidden
+    z-index: 5
+    animation: start-fade-out-background 0.5s ease-in-out both 1s
+
+    .logo-animation
+        scale: (2)
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        z-index: 10
+        animation: start-desktop-animation 1s ease-in-out both 1s
+
+    @keyframes start-fade-out-background
+        0%
+            opacity: 1
+
+        100%
+            opacity: 0
+            z-index: 0
+
+    @keyframes start-desktop-animation
+        0%
+            opacity: 1
+            transform: translate(-50%, -50%) scale(1)
+
+        70%
+            opacity: 0.5
+            transform: scale(0.1)
+            top: 5%
+            left: 5%
+
+        100%
+            opacity: 0
+            transform: scale(0)
+            z-index: 0
+            top: 5%
+            left: 5%
+
+.mobile-logo-animation
+    display: none
+
+.log-in
+    display: flex
+    position: relative
+    height: 100vh
+    justify-content: center
+    align-items: center
+
+    &-logo
+        position: absolute
+        top: 8%
+        left: 8%
+
+    .sign-up
+        font-weight: 400
+        font-size: 21px
+        position: absolute
+        right: 8%
+        top: 5%
+
+        &-button
+            @include button-darkblue
+            width: 145px
+            height: 51px
+            font-size: 21px
+            text-decoration: none
+            font-weight: 700
+            margin-left: 32px
+
+    .form-class
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        height: 513px
+        width: 652px
+        background-color: white
+        border-radius: 20px
+        box-shadow: 0px 0px 14px 3px #0000000A
+        position: relative
+
+        .log-in-form
+
+            display: flex
+            flex-direction: column
+            align-items: center
+
+            .log-in-headline
+                font-size: 50px
+                font-weight: 700
+                border-bottom: 3px solid $lightblue
+                padding-bottom: 10px
+                margin-bottom: 25px
+                margin-top: 16px
+
+            .name-input
+                margin-bottom: 25px
+                width: 410px
+                height: 49px
+                @include inputForm('../assets/img/person-icon.png', 94%, 55%)
+
+            .email-input
+                height: 49px
+                margin-bottom: 25px
+                width: 412px
+                @include inputForm('../assets/img/letter-icon.png', 94%, 55%)
+
+            .password-input
+                margin-bottom: 25px
+                width: 402px
+                height: 29px
+                @include inputForm('../assets/img/lock-icon.png', 94%, 55%)
+
+            ::placeholder
+                opacity: 0.5
+
+            .log-in-checkbox-div
+                font-size: 13px
+                display: flex
+                margin-bottom: 25px
+
+                .remember-me
+                    margin-left: 8px
+                    font-weight: 400
+                    font-size: 16px
+
+                .forgot-password-link
+                    font-weight: 400
+                    font-size: 16px
+                    text-decoration: none
+                    color: $lightblue
+                    margin-left: 25px
+
+                    &:hover
+                        color: $lightblueHover
+
+                input[type="checkbox"]
+                    cursor: pointer
+                    accent-color: $darkblue
+
+                input:focus
+                    outline: none
+
+            .log-in-button
+                width: 180px
+                height: 49px
+                @include button-darkblue
+                font-weight: 700
+                font-size: 21px
+                text-decoration: none
+                margin-right: 24px
+
+            .guest-log-in-button
+                transition: 0.2s
+                width: 160px
+                height: 49px
+                @include button-White
+                font-weight: 700
+                font-size: 21px
+
+    .login-popup
+        color: white
+        background-color: $darkblue
+        padding: 8px 8px
+        border-radius: 6px
+        font-weight: 500
+        border: none
+        margin-top: 16px
+        text-align: center
+
+.mobile-remember-me
+    display: flex
+    align-items: center
+
+/*** MEDIA QUERY ***/
+@media only screen and (max-width: 600px)
+
+    /*** Mobile Animation ***/
+    .start-animation
+        display: none
+
+    .logo-animation
+        display: none
+
+    .mobile-start-animation
+        background-color: $darkblue
+        position: absolute
+        width: 100%
+        height: 100vh
+        overflow: hidden
+        z-index: 5
+        animation: fade-out-background 0.5s ease-in-out both 1s
+
+    @keyframes fade-out-background
+        0%
+            opacity: 1
+
+        100%
+            opacity: 0
+            z-index: 0
+
+    .mobile-logo-animation
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        z-index: 10
+        animation: start-mobile-animation 1s ease-in-out both 1s
+
+    @keyframes start-mobile-animation
+        0%
+            opacity: 1
+            transform: translate(-50%, -50%) scale(3)
+
+        70%
+            opacity: 0.5
+            transform: scale(0.1)
+            top: 5%
+            left: 5%
+
+        100%
+            opacity: 0
+            transform: scale(0)
+            z-index: 0
+            top: 5%
+            left: 5%
+
+    /*** Login Page ***/
+    .form-class
+        height: 522px !important
+
+    .form-width-mobile
+        width: 90% !important
+        height: 573px
+        margin-right: 8px
+        margin-left: 8px
+        margin-top: 73px
+
+    input::placeholder
+        font-weight: 400
+        font-size: 16px
+
+    .log-in-logo
+        top: 3% !important
+        height: 70px
+
+    .log-in-checkbox-div
+        width: 100%
+        flex-direction: column-reverse
+        text-align: center
+
+    .mobile-remember-me
+        width: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+        margin-top: 16px
+
+    #remember-checkbox
+        margin: 0
+
+    .forgot-password-link
+        margin: 0 !important
+
+    .mobile-login-buttons
+        display: flex
+        flex-direction: column
+
+    .log-in-button
+        width: 160px !important
+        color: white !important
+        background-color: $darkblue !important
+        cursor: pointer
+        padding: 10px 8px !important
+        border-radius: 6px !important
+        font-weight: 700 !important
+        font-size: 16px !important
+        border: none !important
+        margin-right: 0 !important
+        margin-bottom: 16px
+
+        &:hover
+            background-color: $lightblue !important
+
+    .guest-log-in-button
+        font-size: 16px !important
+
+    .sign-up-button
+        font-size: 16px !important
+
+    .sign-up
+        top: 81% !important
+        right: 0% !important
+        left: 0% !important
+        display: flex
+        align-items: center
+        justify-content: center
+        margin-top: 48px !important
+
+    /*** Sign-Up Page ***/
+    .mobile-button-width
+        width: 150px
+
+    .mobile-space-bottom
+        margin-bottom: 40px !important
+
+    .password-input
+        padding: 10px 0px 10px 10px !important
+
+    .remember-me
+        width: 120px
+
+    .email-input
+        height: 39px !important
+
+    .password-input
+        height: 19px !important
+
+    input
+        outline: none
+        width: 98% !important
+
+@media only screen and (max-height: 700px)
+    .log-in-logo
+        height: 75px
+        top: 1% !important

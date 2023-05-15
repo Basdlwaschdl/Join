@@ -5,7 +5,18 @@
     cursor: pointer;
 }
 
+.forgot-button {
+    width: 265px;
+    height: 49px;
+    @include button-darkblue;
+    font-weight: 700;
+    font-size: 21px;
+    text-decoration: none;
+    margin-right: 24px;
+}
+
 .text-center {
+    width: 80%;
     text-align: center;
     margin-bottom: 25px;
 }
@@ -17,8 +28,8 @@
 }
 
 .forgot-password-height {
-    height: 300px !important;
-    width: 600px !important;
+    width: 826px;
+    height: 462px;
     margin-left: 8px;
     margin-right: 8px;
 }
@@ -29,7 +40,7 @@
 }
 
 .email-sent-popup {
-    display: flex ;
+    display: flex;
     align-items: center;
 }
 

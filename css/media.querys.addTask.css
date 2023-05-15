@@ -103,6 +103,10 @@
 
 @media only screen and (max-width: 600px) {
 
+    .input_edit {
+        width: 100%;
+    }
+
     .form {
         left: calc(50% - 180px);
         top: 210px;
@@ -282,7 +286,7 @@
     }
 
     .x✔ {
-        left: 250px;
+        left: 222px;
     }
 
     .custom_checkBox {

@@ -394,13 +394,13 @@ span {
 }
 
 .input_edit {
-    width: 382px;
+    width: 396px;
 }
 
 .plus_image_edit {
+    bottom: 338px;
+    right: 74px;
     position: absolute;
-    bottom: 288px;
-    right: 165px;
 }
 
 .plus_image_edit:hover {
@@ -527,10 +527,10 @@ span {
     justify-content: center;
     position: absolute;
     top: 15px;
-    left: 370px;
+    left: 350px;
     border: 1px solid rgb(0, 0, 0);
-    width: 16px;
-    height: 16px;
+    width: 17px;
+    height: 17px;
     border-radius: 3px;
 }
 
@@ -562,7 +562,7 @@ span {
     justify-content: center;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
+    margin-right: -13px;
     margin-bottom: 5px;
     border-radius: 100%;
 }
