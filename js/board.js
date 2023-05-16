@@ -5,6 +5,7 @@ let currentPrioEditTask;
 let editContacts = [];
 
 async function initBoard() {
+    await getCurrentUser();
     await loadData();
     await loadDataTask();
     renderTasks(tasks);
@@ -12,9 +13,11 @@ async function initBoard() {
 
 
 //displays the current date
-function getDateOverlay() {
-    document.getElementById('dateOverlay').valueAsDate = new Date();
-    date = document.getElementById('dateOverlay').value;
+function getDateOverlay(id) {
+    let todayDate = new Date().toISOString().slice(0, 10);
+    document.getElementById(id).min = todayDate;
+    document.getElementById(id).valueAsDate = new Date();
+    date = document.getElementById(id).value;
 };
 
 
@@ -233,6 +236,7 @@ async function editTask(index) {
     content.classList.add('edit-task');
     icons.innerHTML = htmlCheckIcon(index);
     content.innerHTML = htmlEditTask(index);
+    getDateOverlay('editTaskDueDate');
     highlightedButton(index);
     renderEditSubtask(index);
     checkSubtaskStatus(index)
@@ -321,7 +325,7 @@ function htmlEditTask(i) {
             </div>
             <div class="date">
                 Due date:
-                <input type="date" id="editTaskDueDate" value="${tasks[i]['date']}">
+                <input type="date" id="editTaskDueDate" min="" value="${tasks[i]['date']}">
             </div>
             <div class="priority">
                 Prio
@@ -350,10 +354,10 @@ function htmlEditTask(i) {
                     <div id="editContacts" class="render_categorys_box"></div>
                 </div>
                 <div id="initials" class="initials_box_edit"></div>
+                <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
                 <div class="subtasks_edit">
                 <span class="editors">Subtasks</span>
                     <input type="text" placeholder="Add new subtask" id="subTask" maxlength="29" style class="input_edit">
-                    <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
                     <div class="subtask_box" id="editSubtask"></div>
                 </div>
             </div>
@@ -557,7 +561,7 @@ function overlayAddTask() {
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
     document.getElementById('mobileCreate').style.visibility = 'visible';
     renderOverlayAddTask();
-    getDateOverlay();
+    getDateOverlay('dateOverlay');
 };
 
 

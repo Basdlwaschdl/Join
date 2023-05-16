@@ -53,7 +53,7 @@
     left: 0 !important;
   }
   .arrowLeftMobile {
-    top: 45px !important;
+    top: 121px !important;
     left: 430px;
   }
   #contacts-container {
@@ -62,7 +62,7 @@
   }
   #contacts-container .contacts-list {
     height: calc(100vh - 220px) !important;
-    padding-top: 75px;
+    padding-top: 135px;
   }
   .new-contact {
     height: 60px !important;
@@ -144,10 +144,6 @@
   }
   .contactInfo {
     margin-top: -10px;
-  }
-  .user-icon {
-    transform: translate(0px, -50px) !important;
-    top: 22rem !important;
   }
   form {
     transform: translate(0px, -100px) !important;
@@ -258,6 +254,7 @@
 
 .contacts-list {
   height: calc(100vh - 75px);
+  margin-top: 75px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -278,7 +275,7 @@
 .list-header {
   text-align: start;
   width: 80%;
-  padding-top: 8px;
+  padding-top: 16px;
   padding-bottom: 16px;
   font-size: 21px;
   font-weight: 400;
@@ -345,6 +342,7 @@
 }
 
 .contact-info {
+  margin-top: 75px;
   padding-left: 32px;
 }
 

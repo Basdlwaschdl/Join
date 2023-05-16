@@ -127,7 +127,6 @@
   font-weight: 700;
   font-size: 21px;
   text-decoration: none;
-  margin-right: 24px;
 }
 .forgot-button:hover {
   cursor: pointer;
@@ -204,7 +203,7 @@
   float: left;
   width: 200px;
   font-size: 16px;
-  z-index: 11;
+  z-index: 21;
 }
 .menu .menu-content {
   display: flex;
@@ -276,17 +275,6 @@
 .header .header-icons {
   display: flex;
   align-items: center;
-}
-.header .header-icons .profil-pic {
-  height: 40px;
-  width: 40px;
-  border-radius: 100px;
-  margin-right: 16px;
-  position: relative;
-}
-.header .header-icons .profil-pic:hover {
-  cursor: pointer;
-  transform: scale(1.05);
 }
 .header .header-icons .question-icon {
   height: 20px;
@@ -407,7 +395,7 @@
 .board-content {
   margin-left: 200px;
   padding-left: 56px;
-  padding-top: 56px;
+  padding-top: 130px;
   padding-right: 56px;
 }
 .board-content .board-header {
@@ -479,7 +467,6 @@
 .board-content .board-tasks .tasks {
   width: 23%;
   min-width: 250px;
-  padding: 4px;
 }
 .board-content .board-tasks .tasks .task-header {
   display: flex;
@@ -497,11 +484,14 @@
   filter: invert(77%) sepia(50%) saturate(5605%) hue-rotate(165deg) brightness(95%) contrast(85%);
 }
 .board-content .board-tasks .tasks .task-body {
-  padding: 10px;
+  width: 100%;
+  padding-left: 9px;
+  padding-right: 9px;
   height: 70vh;
   border-radius: 18px;
   border: 2px solid transparent;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 .board-content .board-tasks .tasks .single-task {
   transition: 0.2s;
@@ -919,7 +909,8 @@ input[type=date]:hover {
 }
 
 .sticky {
-  position: sticky;
+  position: fixed;
+  width: 100%;
   top: 0;
   z-index: 1;
   background-color: #F6F7F8;
@@ -1062,7 +1053,6 @@ input[type=date]:hover {
   }
   .board-content {
     margin: unset !important;
-    padding: 32px;
   }
   .tasks {
     width: 100% !important;
@@ -1120,9 +1110,12 @@ input[type=date]:hover {
     right: 30px !important;
   }
 }
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
   .greeting {
     display: none !important;
+  }
+  .main_box {
+    left: calc(50% - 178px) !important;
   }
 }
 @media only screen and (max-width: 835px) {
@@ -1163,37 +1156,53 @@ input[type=date]:hover {
   .todo_done_sub {
     width: 203px !important;
   }
+  .main_box {
+    margin-left: 70px;
+  }
 }
 @media only screen and (max-width: 690px) {
+  .main_box {
+    margin-left: 125px;
+  }
   .task {
     gap: 7px !important;
   }
   .task .task_sub {
     width: 104px !important;
+    height: 104px !important;
   }
   .prio_date {
     width: 328px !important;
   }
   .prio_date .prio_date_sub {
-    padding-right: 40px !important;
+    padding-right: 15px !important;
   }
   .prio_date .datum {
     padding-left: 12px !important;
   }
   .todo_done_sub {
     width: 142px !important;
+    height: 142px !important;
     gap: 8px !important;
   }
   .todo_done_sub > img {
-    width: 60px;
+    width: 50px;
   }
 }
 @media only screen and (max-width: 600px) {
   .main_box {
-    top: 0 !important;
-    left: 0px !important;
-    margin-top: 68px;
-    margin-left: 16px;
+    position: unset !important;
+    margin-top: 112px;
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+  }
+  .prio_date {
+    height: 106px !important;
+  }
+  .task {
+    margin-top: 50px !important;
   }
 }
 a {
@@ -1208,6 +1217,23 @@ a {
   display: flex;
   align-items: center;
   gap: 70px;
+}
+
+.user-icon {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 42px;
+  height: 42px;
+  color: #FFFFFF;
+  border-radius: 100%;
+  border: 2px solid #000;
+  font-size: 21px;
+}
+.user-icon:hover {
+  cursor: pointer;
 }
 
 .greeting {

@@ -13,6 +13,7 @@ let orderedContacts = new Array([], [], [], [], [], [], [], [], [], [], [], [], 
  * 
  */
 async function init() {
+    await getCurrentUser();
     await getAllUsers();
     insertContactsToContactList();
 };

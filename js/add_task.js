@@ -29,6 +29,8 @@ let task = {};
 //displays the current date
 
 function getDate() {
+    let todayDate = new Date().toISOString().slice(0, 10);
+    document.getElementById("date").min = todayDate;
     document.getElementById('date').valueAsDate = new Date();
     date = document.getElementById('date').value;
 };
@@ -480,6 +482,7 @@ async function saveInLocalStorage(key, array) {
 
 async function loadDataTask() {
     current_user = localStorage.getItem('currentUser');
+    await getCurrentUser();
     await getItem('users');
     await getItem('categorys');
     await getItem('index');

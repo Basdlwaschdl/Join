@@ -21,6 +21,7 @@ async function greet() {
 
 
 async function init() {
+    getCurrentUser();
     await getItem('tasks');
     await getItem('currentUser_name');
     if (tasks !== null) {
@@ -46,13 +47,16 @@ function dateDeatline(array) {
     var today = new Date();
     var nextDate = array
         .filter(function (datum) {
-            return new Date(datum) <= today;
+            return new Date(datum) >= today;
         })
         .sort(function (a, b) {
-            return new Date(b) - new Date(a);
+            return new Date(a) - new Date(b);
         })
         .shift();
-    formatDate(nextDate);
+        if (nextDate == undefined) upcomingDeadline = 'No deadline';
+        else formatDate(nextDate);
+    
+
 }
 
 function formatDate(nextDate) {
@@ -84,7 +88,7 @@ function checkStatus(status) {
 
 
 function genHtmlToSeite() {
-    document.getElementById('overview').innerHTML =`
+    document.getElementById('overview').innerHTML = `
     <div class="summery_head">
             <div class="headline">Summary</div>
             <div class="nutshell">

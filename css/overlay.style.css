@@ -398,8 +398,8 @@ span {
 }
 
 .plus_image_edit {
-    bottom: 338px;
-    right: 74px;
+    top: 730px;
+    right: 58px;
     position: absolute;
 }
 
@@ -494,7 +494,6 @@ span {
 .subtask_box {
     overflow-x: hidden;
     width: 384px;
-    min-height: 60px;
     max-height: 61px;
     overflow-y: scroll;
 }

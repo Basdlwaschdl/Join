@@ -14,7 +14,7 @@ input::placeholder {
   height: 100vh;
   overflow: hidden;
   z-index: 5;
-  animation: start-fade-out-background 0.5s ease-in-out both 1s;
+  animation: start-fade-out-background 0.8s ease-in-out both 1s;
 }
 .start-animation .logo-animation {
   scale: 2;
@@ -316,11 +316,14 @@ input::placeholder {
     height: 573px;
     margin-right: 8px;
     margin-left: 8px;
-    margin-top: 73px;
+    margin-top: 75px;
   }
   input::placeholder {
     font-weight: 400;
     font-size: 16px;
+  }
+  #remember-checkbox {
+    width: unset !important;
   }
   .log-in-logo {
     top: 3% !important;

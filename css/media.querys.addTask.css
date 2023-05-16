@@ -147,7 +147,7 @@
     }
 
     .mobile_create_button {
-        z-index: 11;
+        z-index: 20;
         position: absolute;
         top: 12px;
         right: 20px;
@@ -167,7 +167,7 @@
 
     .drop_down {
         height: 41px;
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     .form_left {
@@ -238,6 +238,10 @@
     .form_right {
         margin-top: 0px;
     }
+
+    .initials_box {
+        position: unset;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -286,7 +290,7 @@
     }
 
     .x✔ {
-        left: 222px;
+        left: 250px;
     }
 
     .custom_checkBox {

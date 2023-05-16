@@ -24,3 +24,24 @@ async function getItem(key) {
     if(key == 'all_users') allUsersDB = JSON.parse(response['data']['value']);
     if(key == 'users') users = JSON.parse(response['data']['value']);
 }
+
+ 
+async function getCurrentUser() {
+    await getItem('users');
+    let user_mail = localStorage.getItem("currentUser");
+    users.forEach(function users(value, index) {
+        if (value.mail === user_mail) {
+            userData = value;
+            let user_index = index;
+            renderIcon(user_index);
+        }
+    })
+};
+
+
+function renderIcon(i) {
+    let color = users[i]['color'];
+    let initials = users[i]['initials'];
+    document.getElementById('profil-icon').innerHTML =`
+    <span class="user-icon" style="background-color: ${color}">${initials}</span>`;
+}

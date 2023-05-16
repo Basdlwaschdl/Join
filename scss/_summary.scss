@@ -1,9 +1,13 @@
 $bgr_color1: #29ABE2;
 $bgr_color2: #2A3647;
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
     .greeting {
         display: none !important;
+    }
+
+    .main_box {
+        left: calc(50% - 178px) !important;
     }
 }
 
@@ -58,41 +62,67 @@ $bgr_color2: #2A3647;
     .todo_done_sub {
         width: 203px !important;
     }
+
+    .main_box {
+        margin-left: 70px;
+    }
 }
 
 
 @media only screen and (max-width: 690px) {
+    .main_box {
+        margin-left: 125px;
+    }
+
     .task {
         gap: 7px !important;
+
         .task_sub {
             width: 104px !important;
+            height: 104px !important;
         }
     }
+
     .prio_date {
         width: 328px !important;
+
         .prio_date_sub {
-            padding-right: 40px !important;
-            
+            padding-right: 15px !important;
+
         }
+
         .datum {
             padding-left: 12px !important;
         }
     }
+
     .todo_done_sub {
         width: 142px !important;
+        height: 142px !important;
         gap: 8px !important;
-        & > img {
-            width: 60px;
+
+        &>img {
+            width: 50px;
         }
     }
 }
 
 @media only screen and (max-width: 600px) {
     .main_box {
-        top: 0 !important;
-        left: 0px !important;
-        margin-top: 68px;
-        margin-left: 16px;
+        position: unset !important;
+        margin-top: 112px;
+        margin-left: 0px;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 100px;
+    }
+
+    .prio_date {
+        height: 106px !important;
+    }
+
+    .task {
+        margin-top: 50px !important;
     }
 }
 
@@ -129,6 +159,23 @@ a {
     display: flex;
     align-items: center;
     gap: 70px;
+}
+
+.user-icon {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 42px;
+    height: 42px;
+    color: #FFFFFF;
+    border-radius: 100%;
+    border: 2px solid #000;
+    font-size: 21px;
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .greeting {
