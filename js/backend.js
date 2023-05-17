@@ -6,12 +6,19 @@ let categorys = {};
 let tasks;
 let user_name;
 
+/**
+ * stores data in the Backend
+ */
+
 async function setItem(key, value) {
     const payload = { key, value, token: STORAGE_TOKEN };
     await fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload) })
         .then(res => res.json());
-}
+};
 
+/**
+ * load data from the Backend
+ */
 
 async function getItem(key) {
     const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
@@ -23,9 +30,12 @@ async function getItem(key) {
     if(key == 'tasks') tasks = JSON.parse(response['data']['value']);
     if(key == 'all_users') allUsersDB = JSON.parse(response['data']['value']);
     if(key == 'users') users = JSON.parse(response['data']['value']);
-}
+};
 
- 
+ /**
+  * determines the current user
+  */
+
 async function getCurrentUser() {
     await getItem('users');
     let user_mail = localStorage.getItem("currentUser");
@@ -38,10 +48,13 @@ async function getCurrentUser() {
     })
 };
 
+/**
+ * renders the initials into the user icon
+ */
 
 function renderIcon(i) {
     let color = users[i]['color'];
     let initials = users[i]['initials'];
     document.getElementById('profil-icon').innerHTML =`
     <span class="user-icon" style="background-color: ${color}">${initials}</span>`;
-}
+};

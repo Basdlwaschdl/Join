@@ -9,10 +9,10 @@ async function initBoard() {
     await loadData();
     await loadDataTask();
     renderTasks(tasks);
-}
-
+};
 
 //displays the current date
+
 function getDateOverlay(id) {
     let todayDate = new Date().toISOString().slice(0, 10);
     document.getElementById(id).min = todayDate;
@@ -20,18 +20,23 @@ function getDateOverlay(id) {
     date = document.getElementById(id).value;
 };
 
-
 // load data from backend
+
 async function loadData() {
     await getItem('tasks');
     await getItem('categorys')
     await getItem('currentUser_name')
-}
+};
 
 // save data to backend
+
 async function saveData(key, array) {
     await setItem(key, JSON.stringify(array));
 };
+
+/**
+ * renders the saved tasks into the board
+ */
 
 function renderTasks(inputArray) {
     deleteTasksOnBoard();
@@ -43,9 +48,8 @@ function renderTasks(inputArray) {
 
 /**
  * render card for single task
- * @param {string} taskStatus - Status / column of the task
- * @todo complete task
  */
+
 function renderSingleTask(task) {
     let destination = document.getElementById(`${checkTaskStatus(task)}`);//${task['category']}`);
     destination.innerHTML += `
@@ -56,15 +60,19 @@ function renderSingleTask(task) {
             ${htmlTaskSubtasks(task)}
             ${htmlTaskDivBottom(task)}
         </div>`;
-}
+};
 
 /**
- * 
- * @returns html code for the topic of the task
+ *  html code for the topic of the task
  */
+
 function htmlTaskTopic(task) {
     return `<div class="task-topic" style="background-color: ${getCategorysColor(task['category'])}">${task['category']}</div>`;
-}
+};
+
+/**
+ * determines the color category
+ */
 
 function getCategorysColor(category) {
     let index = categorys['category'].indexOf(category);
@@ -96,7 +104,7 @@ function htmlTaskSubtasks(task) {
                 </div>
                 <span>${task['done'].filter(Boolean).length}/${task['subtasks'].length} Done</span>
             </div>`;
-}
+};
 
 /**
  * 
@@ -105,14 +113,14 @@ function htmlTaskSubtasks(task) {
  */
 function calcProgress(task) {
     return task['done'].filter(Boolean).length / task['subtasks'].length * 100;
-}
+};
 
 function htmlTaskDivBottom(task) {
     return `<div class="task-bottom">
                 ${htmlTaskEditors(task)}
                 ${htmlTaskPrio(task)}
             </div>`;
-}
+};
 
 /**
  * 
@@ -124,6 +132,7 @@ function htmlTaskDivBottom(task) {
  * get initials and color with contact id from global editors
  * if more than 2 editors, only show number of left over editors
  */
+
 function htmlTaskEditors(task) {
     let htmlCodeTemp = '';
     editors = task['contacts'];
@@ -137,29 +146,34 @@ function htmlTaskEditors(task) {
         htmlCodeTemp += htmlTaskSingleEditor(editor);
     }
     return `<div class="editors">${htmlCodeTemp}</div>`;
-}
+};
+
 
 function htmlTaskSingleEditor(editor) {
     return `<div class="contact-frame" style="background-color: ${editor['color']}">
                 ${editor['initials']}
             </div>`;
-}
+};
+
 
 function htmlTaskLeftOverEditors(editors) {
     return `<div class="contact-frame">
                 +${editors.length - 2}
             </div>`;
-}
+};
+
 
 function moreThan2Editors(i) {
     return i > 1;
-}
+};
+
 
 function htmlTaskPrio(task) {
     return `<div class="task-prio">
                 <img src="assets/img/prio${capitalizeFirstLetter(task['prio'])}.png">
             </div>`;
-}
+};
+
 
 function openTaskDetailView(id) {
     document.getElementById('taskDetailView').classList.remove('overlay-closed');
@@ -167,15 +181,18 @@ function openTaskDetailView(id) {
     let task = tasks.find((e => e['task_id'] == id));
     renderTaskDetailView(task);
     document.body.classList.add('overflow-hidden');
-}
+};
 
-// todo
+/**
+ * renders the detail view of the task
+ */
+
 function renderTaskDetailView(task) {
     let detailView = document.getElementById('taskDetailView');
     detailView.classList.remove('d-none');
     detailView.innerHTML = htmlTaskDetailView(task);
     renderSubtasks(task);
-}
+};
 
 
 function renderSubtasks(task) {
@@ -186,46 +203,9 @@ function renderSubtasks(task) {
     }
 };
 
-
-function htmlTaskDetailView(task) {
-    return `
-        <div class="content flip-card-front" onclick="noClose(event)">
-            <div class="close">
-                <img src="./assets/img/close.png" onclick="closeDetailView()">
-            </div>
-            <div id="content" class="task-details">
-                <div class="category" style="background-color: ${task['category_color']}">${task['category']}</div>
-                <div class="title">${task['title']}</div>
-                <div class="font">${task['description']}</div>
-                <div class="date">
-                    Due date:
-                    <div class="font">${task['date']}</div>
-                </div>
-                <div class="priority">
-                    Priority:
-                    <div class="prio-icon" style="background-color: ${getCategoryColor(task['prio'])}">
-                        <div>${task['prio']}</div>
-                        <img src="./assets/img/prio${capitalizeFirstLetter(task['prio'])}.png">
-                    </div>
-                </div>
-                <div class="editors_edit">
-                    Assigned To:
-                    ${htmlAllEditors(task)}
-                </div>
-                <div class="editors">Subtasks:</div>
-                <div id="subTasks" class="detail_subtaks"></div>
-            </div>
-            <div id="icons" class="icons">
-                <div class="delete-button" onclick="deleteTask(${tasks.indexOf(task)})">
-                    <img src="./assets/img/board-icons/delete.png">
-                </div>
-                <div class="edit-button" onclick="editTask(${tasks.indexOf(task)})">
-                    <img src="./assets/img/board-icons/edit.png">
-                </div>
-            </div>
-        </div>
-    `;
-}
+/**
+ * collects data for the Edit Task function
+ */
 
 async function editTask(index) {
     edit_active = true;
@@ -267,15 +247,18 @@ function setEditStatus(i, status) {
     if (status == 'done') tasks[i]['status'] = 'done';
     removeHighLighted();
     highlightedButton(i);
-}
+};
 
 function removeHighLighted() {
     document.getElementById('status1').classList.remove('highlight-button')
     document.getElementById('status2').classList.remove('highlight-button')
     document.getElementById('status3').classList.remove('highlight-button')
     document.getElementById('status4').classList.remove('highlight-button')
-}
+};
 
+/**
+ * merges the Contacts task and the current user's contacts
+ */
 
 function pushEditorstoContacts() {
     let edit_colors = [];
@@ -300,78 +283,30 @@ function renderEditorsInitials() {
         ${initial}
         </div>`;
     }
-}
+};
+
+/**
+ * highlights the current task priority
+ */
 
 function setPrioInEditTask(task) {
     currentPrioEditTask = task['prio'];
     document.getElementById(`editPrio${capitalizeFirstLetter(currentPrioEditTask)}`).classList.add(`prio_button_${currentPrioEditTask}`);
-}
+};
+
+/**
+ * highlights the selected task priority
+ */
 
 function editPrio(prio) {
     document.getElementById(`editPrio${capitalizeFirstLetter(currentPrioEditTask)}`).classList.remove(`prio_button_${currentPrioEditTask}`);
     currentPrioEditTask = prio;
     document.getElementById(`editPrio${capitalizeFirstLetter(currentPrioEditTask)}`).classList.add(`prio_button_${currentPrioEditTask}`);
-}
-
-function htmlEditTask(i) {
-    return `<div class="flip-card-back">
-            <div class="title">
-                Title
-                <input type="text" id="editTaskTitle" value="${tasks[i]['title']}">
-            </div>
-            <div class="description">
-                Description
-                <textarea id="editTaskDescription" rows="5" required>${tasks[i]['description']}</textarea>
-            </div>
-            <div class="date">
-                Due date:
-                <input type="date" id="editTaskDueDate" min="" value="${tasks[i]['date']}">
-            </div>
-            <div class="priority">
-                Prio
-                <div class="edit-prio-buttons">
-                    <div class="prio_button" id="editPrioUrgent" onclick="editPrio('urgent')">
-                        Urgent
-                        <img src="./assets/img/prioUrgent.png">
-                    </div>
-                    <div class="prio_button" id="editPrioMedium" onclick="editPrio('medium')">
-                        Medium
-                        <img src="./assets/img/prioMedium.png">
-                    </div>
-                    <div class="prio_button" id="editPrioLow" onclick="editPrio('low')">
-                        Low
-                        <img src="./assets/img/prioLow.png">
-                    </div>
-                </div>
-            </div>
-            <div class="editors">
-                Assigned to
-                <div id="contactBox" style="z-index: 5;">
-                    <div class="drop_down" id="dropDownEditContacts" onclick="openEditTaskContacts()">
-                        Select contacts to assign
-                        <img class="down_image" src="assets/img/drop-down-arrow.png">
-                    </div>
-                    <div id="editContacts" class="render_categorys_box"></div>
-                </div>
-                <div id="initials" class="initials_box_edit"></div>
-                <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
-                <div class="subtasks_edit">
-                <span class="editors">Subtasks</span>
-                    <input type="text" placeholder="Add new subtask" id="subTask" maxlength="29" style class="input_edit">
-                    <div class="subtask_box" id="editSubtask"></div>
-                </div>
-            </div>
-            <span class="editors">Status</span>
-            <div class="status_buttons">
-                <div class="status-button" onclick="setEditStatus(${i}, 'todo')" id="status1">To do</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'progress')" id="status2">In progress</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'feedback')" id="status3">Feedback</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'done')" id="status4">Done</div>
-            </div>
-            </div>
-    `;
 };
 
+/**
+ * determines the status of the subtask
+ */
 
 function checkSubtaskStatus(i) {
     if (tasks[i]['done'] != []) {
@@ -381,6 +316,9 @@ function checkSubtaskStatus(i) {
     }
 };
 
+/**
+ * adds a subtask to the selected task
+ */
 
 function addSubtask_edit(i) {
     let subtask = document.getElementById('subTask').value;
@@ -392,6 +330,9 @@ function addSubtask_edit(i) {
     }
 };
 
+/**
+ * deletes the selected subtask in the edit view
+ */
 
 function deleteSubtaskEdit(i, index) {
     document.getElementById('subTask' + i).classList.add('slide-out-right');
@@ -402,11 +343,14 @@ function deleteSubtaskEdit(i, index) {
     }, 400);
 };
 
+/**
+ * changes the subtask status in the edit view
+ */
 
 function setSubtaskStatusEdit(i, index) {
     if (document.getElementById('CheckboxTask' + i).checked == true) tasks[index]['done'][i] = true;
     else tasks[index]['done'][i] = false;
-}
+};
 
 
 function renderEditSubtask(index) {
@@ -429,7 +373,11 @@ function htmlCheckIcon(index) {
             OK
             <img src="./assets/img/board-icons/check.png">
         </div>`;
-}
+};
+
+/**
+ * saves the edited task in the backend
+ */
 
 async function saveTask(idx) {
     saveChangedDataLocal(idx);
@@ -440,11 +388,18 @@ async function saveTask(idx) {
     await initBoard();
 };
 
+/**
+ * closes the overlay
+ */
 
 function animateOut(id) {
     document.getElementById(id).classList.add('overlay-closed');
     setTimeout(() => document.getElementById(id).classList.add('d-none'), 250);
 };
+
+/**
+ * saves the edited task in the backend
+ */
 
 function saveChangedDataLocal(idx) {
     tasks[idx]['title'] = document.getElementById('editTaskTitle').value;
@@ -452,8 +407,11 @@ function saveChangedDataLocal(idx) {
     tasks[idx]['date'] = document.getElementById('editTaskDueDate').value;
     tasks[idx]['prio'] = currentPrioEditTask;
     tasks[idx]['contacts'] = editors;
-}
+};
 
+/**
+ **deletes the task in the board and saves it in the backend
+ */
 
 async function deleteTask(index) {
     document.body.classList.remove('overflow-hidden');
@@ -461,7 +419,8 @@ async function deleteTask(index) {
     animateOut('taskDetailView');
     await saveData('tasks', tasks);
     await initBoard();
-}
+};
+
 
 function htmlAllEditors(task) {
     let htmlCodeTemp = '';
@@ -496,40 +455,51 @@ function getCategoryColor(prio) {
     } else {
         return '#000000';
     };
-}
+};
+
+/**
+ * replaces the first letter of the string with a capital letter
+ */
 
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
+
 
 function startDragging(id) {
     currentDraggedElement = id;
     markDraggableArea(`2px dotted #a8a8a8`);
-}
+};
+
 
 function allowDrop(ev) {
     ev.preventDefault();
-}
+};
 
 /**
  * 
  * @param {String} status assign column in board - todo, progress, feedback, done
  * task_id != currentDraggedElement, therefore find Index of task in task with task_id
  */
+
 function moveTo(status) {
     let taskIndex = tasks.findIndex((task) => task['task_id'] == currentDraggedElement);
     tasks[taskIndex]['status'] = status;
     markDraggableArea(``);
     saveData('tasks', tasks);
     renderTasks(tasks);
-}
+};
+
+/**
+ * clears the contents of the board
+ */
 
 function deleteTasksOnBoard() {
     document.getElementById('tasks-todo').innerHTML = '';
     document.getElementById('tasks-progress').innerHTML = '';
     document.getElementById('tasks-feedback').innerHTML = '';
     document.getElementById('tasks-done').innerHTML = '';
-}
+};
 
 /**
  * 
@@ -537,13 +507,15 @@ function deleteTasksOnBoard() {
  * @returns column where task has to be rendered
  * if no status is available, task is new and not started
  */
+
 function checkTaskStatus(task) {
     if (task['status'] != null) {
         return `tasks-${task['status']}`;
     } else {
         return 'tasks-todo';
     }
-}
+};
+
 
 function markDraggableArea(style) {
     let draggableArea = document.getElementsByClassName('task-body');
@@ -551,7 +523,11 @@ function markDraggableArea(style) {
         const area = draggableArea[i];
         area.style.border = style;
     }
-}
+};
+
+/**
+ * opens the add task menu
+ */
 
 function overlayAddTask() {
     let windowWidth = window.innerWidth;
@@ -564,6 +540,9 @@ function overlayAddTask() {
     getDateOverlay('dateOverlay');
 };
 
+/**
+ * closes the detail view of the task
+ */
 
 function closeDetailView() {
     editContacts = [];
@@ -572,12 +551,18 @@ function closeDetailView() {
     menuContactsOpen = false;
 };
 
+/**
+ * closes the overlay
+ */
 
 function noClose(event) {
     event.stopPropagation();
 
 };
 
+/**
+ * 
+ */
 
 function filterTasks() {
     filteredTasks = [];
@@ -594,12 +579,18 @@ function inputValueIsInTask(input, task) {
     return task['title'].toLowerCase().includes(input.toLowerCase()) || task['description'].toLowerCase().includes(input.toLowerCase());
 };
 
+/**
+ * saves the created task from the add task function
+ */
 
 function createTaskonBoard() {
     if (allFilled()) addTask();
     else showTasknotFull();
 };
 
+/**
+ * saves the created task from the add task function
+ */
 
 async function addTask() {
     closeMenu('contacts', 'dropDownContacts')
@@ -613,6 +604,9 @@ async function addTask() {
     initBoard();
 };
 
+/**
+ *checks whether everything has been filled out and gives feedback if not 
+ */
 
 function showTasknotFull() {
     if (!button_delay) {
@@ -625,7 +619,11 @@ function showTasknotFull() {
         checkWhichFieldIsEmpty()
         setTimeout(() => button_delay = false, 2500);
     }
-}
+};
+
+/**
+ * opens the contact menu in the add task function
+ */
 
 function openEditTaskContacts() {
     if (!menuContactsOpen) {
@@ -638,6 +636,10 @@ function openEditTaskContacts() {
         menuContactsOpen = false;
     }
 };
+
+/**
+ * renders the contacts in the contact menu of the add task function
+ */
 
 function renderEditContacts() {
     document.getElementById('editContacts').innerHTML = ``;
@@ -660,6 +662,10 @@ function renderEditTaskContactsHTML(i, userName) {
                 </div>
             </div>`;
 };
+
+/**
+determines the selected contacts
+ */
 
 function editTaskSetContacts(i) {
     let index = editors.indexOf(editContacts[i])

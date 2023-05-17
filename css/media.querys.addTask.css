@@ -149,7 +149,7 @@
     .mobile_create_button {
         z-index: 20;
         position: absolute;
-        top: 12px;
+        top: 100px;
         right: 20px;
         justify-content: center;
         width: 124px;
@@ -182,10 +182,11 @@
 
 
     .sub_headline {
+        width: 175px;
         display: block;
         position: absolute;
         left: calc(50% - 180px);
-        top: 110px;
+        top: 92px;
     }
 
     .render_categorys {

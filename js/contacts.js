@@ -18,12 +18,18 @@ async function init() {
     insertContactsToContactList();
 };
 
+/**
+ * loads all users from the backend
+ */
 
 async function getAllUsers() {
     await getItem('users');
     getCurrentUserData();
 };
 
+/**
+ * determines the current user
+ */
 
 function getCurrentUserData() {
     users.forEach(function users(value, index) {
@@ -31,15 +37,14 @@ function getCurrentUserData() {
             userData = value;
             userArryId = index;
             contactsA = value.contacts || [];
-            console.log(value)
         }
     })
 };
 
 /**
  * load all Contacts to contacts list
- * 
  */
+
 async function insertContactsToContactList() {
     let container = document.getElementById('contacts-list');
     container.innerHTML = '';
@@ -58,6 +63,7 @@ async function insertContactsToContactList() {
 /**
  * Sort Contacts by Firstname from A to Z
  */
+
 function sortContacts() {
     contactsA = contactsA.sort(function (a, b) {
         return a.name.toLowerCase().localeCompare(
@@ -70,6 +76,7 @@ function sortContacts() {
  * Sort Contacts alphabetical to orderedContacts
  * 
  */
+
 function orderContacts() {
     sortContacts();
     orderedContacts = new Array([], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []);
@@ -87,6 +94,7 @@ function orderContacts() {
  * Retrunt a random Color-Hexcode 
  * @returns random color hexcode (#7D735F)
  */
+
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
@@ -94,8 +102,12 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}
+};
 
+/**
+ * 
+determines the initials of the contact
+ */
 
 function getInitial(username) {
     if (username.includes(' ')) {
@@ -103,8 +115,11 @@ function getInitial(username) {
     } else {
         return username.charAt(0).toUpperCase();
     }
-}
+};
 
+/**
+ * deletes the contact from the user
+ */
 
 function delContact(userId) {
     showNotice('delete');
@@ -112,7 +127,8 @@ function delContact(userId) {
     saveContacts();
     document.getElementById('contactDetails').innerHTML = '';
     animationAndPushToServer();
-}
+};
+
 
 function addContact() {
     let name = document.getElementById('name-input').value;
@@ -121,6 +137,9 @@ function addContact() {
     pushNewContactToUser(name, email, phone);
 };
 
+/**
+ * adds a new contact to the user
+ */
 
 function pushNewContactToUser(name, email, phone) {
     let initials = getInitial(name);
@@ -136,11 +155,18 @@ function pushNewContactToUser(name, email, phone) {
     }
 };
 
+/**
+ * saves the users in the backend
+ */
 
 async function saveContacts() {
+    setYouToUserName(users);
     await setItem('users', JSON.stringify(users));
 };
 
+/**
+ * checks whether the adding email already exists for a user
+ */
 
 function checkIfContactExist(email) {
     contact_exist = false;
@@ -157,6 +183,7 @@ function checkIfContactExist(email) {
  * 
  * @param {Integer} id - id from user you want to edit
  */
+
 function editContact(id) {
     let name = document.getElementById('name-input').value;
     let email = document.getElementById('email-input').value;
@@ -165,6 +192,9 @@ function editContact(id) {
     saveEditContact(id, name, email, phone, initials);
 };
 
+/**
+ * saves the edited contact in the user
+ */
 
 function saveEditContact(id, name, email, phone, initials) {
     contactsA[id].name = name;
@@ -206,6 +236,9 @@ function hideContactInfo() {
     document.getElementById('mobile-menu').innerHTML = '';
 };
 
+/**
+ * opens the add task menu
+ */
 
 function addScroll() {
     document.getElementById('overlayAddTask').classList.remove('d-none');
@@ -213,7 +246,7 @@ function addScroll() {
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
     document.getElementById('mobileCreate').style.visibility = 'visible';
     renderOverlayAddTask();
-    getDateOverlay();
+    getDateOverlay('dateOverlay');
 };
 
 /*Gen HTML Content */
@@ -247,41 +280,19 @@ function genContactsHeader(i) {
                ${String.fromCharCode(i + 97).toUpperCase()}
         </div>
     `;
-}
+};
+
+/**
+ * displays the contact details
+ */
 
 function showDetails(id) {
     removeHighlighted();
     let editname = id;
     document.getElementById(id).classList.add('highlighted');
     document.getElementById('contactDetails').innerHTML = '';
-    document.getElementById('contactDetails').innerHTML = `
-        <div class="contact-details-head">
-        <span class="list-contact-frame" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
-        <div class="contactInfo">
-            <span class="contact-name">${contactsA[id].name}</span>
-            <div class="add_task_contact" onclick="addScroll()"> + Add Task</div>
-        </div>
-        </div>
-        <div class="contact-info-box">
-        <div class="contact-info-head">
-            <p>Contact Information</p>
-            <div class="contact-edit">
-                <img src="./assets/img/contacts-icons/pen.png" alt="">
-                <p onclick="editShowContact(${editname})">Edit Contact</p>
-            </div>
-        </div>
-        <div class="contact-info-container">
-            <div class="contact-info-segment">
-                <span class="contact-info-title">Email</span>
-                <a href="mailto:mail@egal.de">${contactsA[id].mail}</a>
-            </div>
-            <div class="contact-info-segment">
-                <span class="contact-info-title">Phone</span>
-                <a href="tel:+4915166456">${contactsA[id].phone}</a>
-            </div>
-        </div>
-        </div>
-        <div id="mobile-menu" onclick="editShowContact(${editname})"></div>`;
+    document.getElementById('contactDetails').innerHTML = 
+    showDetailsHTML(id, editname)
     document.getElementById('contactDetails').classList.add('slide-in-right');
     setTimeout(() => document.getElementById('contactDetails').classList.remove('slide-in-right'), 500);
 };
@@ -294,16 +305,23 @@ function removeHighlighted() {
     });
 }
 
+/**
+closes the overlay
+ */
 
 function closeOverlay(i) {
+    setYouToUserName(users)
     clearAll();
     if (i == 'bc') document.getElementById('boardContent').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-closed');
     setTimeout(() => document.getElementById('overlayAddTask').classList.add('d-none'), 250);
     document.body.classList.remove('overflow-hidden');
     document.getElementById('mobileCreate').style.visibility = 'hidden';
-}
+};
 
+/**
+ * opens the menu for editing the contact
+ */
 
 function editShowContact(contact) {
     document.getElementById('overlayContent').classList.add('slide-in-blurred-right');
@@ -315,6 +333,9 @@ function editShowContact(contact) {
     else showCreateContact();
 };
 
+/**
+ * closes the edit menu of the contact
+ */
 
 function closeEditContact() {
     document.getElementById('overlayContent').classList.remove('slide-in-blurred-right');
@@ -322,70 +343,21 @@ function closeEditContact() {
     setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 250);
     //document.getElementById('overlayContent').classList.add('overlay-closed');
     //setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 200);
-}
+};
 
+/**
+ * renders HTML code
+ */
 
 function showCreateContact() {
-    document.getElementById('overlayContent').innerHTML =  /*html */`
-    <div class="right_left">
-    <div class="close-top">
-        <img src="./assets/img/contacts-icons/close-white.png" alt="" onclick="toggleDNone('overlayContent')" class="white">
-    </div><div class="overlay-left">        
-    <img src="./assets/img/menu-logo.png" alt="" id="logo">
-    <p class="overlay-title">Add contact</p>
-    <p>Task are better with a team!</p>
-    <div class="overlay-sep"></div>
-    </div>
-    <!-- createContact -->
-        <div class="overlay-right">
-        <img src="./assets/img/contacts-icons/userIcon.png" alt="" class="user_icon">
-        <form class="form_overlay" action="#" onsubmit="addContact(); return false">
-            <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required>
-            <input class="email-input" id="email-input" placeholder="Email" type="email" required>
-            <input class="phone-input" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required>
-            <div class="buttons">
-                <button type="button" class="cancel-contact-btn" onclick="closeEditContact('overlayContent')">Cancel </button>
-                <button type="submit" class="add-contact-btn" >
-                Create contact
-                </button>
-            </div>
-            </form>
-                <div class="close-contact">
-                <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact('overlayContent')" class="dark">
-                </div>
-            </div>
-            </div>`;
+    document.getElementById('overlayContent').innerHTML =  showCreateContactHTML();
 };
+
+/**
+ * renders HTML code
+ */
 
 function showEditContact(id) {
     let userId = id;
-    document.getElementById('overlayContent').innerHTML = `
-    <div class="right_left">
-    <div class="overlay-left">
-        <div class="close-top">
-        <img src="./assets/img/contacts-icons/close-white.png" alt="" onclick="toggleDNone('overlayContent')" class="white">
-    </div>
-    <img src="./assets/img/menu-logo.png" alt="" id="logo">
-    <p class="overlay-title">Edit contact</p>
-    <div class="overlay-sep"></div>
-    </div>
-    <div class="overlay-right">
-    <span class="initial-circle" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
-    <form class="form_overlay" action="#" onsubmit="editContact(${userId}); return false">
-        <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required value="${contactsA[id].name}">
-        <input class="email-input" id="email-input" placeholder="Email" type="email" required value="${contactsA[id].mail}">
-        <input class="phone-input" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required value="${contactsA[id].phone}">
-        <div class="buttons">
-            <button type="button" class="cancel-contact-btn" onclick="delContact(${userId})">Delete</button>
-            <button type="submit" class="add-contact-btn" >
-                Save
-            </button>
-        </div>        
-    </form>
-    <div class="close-contact">
-        <img src="./assets/img/contacts-icons/close.png" alt="" onclick="closeEditContact()" class="dark">
-    </div>
-    </div>
-    </div>`
-
-}
+    document.getElementById('overlayContent').innerHTML = showEditContactHTML(id, userId);
+};

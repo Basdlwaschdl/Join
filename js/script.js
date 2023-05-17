@@ -7,14 +7,11 @@ let currentUserEmail;
 
 async function initUsers() {
     getItem('users');
-}
+};
 
-/**
- * delete all User from your Array
- */
 
-function deleteUser() {
-    backend.deleteItem('users');
+function animation() {
+    document.getElementById('logIn').classList.add('start');
 }
 
 /**
@@ -45,24 +42,24 @@ async function addUser() {
         return;
     }
     let hashedPassword = await hashWithSHA256(passwordInput.value);
-    let newUser = { name: nameInput.value, mail: emailInput.value, password: hashedPassword.toString(), initials: getInitial(nameInput.value), color: getRandomColor(), contacts: []};
+    let newUser = { name: nameInput.value, mail: emailInput.value, password: hashedPassword.toString(), initials: getInitial(nameInput.value), color: getRandomColor(), contacts: [] };
     addNewUser(newUser);
     showSuccessMessage();
-    setTimeout(goToLogin, 3000);
-}
+    setTimeout(goToLogin, 2000);
+};
 
+/**
+ * checks whether the email already exists
+ */
 
 function isEmailAlreadyRegistered(email) {
     return users.some(user => user.mail === email);
-}
+};
 
 
 function handleEmailAlreadyRegisteredError(nameInput, emailInput, passwordInput) {
     let errorMessage = document.getElementById('register-error');
-    errorMessage.style.display = 'block';
-    nameInput.value = '';
-    emailInput.value = '';
-    passwordInput.value = '';
+    errorMessage.style.opacity = '1';
     setTimeout(hideMailAlreadyUsed, 3000);
 }
 
@@ -131,7 +128,7 @@ async function handleLoginSuccess(email, password, rememberMe, user) {
 
 function handleLoginFailure() {
     showLoginFailureMessage();
-    clearLoginFields();
+ 
 }
 
 
@@ -156,7 +153,7 @@ async function setCurrentUser(user) {
 
 
 function showLoginFailureMessage() {
-    document.getElementById('login-false').style.display = 'block';
+    document.getElementById('login-false').style.opacity = '1';
     setTimeout(hideFalseData, 3000);
 }
 
@@ -189,10 +186,12 @@ function loadLoginData() {
  * Guest Login
  */
 
-function guestLogin() {
-    event.preventDefault();
-    currentUser = 'Guest';
-    localStorage.setItem('currentUser', 'Guest');
+async function guestLogin() {
+    await initUsers();
+    let email = "guest@test.de";
+    let user = users.find(u => u.mail == email);
+    console.log(user)
+    await setCurrentUser(user);
     goToSummary();
 }
 
@@ -210,7 +209,7 @@ function logout() {
  */
 
 function hideFalseData() {
-    document.getElementById('login-false').style.display = 'none';
+    document.getElementById('login-false').style.opacity = '0';
 }
 
 /**
@@ -218,7 +217,7 @@ function hideFalseData() {
  */
 
 function hideMailAlreadyUsed() {
-    document.getElementById('register-error').style.display = 'none';
+    document.getElementById('register-error').style.opacity = '0';
 }
 
 /**
@@ -248,14 +247,13 @@ function goToSignUp() {
  */
 
 function showEmailSentMessage() {
-    let popup = document.getElementById('email-sent-popup');
-    popup.style.display = 'flex';
+    document.getElementById('email-sent-popup').style.opacity ='1';
     setTimeout(hideEmailSentMessage, 3000);
 }
 
 
 function hideEmailSentMessage() {
-    document.getElementById('email-sent-popup').style.display = 'none';
+    document.getElementById('email-sent-popup').style.opacity = '0';
 }
 
 /**
@@ -317,7 +315,7 @@ function highlightSelectedMenuItem() {
     const bgAddTask = document.getElementById('bg-add-task');
     const bgContacts = document.getElementById('bg-contacts');
     const bgLegalNotice = document.getElementById('bg-legal-notice');
-    
+
     switch (selectedMenuItem) {
         case 'summary':
             bgSummary.classList.add('highlight-nav');
@@ -369,4 +367,4 @@ function getRandomColor() {
         color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
-}
+};

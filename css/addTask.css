@@ -4,6 +4,19 @@ body {
     animation-timing-function: ease-in-out;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
 input[type="date"] {
     font-family: Open Sans;
     -webkit-text-fill-color: rgb(0, 0, 0);
@@ -572,7 +585,7 @@ span {
     justify-content: center;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
+    margin-right: -10px;
     margin-bottom: 5px;
     border-radius: 100%;
 }

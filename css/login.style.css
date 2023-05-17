@@ -7,25 +7,81 @@ input::placeholder {
   font-size: 21px;
 }
 
-.start-animation {
-  background-color: #F6F7F8;
+.logo {
   position: absolute;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 5;
-  animation: start-fade-out-background 0.8s ease-in-out both 1s;
+  transform: translate(-50%, -50%) scale(1);
+  top: 123px;
+  left: 100px;
 }
-.start-animation .logo-animation {
-  scale: 2;
-  display: block;
+.logo img {
+  height: 134px;
+  width: 110px;
+}
+
+.mobile-login-buttons {
+  display: flex;
+}
+
+.white-img {
+  animation: disappear 800ms ease-in-out 400ms forwards;
+}
+
+.dark-img {
+  animation: appear 700ms ease-in-out 400ms forwards;
+}
+
+.point-img {
+  transform: translate(-2000px, 0);
+  animation: point 300ms 1000ms forwards;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(41, 54, 70);
+  animation: logo-bg 1200ms ease-in-out forwards;
+}
+.container-without {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(247, 247, 247);
+}
+
+.logo-box-without {
+  height: 155px;
   position: absolute;
+  width: 110px;
+  top: 130px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+}
+.logo-box-without img {
+  width: 100%;
+}
+
+.logo-box {
+  height: 155px;
+  width: 110px;
+  position: absolute;
+  cursor: pointer;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  animation: start-desktop-animation 1s ease-in-out both 1s;
+  transform: translate(-50%, -50%) scale(1.5);
+  animation: movetoleft 800ms ease-in-out 400ms forwards;
 }
+.logo-box img {
+  width: 100%;
+  position: absolute;
+}
+
 @keyframes start-fade-out-background {
   0% {
     opacity: 1;
@@ -54,17 +110,23 @@ input::placeholder {
     left: 5%;
   }
 }
-
 .mobile-logo-animation {
   display: none;
 }
 
-.log-in {
+.log-in-sign {
   display: flex;
-  position: relative;
   height: 100vh;
   justify-content: center;
   align-items: center;
+}
+
+.log-in {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  animation: hide 1.5s cubic-bezier(0.65, 0.05, 1, 1.2);
 }
 .log-in-logo {
   position: absolute;
@@ -72,10 +134,14 @@ input::placeholder {
   left: 8%;
 }
 .log-in .sign-up {
+  display: flex;
+  align-items: center;
+  width: 360px;
+  height: 90px;
   font-weight: 400;
   font-size: 21px;
   position: absolute;
-  right: 8%;
+  right: 50px;
   top: 5%;
 }
 .log-in .sign-up-button {
@@ -217,7 +283,31 @@ input::placeholder {
   background: #29ABE2;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
-.log-in .form-class .log-in-form .guest-log-in-button {
+.log-in .login-popup {
+  left: 232px;
+  position: absolute;
+  bottom: 21px;
+  color: white;
+  background-color: #2A3647;
+  padding: 8px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  border: none;
+  margin-top: 16px;
+  text-align: center;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.mobile-remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.guest-log-in-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: 0.2s;
   width: 160px;
   height: 49px;
@@ -228,32 +318,39 @@ input::placeholder {
   border-radius: 6px;
   font-weight: 700;
   border: 1px solid #2A3647;
+  padding: 0;
   font-weight: 700;
   font-size: 21px;
 }
-.log-in .form-class .log-in-form .guest-log-in-button:hover {
+.guest-log-in-button:hover {
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
   color: #29ABE2;
   border: 1px solid #29ABE2;
 }
-.log-in .login-popup {
-  color: white;
-  background-color: #2A3647;
-  padding: 8px 8px;
-  border-radius: 6px;
-  font-weight: 500;
-  border: none;
-  margin-top: 16px;
-  text-align: center;
-}
-
-.mobile-remember-me {
-  display: flex;
-  align-items: center;
-}
 
 /*** MEDIA QUERY ***/
 @media only screen and (max-width: 600px) {
+  .log-in-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .logo {
+    top: 75px !important;
+    left: 62px !important;
+  }
+  .logo img {
+    width: 60px;
+    height: 73px;
+  }
+  .logo-box {
+    top: 100px !important;
+    left: 62px !important;
+    width: 60px;
+  }
+  .log-in-form {
+    width: 81%;
+  }
   /*** Mobile Animation ***/
   .start-animation {
     display: none;
@@ -325,10 +422,6 @@ input::placeholder {
   #remember-checkbox {
     width: unset !important;
   }
-  .log-in-logo {
-    top: 3% !important;
-    height: 70px;
-  }
   .log-in-checkbox-div {
     width: 100%;
     flex-direction: column-reverse;
@@ -374,17 +467,25 @@ input::placeholder {
     font-size: 16px !important;
   }
   .sign-up {
-    top: 81% !important;
-    right: 0% !important;
+    top: 1% !important;
+    right: 12px !important;
+  }
+  .sign-up span {
+    display: none !important;
+    top: 0px !important;
+    width: 100%;
     left: 0% !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 48px !important;
+    margin-top: 37px !important;
   }
   /*** Sign-Up Page ***/
   .mobile-button-width {
     width: 150px;
+  }
+  .sign-up-button {
+    margin-left: 180px !important;
   }
   .mobile-space-bottom {
     margin-bottom: 40px !important;
@@ -396,19 +497,83 @@ input::placeholder {
     width: 120px;
   }
   .email-input {
+    font-size: 16px !important;
     height: 39px !important;
   }
   .password-input {
     height: 19px !important;
   }
+  .name-input {
+    height: 39px !important;
+  }
   input {
     outline: none;
-    width: 98% !important;
+    width: 100% !important;
+  }
+  .login-popup {
+    bottom: 484px !important;
   }
 }
 @media only screen and (max-height: 700px) {
   .log-in-logo {
     height: 75px;
     top: 1% !important;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .log-in {
+    width: 90%;
+  }
+}
+@keyframes movetoleft {
+  from {
+    transform: translate(-50%, -50%) scale(1.5);
+    top: 50%;
+    left: 50%;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    top: 130px;
+    left: 100px;
+  }
+}
+@keyframes point {
+  from {
+    transform: translate(-2000px, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes logo-bg {
+  0% {
+    background-color: rgb(41, 54, 70);
+  }
+  100% {
+    background-color: rgb(247, 247, 247);
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }/*# sourceMappingURL=login.style.css.map */

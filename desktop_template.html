@@ -48,7 +48,13 @@
             <div class="header-icons">
                 <img onclick="location.href='help.html';" class="question-icon" src="assets/img/question-icon.png">
                 <div id="profil-icon" onclick="openProfilIconMenu()"></div>
-                <div id="log-out-field" style="display: none;" onclick="logout()" class="log-out-field">Log out</div>
+                <div id="log-out-field" style="display: none;"  class="log-out-field">
+                    <div onclick="logout()" class="pointer">Log out</div>
+                    <div id="mobileHelpButton" class="mobile_help" style="display: none;">
+                        <div onclick="location.href='help.html';" class="pointer">Help</div>
+                        <div onclick="goToLegalNotice()" class="pointer">Legal notice</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

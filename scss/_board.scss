@@ -206,6 +206,19 @@
     }
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
 input[type="date"] {
     font-family: Open Sans;
 
@@ -601,7 +614,7 @@ input[type="date"] {
 .initials_box_edit {
     width: 363px;
     position: absolute;
-    top: 630px;
+    top: 613px;
     z-index: 0;
     display: flex;
     flex-wrap: wrap;

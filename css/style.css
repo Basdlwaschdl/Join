@@ -107,6 +107,7 @@
   src: url("../assets/fonts/open-sans-v34-latin-800italic.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/open-sans-v34-latin-800italic.woff2") format("woff2"), url("../assets/fonts/open-sans-v34-latin-800italic.woff") format("woff"), url("../assets/fonts/open-sans-v34-latin-800italic.ttf") format("truetype"), url("../assets/fonts/open-sans-v34-latin-800italic.svg#OpenSans") format("svg"); /* Legacy iOS */
 }
 .arrow-left-icon {
+  z-index: 10;
   position: absolute;
   top: 5%;
   left: 5%;
@@ -257,6 +258,10 @@
   cursor: pointer;
 }
 
+.pointer:hover {
+  cursor: pointer;
+}
+
 .header {
   margin-bottom: 3px;
   display: flex;
@@ -293,7 +298,6 @@
   transform: translate(0, -50%);
   color: white;
   background-color: #2A3647;
-  cursor: pointer;
   padding: 8px 8px;
   border-radius: 10px;
   border-top-right-radius: 0px;
@@ -302,13 +306,15 @@
   transition: 200ms;
 }
 .header .log-out-field:hover {
-  cursor: pointer;
   background: #29ABE2;
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
 
 /*** MEDIA QUERY ***/
 @media only screen and (max-width: 600px) {
+  .mobile_help {
+    display: block !important;
+  }
   .menu {
     float: none;
     top: unset;
@@ -358,6 +364,13 @@
   .profil-pic {
     margin-right: 25px !important;
   }
+  .log-out-field {
+    height: 100px;
+    gap: 10px;
+  }
+  .log-out-field div {
+    margin-top: 10px;
+  }
 }
 @media only screen and (max-width: 430px) {
   .nav-text {
@@ -367,7 +380,7 @@
 }
 @media only screen and (max-width: 1250px) {
   .log-out-field {
-    top: 40px !important;
+    top: 75px !important;
     right: 67px !important;
   }
 }
@@ -577,6 +590,19 @@
 }
 .board-content .board-tasks .tasks .single-task .task-prio img {
   object-fit: contain;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
 }
 
 input[type=date] {
@@ -947,7 +973,7 @@ input[type=date]:hover {
 .initials_box_edit {
   width: 363px;
   position: absolute;
-  top: 630px;
+  top: 613px;
   z-index: 0;
   display: flex;
   flex-wrap: wrap;
@@ -1398,7 +1424,7 @@ a {
 body {
   overflow-x: hidden;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
+  font-family: "", sans-serif;
   background-color: #F6F7F8;
 }
 

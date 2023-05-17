@@ -443,7 +443,7 @@ function allFilled() {
 
 function showNotice(id) {
     document.getElementById(id).style.display = 'flex';
-    document.getElementById(id).style.zIndex = '20';
+    document.getElementById(id).style.zIndex = '30';
     setTimeout(() => {
         document.getElementById(id).style.display = ''
         document.getElementById(id).style.display = 'none'
@@ -453,6 +453,9 @@ function showNotice(id) {
     setTimeout(() => document.getElementById(id).classList.add('addBord_box_inactive'), 1500);
 };
 
+/**
+ * opens the add task menu in the board
+ */
 
 function renderOverlayAddTask() {
     document.getElementById('overlay').innerHTML = ``;
@@ -493,6 +496,9 @@ async function loadDataTask() {
     getUserInfo();
 };
 
+/**
+ * determines the current user and replaces the name with "you"
+ */
 
 function getUserInfo() {
     getUserContacts();

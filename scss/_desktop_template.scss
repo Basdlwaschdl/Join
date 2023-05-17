@@ -72,6 +72,12 @@
     }
 }
 
+.pointer {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .header {
     margin-bottom: 3px;
     display: flex;
@@ -112,7 +118,6 @@
         transform: translate(0, -50%);
         color: white;
         background-color: $darkblue;
-        cursor: pointer;
         padding: 8px 8px;
         border-radius: 10px;
         border-top-right-radius: 0px;
@@ -121,7 +126,6 @@
         transition: 200ms;
 
         &:hover {
-            cursor: pointer;
             background: #29ABE2;
             box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
         }
@@ -130,6 +134,11 @@
 
 /*** MEDIA QUERY ***/
 @media only screen and (max-width: 600px) {
+
+    .mobile_help {
+        display: block !important
+    }
+
     .menu {
         float: none;
         top: unset;
@@ -161,7 +170,7 @@
             }
         }
     }
-    
+
 
     .header {
         z-index: 11;
@@ -190,6 +199,15 @@
     .profil-pic {
         margin-right: 25px !important;
     }
+
+    .log-out-field {
+        height: 100px;
+        gap: 10px;
+    }
+
+    .log-out-field div {
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 430px) {
@@ -201,7 +219,9 @@
 
 @media only screen and (max-width: 1250px) {
     .log-out-field {
-        top: 40px !important;
+        top: 75px !important;
         right: 67px !important;
     }
+
+    
 }

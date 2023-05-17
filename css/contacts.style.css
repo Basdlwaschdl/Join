@@ -24,6 +24,9 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .overlay-right {
+    height: 382px !important;
+  }
   .initial-circle {
     top: -15px !important;
   }
@@ -189,7 +192,7 @@
     border-bottom-right-radius: 32px !important;
     width: unset !important;
     border-top-right-radius: 0px !important;
-    height: 475px !important;
+    height: 475px;
   }
   .close-contact {
     right: 30px !important;
@@ -567,7 +570,6 @@
   padding-left: 173px;
   position: relative;
   width: 490px;
-  height: 594px;
   border-top-right-radius: 32px;
   border-bottom-right-radius: 32px;
   background-color: #F6F7F8;
