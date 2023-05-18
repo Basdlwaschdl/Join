@@ -557,7 +557,6 @@ function closeDetailView() {
 
 function noClose(event) {
     event.stopPropagation();
-
 };
 
 /**
