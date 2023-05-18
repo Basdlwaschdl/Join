@@ -3,8 +3,7 @@
 }
 
 .mobile_create_overlay {
-    visibility: hidden !important;
-    top: 13px !important;
+    top: 93px !important;
 }
 
 .overlay-add-task {
@@ -37,11 +36,6 @@
     .form_contact {
         top: 150px;
         left: calc(50% - 176px);
-    }
-
-    .mobile_create_overlay {
-
-        visibility: visible !important;
     }
 
     .close-contact-add {
@@ -84,24 +78,6 @@
         bottom: 250px;
         font-size: 16px;
         width: 290px;
-    }
-
-    .mobile_create_button {
-        position: absolute;
-        top: 12px;
-        right: 20px;
-        justify-content: center;
-        width: 124px;
-        height: 51px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 21px;
-        color: white;
-        background-color: #2A3647;
-        transition: 300ms;
-        transform: scale(1);
     }
 
     .drop_down {

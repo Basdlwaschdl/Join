@@ -148,7 +148,7 @@
 
     .mobile_create_button {
         z-index: 20;
-        position: absolute;
+        position: fixed;
         top: 100px;
         right: 20px;
         justify-content: center;
@@ -162,7 +162,6 @@
         color: white;
         background-color: #2A3647;
         transition: 300ms;
-        transform: scale(1);
     }
 
     .drop_down {

@@ -418,6 +418,8 @@ span {
 }
 
 .clear_create_task {
+    position: absolute;
+    top: 500px;
     margin-top: 50px;
     margin-bottom: 50px;
     width: 422px;
@@ -544,8 +546,7 @@ span {
 }
 
 .initials_box {
-    position: absolute;
-    top: 570px;
+    top: 540px;
     z-index: 0;
     overflow-x: auto;
     width: 422px;

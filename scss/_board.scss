@@ -7,6 +7,7 @@
     .board-header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         position: relative;
 
         h1 {
@@ -15,6 +16,7 @@
         }
 
         .search-container {
+            margin-left: 20px;
             width: 500px;
             display: flex;
             align-items: center;
@@ -54,7 +56,7 @@
             font-size: 20px;
             position: absolute;
             right: 0;
-            top: 10px;
+            top: 4px;
             gap: 8px;
         }
     }
@@ -548,6 +550,7 @@ input[type="date"] {
     animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 
     .add-task {
+        overflow: hidden;
         position: relative;
         width: 1116px;
         height: 920px;
@@ -582,8 +585,9 @@ input[type="date"] {
 }
 
 .mobile_create_overlay {
+    opacity: 0;
     visibility: hidden;
-    position: absolute;
+    position: fixed;
     top: 87px;
     right: 20px;
     justify-content: center;
@@ -683,6 +687,7 @@ input[type="date"] {
     }
 
     .add-task {
+        overflow: auto !important;
         border-radius: 0px !important;
         height: 100vh !important;
         width: 100% !important;
@@ -715,14 +720,15 @@ input[type="date"] {
     .add-task-plus-icon {
         margin-left: unset !important;
     }
-
-    .search-container {
-        width: 365px !important;
-        margin-right: 16px !important;
-    }
 }
 
 @media only screen and (max-width: 980px) {
+
+    .search-container {
+        margin-right: 0 !important;
+        width: 365px !important;
+    }
+
     .board-header {
         flex-direction: column;
         gap: 32px;
@@ -731,12 +737,19 @@ input[type="date"] {
 
 @media only screen and (max-width: 600px) {
 
+    .board-header {
+        width: 100%;
+        display: unset !important;
+    }
+
     .search-container {
-        width: unset !important
+        width: 100% !important;
+        margin-top: 40px;
     }
 
     .mobile_create_overlay {
         z-index: 19;
+        visibility: visible;
     }
 
     .overlay {

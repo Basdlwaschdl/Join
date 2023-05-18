@@ -225,12 +225,15 @@ function hideMailAlreadyUsed() {
  */
 
 function openProfilIconMenu() {
+    let create_button = document.getElementById('mobileCreate');
     let logOutField = document.getElementById('log-out-field');
 
     if (logOutField.style.display === 'block') {
         logOutField.style.display = 'none';
+        create_button.style.display= ''
     } else {
         logOutField.style.display = 'block';
+        create_button.style.display= 'none'
     }
 }
 

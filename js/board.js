@@ -530,12 +530,12 @@ function markDraggableArea(style) {
  */
 
 function overlayAddTask() {
+    document.getElementById('mobileCreate').style.opacity = '1';
     let windowWidth = window.innerWidth;
     if (windowWidth < 1351) document.getElementById('boardContent').classList.add('d-none');
     document.getElementById('overlayAddTask').classList.remove('overlay-closed');
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
-    document.getElementById('mobileCreate').style.visibility = 'visible';
     renderOverlayAddTask();
     getDateOverlay('dateOverlay');
 };

@@ -241,10 +241,10 @@ function hideContactInfo() {
  */
 
 function addScroll() {
+    document.getElementById('mobileCreate').style.opacity = '1';
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.remove('overlay-closed');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
-    document.getElementById('mobileCreate').style.visibility = 'visible';
     renderOverlayAddTask();
     getDateOverlay('dateOverlay');
 };
@@ -316,7 +316,7 @@ function closeOverlay(i) {
     document.getElementById('overlayAddTask').classList.add('overlay-closed');
     setTimeout(() => document.getElementById('overlayAddTask').classList.add('d-none'), 250);
     document.body.classList.remove('overflow-hidden');
-    document.getElementById('mobileCreate').style.visibility = 'hidden';
+    document.getElementById('mobileCreate').style.opacity = '0';
 };
 
 /**

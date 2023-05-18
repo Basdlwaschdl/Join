@@ -69,6 +69,10 @@ function removePrio() {
 //opens or close the category menu. When opened, the existing categories are displayed
 
 function openCategory() {
+    if (menuContactsOpen) {
+        closeMenu('contacts', 'dropDownContacts');
+        menuContactsOpen = false;
+    }
     if (!menuOpen) {
         openMenu('categorys', 'dropDown')
         menuOpen = true;
@@ -81,6 +85,10 @@ function openCategory() {
 //opens or close the contacts menu. When opened, the existing contacts are displayed
 
 function openContacts() {
+    if (menuOpen) {
+        closeMenu('categorys', 'dropDown');
+        menuOpen = false;
+    }
     if (!menuContactsOpen) {
         document.getElementById('contacts').innerHTML = '';
         openMenu('contacts', 'dropDownContacts');
@@ -405,6 +413,7 @@ async function fillTaskjJson() {
 //move the body out of the screent and load the board.HTML
 
 function loadBoardHTML() {
+    document.getElementById('mobileCreate').style.opacity = '0';
     setTimeout(() => document.getElementById('body').classList.add('body_move_right'), 2400);
     setTimeout(() => location.href = "board.html", 2000);
 }

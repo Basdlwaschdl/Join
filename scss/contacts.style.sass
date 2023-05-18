@@ -63,7 +63,7 @@ $gray: #a8a8a8
 
 @media only screen and (max-width: 600px)
 
-    .overlay-right 
+    .overlay-right
         height: 382px !important
 
     .initial-circle
@@ -229,7 +229,7 @@ $gray: #a8a8a8
         border-bottom-right-radius: 32px !important
         width: unset !important
         border-top-right-radius: 0px !important
-        height: 475px 
+        height: 475px
 
     .close-contact
         right: 30px !important
@@ -394,14 +394,20 @@ $gray: #a8a8a8
     margin-bottom: 16px
 
 .add_task_contact
+    padding: 10px
+    width: max-content
+    border-radius: 10px
+    transition: 0.2s
     margin-top: 18px
     cursor: pointer
     font-size: 16px
     color: $lightblue
     transition: 200ms
     &:hover
+        color: #fff
         cursor: pointer
-        color: #007CEE
+        background: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
 
 .contact-info-head
     margin-top: 24px
@@ -412,19 +418,25 @@ $gray: #a8a8a8
         font-size: 21px
 
 .contact-edit
+    color: $lightblue
+    padding: 0px 5px
+    transition: 0.2s
     display: flex
     gap: 10px
     align-items: center
     cursor: pointer
+    border-radius: 10px
     img
-        width: 21px
-        height: 30px
-    p
-        color: $lightblue !important
-        &:hover
-            color: $lightblueHover
-            img
-                filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(97%) contrast(82%)
+        width: 18px
+        height: 25px
+        
+    &:hover
+        color: #fff
+        cursor: pointer
+        background: #29ABE2
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
+        img
+            filter: brightness(0) invert(1)
 
 .contact-info-segment
     width: max-content

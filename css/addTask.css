@@ -450,7 +450,6 @@ span {
 }
 
 .mobile_create_button {
-    transform: scale(0);
     position: absolute;
     top: 12px;
     right: 20px;
@@ -570,7 +569,6 @@ span {
 
 .initials_box {
     width: 422px;
-    position: absolute;
     top: 540px;
     z-index: -1;
     display: flex;
@@ -631,6 +629,12 @@ span {
 
 .slide-out-right {
     animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile_create_button {
+        opacity: 1 !important;
+    }
 }
 
 @keyframes slide-in-bottom {

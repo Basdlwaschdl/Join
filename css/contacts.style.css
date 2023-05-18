@@ -383,6 +383,10 @@
 }
 
 .add_task_contact {
+  padding: 10px;
+  width: max-content;
+  border-radius: 10px;
+  transition: 0.2s;
   margin-top: 18px;
   cursor: pointer;
   font-size: 16px;
@@ -390,8 +394,10 @@
   transition: 200ms;
 }
 .add_task_contact:hover {
+  color: #fff;
   cursor: pointer;
-  color: #007CEE;
+  background: #29ABE2;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
 
 .contact-info-head {
@@ -405,23 +411,27 @@
 }
 
 .contact-edit {
+  color: #29ABE2;
+  padding: 0px 5px;
+  transition: 0.2s;
   display: flex;
   gap: 10px;
   align-items: center;
   cursor: pointer;
+  border-radius: 10px;
 }
 .contact-edit img {
-  width: 21px;
-  height: 30px;
+  width: 18px;
+  height: 25px;
 }
-.contact-edit p {
-  color: #29ABE2 !important;
+.contact-edit:hover {
+  color: #fff;
+  cursor: pointer;
+  background: #29ABE2;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
-.contact-edit p:hover {
-  color: #1188bb;
-}
-.contact-edit p:hover img {
-  filter: invert(65%) sepia(21%) saturate(6259%) hue-rotate(164deg) brightness(97%) contrast(82%);
+.contact-edit:hover img {
+  filter: brightness(0) invert(1);
 }
 
 .contact-info-segment {
