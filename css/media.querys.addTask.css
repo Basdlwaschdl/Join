@@ -147,7 +147,6 @@
     }
 
     .mobile_create_button {
-        z-index: 20;
         position: fixed;
         top: 100px;
         right: 20px;
@@ -247,6 +246,7 @@
 @media only screen and (max-width: 400px) {
     input {
         width: 320px;
+        padding-right: 0;
     }
 
     h1 {

@@ -241,7 +241,7 @@ function hideContactInfo() {
  */
 
 function addScroll() {
-    document.getElementById('mobileCreate').style.opacity = '1';
+    document.getElementById('mobileCreate').classList.add('create_mobile_active');
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.remove('overlay-closed');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
@@ -312,11 +312,11 @@ closes the overlay
 function closeOverlay(i) {
     setYouToUserName(users)
     clearAll();
-    if (i == 'bc') document.getElementById('boardContent').classList.remove('d-none');
+    if (i == 'bc') document.body.style.overflow = 'scroll';
     document.getElementById('overlayAddTask').classList.add('overlay-closed');
     setTimeout(() => document.getElementById('overlayAddTask').classList.add('d-none'), 250);
     document.body.classList.remove('overflow-hidden');
-    document.getElementById('mobileCreate').style.opacity = '0';
+    document.getElementById('mobileCreate').classList.remove('create_mobile_active');
 };
 
 /**

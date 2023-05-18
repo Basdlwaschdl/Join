@@ -333,7 +333,7 @@ function showCreateContactHTML() {
         <form class="form_overlay" action="#" onsubmit="addContact(); return false">
             <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required>
             <input class="email-input" id="email-input" placeholder="Email" type="email" required>
-            <input class="phone-input" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required>
+            <input class="phone-input" type="number" id="phone-input" placeholder="Phone" type="tel" pattern="[0-9+/ ]*" minlength="6" maxlength="30" required>
             <div class="buttons">
                 <button type="button" class="cancel-contact-btn" onclick="closeEditContact('overlayContent')">Cancel </button>
                 <button type="submit" class="add-contact-btn" >
@@ -361,7 +361,7 @@ function showEditContactHTML(id, userId) {
     <div class="overlay-sep"></div>
     </div>
     <div class="overlay-right">
-    <span class="initial-circle" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
+    <span class="initial-circle mobile-circle" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
     <form class="form_overlay" action="#" onsubmit="editContact(${userId}); return false">
         <input class="name-input" id="name-input" placeholder="Name" type="text" pattern="[a-zA-ZÄäÜüÖöß ]*" maxlength="30" required value="${contactsA[id].name}">
         <input class="email-input" id="email-input" placeholder="Email" type="email" required value="${contactsA[id].mail}">

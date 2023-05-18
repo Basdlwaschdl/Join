@@ -45,15 +45,16 @@ $gray: #a8a8a8
     .user_icon
         position: unset !important
         margin-bottom: -50px
-    .initial-circle
-        position: unset !important
+    .mobile-circle
+
+        left: 0 !important
 
     .right_left
         width: 340px !important
 
 @media only screen and (max-width: 470px)
     .arrowLeftMobile
-        left: 330px !important
+        left: 325px !important
     .mobile-icon
         left: 250px !important
 
@@ -62,6 +63,10 @@ $gray: #a8a8a8
         display: none !important
 
 @media only screen and (max-width: 600px)
+
+    .list-contact
+        width: 300px !important
+        gap: 20px !important
 
     .overlay-right
         height: 382px !important
@@ -91,6 +96,7 @@ $gray: #a8a8a8
         right: 195px !important
 
     #overlayContent
+        height: 121vh
         left: 0 !important
 
     .arrowLeftMobile
@@ -98,18 +104,17 @@ $gray: #a8a8a8
         left: 430px
 
     #contacts-container
+        padding-bottom: 200px
         margin-left: 1px !important
-        position: fixed !important
-
-        .contacts-list
-            height: calc(100vh - 220px) !important
-            padding-top: 135px
 
     .new-contact
         height: 60px !important
         top: 96px !important
         right: 20px !important
         z-index: 10
+
+    .contact-details
+        animation: none !important
 
 @media only screen and (max-width: 750px)
     .contact-name
@@ -134,7 +139,6 @@ $gray: #a8a8a8
     .contact-headline
         margin-left: 40px
         margin-top: 50px
-        padding-left: 24px !important
         display: block !important
 
         h3
@@ -156,7 +160,7 @@ $gray: #a8a8a8
     .contacts-list
         width: 100vw !important
         // padding-top: 5rem !important;
-        height: calc(100vh - 75px) !important
+        height: calc(100vh - -32px) !important
         padding-top: 75px
 
     .new-contact
@@ -201,7 +205,7 @@ $gray: #a8a8a8
 
     .initial-circle
         top: 0
-        left: 166px !important
+        left: calc( 50% - 29px ) !important
 
     .add-contact-btn
         width: 190px !important
@@ -248,6 +252,7 @@ $gray: #a8a8a8
 
 /**---------------------------------------------------------------------------------------Media Query End-----------------------------------------------------**/
 
+
 .mobile-icon
     display: flex
     position: absolute
@@ -281,12 +286,13 @@ $gray: #a8a8a8
     overflow: hidden !important
 
 #contacts-container
+    padding-top: 78px
     margin-left: 200px
     display: flex
+    height: 93vh
 
 .contacts-list
-    height: calc( 100vh - 75px)
-    margin-top: 75px
+    height: 95vh
     display: flex
     flex-direction: column
     align-items: center
@@ -361,7 +367,6 @@ $gray: #a8a8a8
         translate: 5px
 
 .contact-info
-    margin-top: 75px
     padding-left: 32px
 
 .contact-headline
@@ -429,7 +434,7 @@ $gray: #a8a8a8
     img
         width: 18px
         height: 25px
-        
+
     &:hover
         color: #fff
         cursor: pointer

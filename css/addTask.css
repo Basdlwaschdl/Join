@@ -5,16 +5,15 @@ body {
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-    background: transparent;
     bottom: 0;
-    color: transparent;
+    width: 420px;
+    height: 50px !important;
     cursor: pointer;
-    height: auto;
     left: 0;
     position: absolute;
     right: 0;
-    top: 0;
-    width: auto;
+    top: 30px !important;
+    
 }
 
 input[type="date"] {
@@ -406,6 +405,7 @@ span {
 }
 
 .clear_create_task {
+    padding-bottom: 80px;
     position: absolute;
     right: 10px;
     top: 500px;

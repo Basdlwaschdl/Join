@@ -405,7 +405,7 @@ async function fillTaskjJson() {
     task['task_id'] = task_id;
     task['prio'] = prio;
     task['subtasks'] = subTasks;
-    task['status'] = 'todo';
+    task['status'] = task_status;
     tasks.push(task);
     await saveInLocalStorage('tasks', tasks);
 }

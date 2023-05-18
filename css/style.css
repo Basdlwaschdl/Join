@@ -426,6 +426,7 @@
   width: 500px;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-right: 100px;
 }
 .board-content .board-header .search-container #search-input {
@@ -440,6 +441,13 @@
   transform: translateX(-100%);
   padding: 6px 12px 6px 12px;
   border-left: 2px solid #D1D1D1;
+  object-fit: contain;
+  cursor: pointer;
+}
+.board-content .board-header .search-container .clear-search {
+  height: 24px;
+  transform: translateX(-300%);
+  padding: 6px 12px 6px 12px;
   object-fit: contain;
   cursor: pointer;
 }
@@ -472,6 +480,7 @@
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
 }
 .board-content .board-tasks {
+  padding-bottom: 100px;
   display: flex;
   width: 100%;
   gap: 16px;
@@ -1082,7 +1091,6 @@ input[type=date]:hover {
     margin-top: 40px;
   }
   .mobile_create_overlay {
-    z-index: 19;
     visibility: visible;
   }
   .overlay {

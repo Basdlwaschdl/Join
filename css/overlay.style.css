@@ -2,6 +2,17 @@ input[type="date"] {
     -webkit-text-fill-color: rgb(0, 0, 0);
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+    bottom: 0;
+    width: 420px;
+    height: 50px !important;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 30px !important;
+}
+
 .head {
     color: black;
     margin-left: 250px;
@@ -51,6 +62,7 @@ button {
 }
 
 .initial-circle {
+    box-shadow: 4px 4px 5px -1px rgba(0,0,0,0.42);
     font-size: 21px;
     position: absolute;
     left: 65px;
@@ -64,6 +76,11 @@ button {
     color: #FFFFFF;
     border-radius: 100%;
     scale: 3;
+}
+
+.create_mobile_active {
+    opacity: 1 !important;
+    z-index: 20;
 }
 
 .form {
@@ -83,6 +100,7 @@ button {
 }
 
 .form_right {
+    height: max-content;
     background-color: #F6F7F8;
     position: relative;
     display: flex;
@@ -653,14 +671,4 @@ span {
         transform: translateX(1000px);
         opacity: 0;
     }
-}
-
-@media (max-width: 1350px) {
-    .clear_create_task {
-      
-    }
-}
-
-@media (max-width: 1800px) {
-    
 }

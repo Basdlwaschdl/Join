@@ -20,6 +20,7 @@
             width: 500px;
             display: flex;
             align-items: center;
+            justify-content: center;
             $heightInput: 48px;
             $paddingIcon: 6px;
             margin-right: 100px;
@@ -37,6 +38,14 @@
                 transform: translateX(calc(-100%));
                 padding: $paddingIcon 2*$paddingIcon $paddingIcon 2*$paddingIcon;
                 border-left: 2px solid #D1D1D1;
+                object-fit: contain;
+                cursor: pointer;
+            }
+
+            .clear-search {
+                height: calc($heightInput - 4 * $paddingIcon);
+                transform: translateX(calc(-300%));
+                padding: $paddingIcon 2*$paddingIcon $paddingIcon 2*$paddingIcon;
                 object-fit: contain;
                 cursor: pointer;
             }
@@ -62,6 +71,7 @@
     }
 
     .board-tasks {
+        padding-bottom: 100px;
         display: flex;
         width: 100%;
         gap: 16px;
@@ -748,7 +758,6 @@ input[type="date"] {
     }
 
     .mobile_create_overlay {
-        z-index: 19;
         visibility: visible;
     }
 

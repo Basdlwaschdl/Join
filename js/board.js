@@ -1,5 +1,6 @@
 let currentDraggedElement;
 let editors;
+let task_status;
 let filteredTasks;
 let currentPrioEditTask;
 let editContacts = [];
@@ -529,10 +530,10 @@ function markDraggableArea(style) {
  * opens the add task menu
  */
 
-function overlayAddTask() {
-    document.getElementById('mobileCreate').style.opacity = '1';
-    let windowWidth = window.innerWidth;
-    if (windowWidth < 1351) document.getElementById('boardContent').classList.add('d-none');
+function overlayAddTask(status) {
+    task_status = status;
+    document.getElementById('mobileCreate').classList.add('create_mobile_active');
+    document.body.style.overflow = 'hidden';
     document.getElementById('overlayAddTask').classList.remove('overlay-closed');
     document.getElementById('overlayAddTask').classList.remove('d-none');
     document.getElementById('overlayAddTask').classList.add('overlay-add-task');
@@ -573,6 +574,11 @@ function filterTasks() {
     renderTasks(filteredTasks);
 };
 
+
+function clearSearch() {
+    renderTasks(tasks);
+    document.getElementById('search-input').value = '';
+}
 
 function inputValueIsInTask(input, task) {
     return task['title'].toLowerCase().includes(input.toLowerCase()) || task['description'].toLowerCase().includes(input.toLowerCase());
