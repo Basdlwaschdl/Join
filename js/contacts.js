@@ -127,6 +127,7 @@ function delContact(userId) {
     saveContacts();
     document.getElementById('contactDetails').innerHTML = '';
     animationAndPushToServer();
+    hideContactInfo();
 };
 
 
@@ -291,8 +292,8 @@ function showDetails(id) {
     let editname = id;
     document.getElementById(id).classList.add('highlighted');
     document.getElementById('contactDetails').innerHTML = '';
-    document.getElementById('contactDetails').innerHTML = 
-    showDetailsHTML(id, editname)
+    document.getElementById('contactDetails').innerHTML =
+        showDetailsHTML(id, editname)
     document.getElementById('contactDetails').classList.add('slide-in-right');
     setTimeout(() => document.getElementById('contactDetails').classList.remove('slide-in-right'), 500);
 };
@@ -350,7 +351,7 @@ function closeEditContact() {
  */
 
 function showCreateContact() {
-    document.getElementById('overlayContent').innerHTML =  showCreateContactHTML();
+    document.getElementById('overlayContent').innerHTML = showCreateContactHTML();
 };
 
 /**

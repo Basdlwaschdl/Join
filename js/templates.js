@@ -236,7 +236,7 @@ function htmlEditTask(i) {
             </div>
             <div class="date">
                 Due date:
-                <input type="date" id="editTaskDueDate" min="" value="${tasks[i]['date']}">
+                <input type="date" id="editTaskDueDate" min="" value="${tasks[i]['date']}" class="edit_date">
             </div>
             <div class="priority">
                 Prio

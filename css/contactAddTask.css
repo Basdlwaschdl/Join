@@ -21,6 +21,16 @@
   cursor: pointer;
 }
 
+input[type=date]::-webkit-calendar-picker-indicator {
+  width: 380px;
+  height: 50px !important;
+  cursor: pointer;
+  position: absolute;
+  left: 20px !important;
+  top: 30px;
+  background: transparent;
+}
+
 @media only screen and (max-width: 400px) {
   .form_contact {
     left: calc(50% - 157px) !important;

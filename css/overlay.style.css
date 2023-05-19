@@ -2,17 +2,6 @@ input[type="date"] {
     -webkit-text-fill-color: rgb(0, 0, 0);
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    bottom: 0;
-    width: 420px;
-    height: 50px !important;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 30px !important;
-}
-
 .head {
     color: black;
     margin-left: 250px;
