@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/overlay.style.css">
     <link rel="stylesheet" href="./css/media.querys.addTask.css">
     <link rel="stylesheet" href="./css/contactAddTask.css">
+    <link rel="stylesheet" href="./css/animations.style.css">
     <script src="./js/backend.js"></script>
     <script src="./js/templates.js"></script>
     <script src="./js/includeHTML.js"></script>
@@ -22,68 +23,71 @@
     <script src="./js/contacts.js"></script>
 </head>
 
-<body onload="includeHTML(), init()" id="body">
-    <div w3-include-html="desktop_template.html"></div>
-    <div class="new-contact" onclick="editShowContact()">
-        New Contact
-        <img src="./assets/img/contacts-icons/addContact.png" alt="">
-    </div>
-    <div id="contacts-container">
-        <div class="contacts-list" id="contacts-list">
-            <div class="list-contact list-contact-activ"></div>
+<body onload="includeHTML(), init()">
+    <div class="hidden">
+        <div w3-include-html="desktop_template.html"></div>
+        <div class="new-contact" onclick="editShowContact()">
+            New Contact
+            <img src="./assets/img/contacts-icons/addContact.png" alt="">
         </div>
-        <div class="contact-info d-none-mobile">
-            <div class="contact-headline">
-                <span class="sub-headline" style="display: none;">Kanban Project Management Tool</span>
-                <img src="./assets/img/contacts-icons/arrow-left.png" class="arrowLeftMobile" style="display: none;"
-                    onclick="hideContactInfo()">
-                <h3>Contacts</h3>
-                <p>Better with a team</p>
-                <div class="seperator" style="display: none;"></div>
+        <div id="contacts-container">
+            <div class="contacts-list" id="contacts-list">
+                <div class="list-contact list-contact-activ"></div>
             </div>
-            <div class="contact-details" id="contactDetails"></div>
+            <div class="contact-info d-none-mobile">
+                <div class="contact-headline">
+                    <span class="sub-headline" style="display: none;">Kanban Project Management Tool</span>
+                    <img src="./assets/img/contacts-icons/arrow-left.png" class="arrowLeftMobile" style="display: none;"
+                        onclick="hideContactInfo()">
+                    <h3>Contacts</h3>
+                    <p>Better with a team</p>
+                    <div class="seperator" style="display: none;"></div>
+                </div>
+                <div class="contact-details" id="contactDetails"></div>
 
+            </div>
         </div>
-    </div>
-    <div class="mobile-icon" id="mobileIcon"></div>
-    <div id="overlayContent" class="d-none"></div>
-    <div id="overlayAddTask" class="d-none">
-        <div class="add-task">
-            <img src="./assets/img/close.png" onclick="closeOverlay()" class="close-contact-add">
+        <div class="mobile-icon" id="mobileIcon"></div>
+        <div id="overlayContent" class="overlay-Content"></div>
+        <div id="overlayAddTask" class="overlay-add-task">
+            <div class="add-task">
+                <div class="close">
+                    <img src="./assets/img/close.png" onclick="closeOverlay()">
+                </div>
+                <div id="overlay" class="overlay"></div>
+            </div>
         </div>
-            <div id="overlay" class="overlay"></div>
+        <!-- ---------------------------------------------------------Animation Div's----------------------------------------------------------------------->
+        <div class="addBord_box" id="addBordBox">
+            Task added to Board
+            <img src="assets/img/board.png" class="add_board_image">
         </div>
+        <div class="addBord_box" id="emailExist">
+            Email already exists
+        </div>
+        <div class="addBord_box" id="pleaseEnterName">
+            Please enter a Task Name
+        </div>
+        <div class="addBord_box" id="pleaseCategoryName">
+            Please enter a color and a category
+        </div>
+        <div class="addBord_box" id="missing">
+            Something is missing
+        </div>
+        <div class="addBord_box" id="created">
+            Contact succesfully created
+        </div>
+        <div class="addBord_box" id="delete">
+            Contact deleted
+        </div>
+        <div class="addBord_box" id="emailSend">
+            Email sent
+        </div>
+        <div class="addBord_box" id="enterEmail">
+            Please enter a E-Mail
+        </div>
+        <!-----------------------------------------------------------Animation Div's-------------------------------------------------------------------- -->
     </div>
-    <!-- ---------------------------------------------------------Animation Div's----------------------------------------------------------------------->
-    <div class="addBord_box" id="addBordBox">
-        Task added to Board
-        <img src="assets/img/board.png" class="add_board_image">
-    </div>
-    <div class="addBord_box" id="emailExist">
-        Email already exists
-    </div>
-    <div class="addBord_box" id="pleaseEnterName">
-        Please enter a Task Name
-    </div>
-    <div class="addBord_box" id="pleaseCategoryName">
-        Please enter a color and a category
-    </div>
-    <div class="addBord_box" id="missing">
-        Something is missing
-    </div>
-    <div class="addBord_box" id="created">
-        Contact succesfully created
-    </div>
-    <div class="addBord_box" id="delete">
-        Contact deleted
-    </div>
-    <div class="addBord_box" id="emailSend">
-        Email sent
-    </div>
-    <div class="addBord_box" id="enterEmail">
-        Please enter a E-Mail
-    </div>
-    <!-----------------------------------------------------------Animation Div's-------------------------------------------------------------------- -->
 </body>
 
 </html>

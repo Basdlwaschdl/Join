@@ -23,10 +23,6 @@
         margin-left: 0;
     }
 
-    .category_name_box {
-        margin-left: -53px;
-    }
-
     .form_right {
         margin-top: -54px;
     }
@@ -68,7 +64,7 @@
     }
 
     .input_category_name {
-        width: 300px;
+        width: 360px;
         margin-left: 0px;
     }
 
@@ -102,6 +98,14 @@
 }
 
 @media only screen and (max-width: 600px) {
+
+    .x {
+        height: 24px;
+    }
+
+    .hook {
+        width: 22px;
+    }
 
     .input_edit {
         width: 100%;
@@ -146,23 +150,6 @@
         width: 290px;
     }
 
-    .mobile_create_button {
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        justify-content: center;
-        width: 124px;
-        height: 51px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 21px;
-        color: white;
-        background-color: #2A3647;
-        transition: 300ms;
-    }
-
     .drop_down {
         height: 41px;
         font-size: 16px !important;
@@ -192,16 +179,8 @@
         font-size: 16px;
     }
 
-    .x✔ {
-        height: 41px;
-    }
-
     .down_image {
         top: 13px;
-    }
-
-    .category_name_box {
-        margin-left: 0;
     }
 
     .prio_button {
@@ -224,10 +203,6 @@
     .render_categorys_box {
         margin-bottom: 9px;
         max-height: 165px;
-    }
-
-    .subtask_box {
-        min-height: 150px;
     }
 
     .custom_checkBox {
@@ -255,6 +230,14 @@
 
     textarea {
         width: 320px;
+    }
+
+    .input_category_name {
+        width: 320px;
+    }
+
+    .search-container {
+        margin-left: 50px !important;
     }
 
     .sub_headline {
@@ -289,20 +272,17 @@
         width: 315px;
     }
 
-    .x✔ {
-        left: 250px;
-    }
-
     .custom_checkBox {
         left: 270px;
     }
 
     .subtask_box {
-        width: 320px;
+        margin-left: 5px;
+        width: 283px;
     }
 
     .subtask_child img {
-        left: 290px;
+        left: 250px;
     }
 
     .form {

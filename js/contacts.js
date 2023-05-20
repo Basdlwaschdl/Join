@@ -243,9 +243,7 @@ function hideContactInfo() {
 
 function addScroll() {
     document.getElementById('mobileCreate').classList.add('create_mobile_active');
-    document.getElementById('overlayAddTask').classList.remove('d-none');
-    document.getElementById('overlayAddTask').classList.remove('overlay-closed');
-    document.getElementById('overlayAddTask').classList.add('overlay-add-task');
+    document.getElementById('overlayAddTask').classList.add('slide-in-right');
     renderOverlayAddTask();
     getDateOverlay('dateOverlay');
 };
@@ -295,7 +293,6 @@ function showDetails(id) {
     document.getElementById('contactDetails').innerHTML =
         showDetailsHTML(id, editname)
     document.getElementById('contactDetails').classList.add('slide-in-right');
-    setTimeout(() => document.getElementById('contactDetails').classList.remove('slide-in-right'), 500);
 };
 
 
@@ -313,10 +310,9 @@ closes the overlay
 function closeOverlay(i) {
     setYouToUserName(users)
     clearAll();
-    if (i == 'bc') document.body.style.overflow = 'scroll';
-    document.getElementById('overlayAddTask').classList.add('overlay-closed');
-    setTimeout(() => document.getElementById('overlayAddTask').classList.add('d-none'), 250);
-    document.body.classList.remove('overflow-hidden');
+    if (i == 'bc') document.body.classList.remove('overflow-hidden');
+    document.getElementById('hidden').classList.remove('overflow-hidden');
+    document.getElementById('overlayAddTask').classList.remove('slide-in-right');
     document.getElementById('mobileCreate').classList.remove('create_mobile_active');
 };
 
@@ -325,10 +321,7 @@ function closeOverlay(i) {
  */
 
 function editShowContact(contact) {
-    document.getElementById('overlayContent').classList.add('slide-in-blurred-right');
-    document.getElementById('overlayContent').classList.remove('d-none')
-    document.getElementById('overlayContent').classList.remove('slide-out-blurred-right');
-    document.getElementById('overlayContent').classList.remove('overlay-closed');
+    document.getElementById('overlayContent').classList.add('slide-in-right')
     document.getElementById('overlayContent').innerHTML = '';
     if (typeof contact !== 'undefined') showEditContact(contact);
     else showCreateContact();
@@ -339,11 +332,7 @@ function editShowContact(contact) {
  */
 
 function closeEditContact() {
-    document.getElementById('overlayContent').classList.remove('slide-in-blurred-right');
-    document.getElementById('overlayContent').classList.add('slide-out-blurred-right');
-    setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 250);
-    //document.getElementById('overlayContent').classList.add('overlay-closed');
-    //setTimeout(() => document.getElementById('overlayContent').classList.add('d-none'), 200);
+    document.getElementById('overlayContent').classList.remove('slide-in-right');
 };
 
 /**
@@ -362,3 +351,14 @@ function showEditContact(id) {
     let userId = id;
     document.getElementById('overlayContent').innerHTML = showEditContactHTML(id, userId);
 };
+
+window.addEventListener("resize", test);
+
+function test() {
+    const width = window.innerWidth;
+    if (width > 1250) {
+        document.getElementById('contacts-list').classList.remove('d-none')
+        document.getElementsByClassName('contact-info')[0].classList.add('d-none-mobile')
+        document.getElementsByClassName('new-contact')[0].classList.remove('d-none')
+    }
+}

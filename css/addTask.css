@@ -1,20 +1,6 @@
-body {
-    overflow: unset !important;
-    animation-duration: 0.4s;
-    animation-timing-function: ease-in-out;
-}
 
-input[type="date"]::-webkit-calendar-picker-indicator {
-    bottom: 0;
-    width: 420px;
-    height: 50px !important;
-    cursor: pointer;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 30px !important;
-    background: transparent;
-}
+
+
 
 input[type="date"] {
     font-family: Open Sans;
@@ -247,44 +233,24 @@ span {
 }
 
 .input_category_name {
-    width: 362px;
-    border-right: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    width: 422px;
     margin-bottom: 20px;
 }
 
-.x✔ {
-    position: absolute;
-    top: 0;
-    left: 352px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 1px solid #D1D1D1;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 70px;
-    height: 51px;
-    background-color: white;
-    border-left: 0;
-}
-
-.x✔ img:hover {
-    cursor: pointer;
-}
-
 .x {
-    width: 28px;
-    display: flex;
-    align-items: center;
+    position: absolute;
+    right: 13%;
+    top: 9px;
+    width: 33px;
     border-right: 2px solid #D1D1D1;
 }
 
 .hook {
-    display: flex;
-    align-items: center;
+    top: 2px;
+    position: absolute;
+    right: 3%;
+    width: 28px;
+    padding: 8px;
 }
 
 .color_points {
@@ -449,35 +415,6 @@ span {
     transition: 300ms;
 }
 
-.mobile_create_button {
-    position: absolute;
-    top: 12px;
-    right: 20px;
-    justify-content: center;
-    width: 124px;
-    height: 51px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    font-weight: 700;
-    font-size: 21px;
-    color: white;
-    background-color: #2A3647;
-    transition: 300ms;
-}
-
-.mobile_create_button:hover {
-    cursor: pointer;
-    background: #29ABE2;
-    transition: 300ms;
-    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.41)
-}
-
-.mobile_create_button img {
-    filter: brightness(0) invert(1);
-    margin-left: 10px;
-}
-
 .create_button img {
     filter: brightness(0) invert(1);
     margin-left: 10px;
@@ -634,6 +571,8 @@ span {
 @media only screen and (max-width: 600px) {
     .mobile_create_button {
         opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 19;
     }
 }
 

@@ -177,11 +177,10 @@ function htmlTaskPrio(task) {
 
 
 function openTaskDetailView(id) {
-    document.getElementById('taskDetailView').classList.remove('overlay-closed');
+    document.getElementById('taskDetailView').classList.add('slide-in-right');
     editContacts.length = 0
     let task = tasks.find((e => e['task_id'] == id));
     renderTaskDetailView(task);
-    document.body.classList.add('overflow-hidden');
 };
 
 /**
@@ -384,7 +383,6 @@ async function saveTask(idx) {
     saveChangedDataLocal(idx);
     await saveData('tasks', tasks);
     animateOut('taskDetailView');
-    document.body.classList.remove('overflow-hidden');
     menuContactsOpen = false;
     await initBoard();
 };
@@ -394,8 +392,7 @@ async function saveTask(idx) {
  */
 
 function animateOut(id) {
-    document.getElementById(id).classList.add('overlay-closed');
-    setTimeout(() => document.getElementById(id).classList.add('d-none'), 250);
+    document.getElementById(id).classList.remove('slide-in-right');
 };
 
 /**
@@ -415,7 +412,6 @@ function saveChangedDataLocal(idx) {
  */
 
 async function deleteTask(index) {
-    document.body.classList.remove('overflow-hidden');
     tasks.splice(index, 1);
     animateOut('taskDetailView');
     await saveData('tasks', tasks);
@@ -532,11 +528,9 @@ function markDraggableArea(style) {
 
 function overlayAddTask(status) {
     task_status = status;
+    document.getElementById('hidden').classList.add('overflow-hidden');
     document.getElementById('mobileCreate').classList.add('create_mobile_active');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('overlayAddTask').classList.remove('overlay-closed');
-    document.getElementById('overlayAddTask').classList.remove('d-none');
-    document.getElementById('overlayAddTask').classList.add('overlay-add-task');
+    document.getElementById('overlayAddTask').classList.add('slide-in-right');
     renderOverlayAddTask();
     getDateOverlay('dateOverlay');
 };
@@ -548,7 +542,6 @@ function overlayAddTask(status) {
 function closeDetailView() {
     editContacts = [];
     animateOut('taskDetailView');
-    document.body.classList.remove('overflow-hidden');
     menuContactsOpen = false;
 };
 

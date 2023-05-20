@@ -72,6 +72,17 @@
     }
 }
 
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+    background-color: $pagebackground;
+    img {
+        margin-left: 10px;
+    }
+}
+
 .pointer {
     &:hover {
         cursor: pointer;

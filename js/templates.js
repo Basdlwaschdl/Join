@@ -1,11 +1,9 @@
 function showInputCategoryHTML() {
     return document.getElementById('categoryBox').innerHTML = `
-    <div class="category_name_box">  
+                <div class="category_name_box">  
                     <input class="input_category_name" type="text" placeholder="New category name" id="categoryValue" required maxlength="29">
-                    <div class="x✔">
-                        <div onclick="clearInputField()" class="x"><img src="assets/img/x.svg" alt=""></div>
-                        <button onclick="addNewCategory()"><img class="hook" src="assets/img/haken.png"></button>
-                    </div>
+                    <img src="assets/img/x.svg" onclick="clearInputField()" class="x">
+                    <img class="hook" src="assets/img/haken.png" onclick="addNewCategory()">
                 </div>
                 <div class="color_points">
                     <div id="#8AA4FF" class="color" onclick="setColor('#8AA4FF')" style="background-color: #8AA4FF;"></div>
@@ -162,12 +160,10 @@ function renderClearEmaailHTML() {
 
 function renderInviteContactHTML() {
     document.getElementById('contactBox').innerHTML = `
-    <div class="category_name_box">  
+                <div class="category_name_box">  
                     <input class="input_category_name" type="email" placeholder="Please enter e-mail" id="inviteValue" required maxlength="29">
-                    <div class="x✔">
-                        <div onclick="clearEmailField()" class="x"><img src="assets/img/x.svg" alt=""></div>
-                        <button onclick="sendEmail()"><img class="hook" src="assets/img/haken.png"></button>
-                    </div>
+                    <img src="assets/img/x.svg" alt="" onclick="clearEmailField()" class="x">
+                    <img class="hook" src="assets/img/haken.png" onclick="sendEmail()">
                 </div>`;
 }
 
@@ -265,8 +261,8 @@ function htmlEditTask(i) {
                     <div id="editContacts" class="render_categorys_box"></div>
                 </div>
                 <div id="initials" class="initials_box_edit"></div>
-                <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
                 <div class="subtasks_edit">
+                <img class="plus_image_edit" src="assets/img/plus.svg" onclick="addSubtask_edit(${i})">
                 <span class="editors">Subtasks</span>
                     <input type="text" placeholder="Add new subtask" id="subTask" maxlength="29" style class="input_edit">
                     <div class="subtask_box" id="editSubtask"></div>

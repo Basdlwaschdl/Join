@@ -3,12 +3,29 @@
   overflow: auto !important;
 }
 
+.close {
+  display: flex;
+  justify-content: flex-end;
+  margin: 24px;
+  cursor: pointer;
+}
+
 .mobile_create_overlay {
   top: 93px !important;
 }
 
 .overlay-add-task {
-  z-index: 21 !important;
+  transition: transform 500ms ease-in-out;
+  transform: translateX(100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .close-contact-add {
@@ -19,16 +36,6 @@
 }
 .close-contact-add:hover {
   cursor: pointer;
-}
-
-input[type=date]::-webkit-calendar-picker-indicator {
-  width: 380px;
-  height: 50px !important;
-  cursor: pointer;
-  position: absolute;
-  left: 20px !important;
-  top: 30px;
-  background: transparent;
 }
 
 @media only screen and (max-width: 400px) {
@@ -50,6 +57,12 @@ input[type=date]::-webkit-calendar-picker-indicator {
   }
 }
 @media only screen and (max-width: 1350px) {
+  .add-task {
+    overflow: auto !important;
+    border-radius: 0px !important;
+    height: 100vh !important;
+    width: 100% !important;
+  }
   .close-contact-add {
     top: 120px;
     right: 40px;
@@ -130,10 +143,5 @@ input[type=date]::-webkit-calendar-picker-indicator {
   }
   .form_right {
     margin-top: 0px;
-  }
-  .overlay-add-task {
-    margin-top: 78px;
-    height: unset !important;
-    z-index: 10 !important;
   }
 }/*# sourceMappingURL=contactAddTask.css.map */

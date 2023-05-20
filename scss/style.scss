@@ -3,9 +3,60 @@
 @import './forgotpaswd';
 @import './desktop_template';
 @import './legal_notice';
-@import './board';
+
 @import './summary';
 
+$lightblue: #29ABE2;
+$lightblueHover: #1188bb;
+$darkblue: #2A3647;
+$blue: #0038FF;
+$orange: #FF7A00;
+$lightgreen: #1FD7C1;
+$green: #93E751;
+$pagebackground: #F6F7F8;
+$gray: #a8a8a8;
+
+@mixin button-White() {
+    color: $darkblue;
+    background-color: white;
+    cursor: pointer;
+    padding: 10px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    border: 1px solid $darkblue;
+
+    &:hover {
+        color: $lightblue;
+        border: 1px solid $lightblue;
+    }
+}
+
+@mixin button-darkblue() {
+    background-color: $darkblue;
+    color: white;
+    padding: 10px 32px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    transition: 200ms;
+
+    &:hover {
+        cursor: pointer;
+        background: #29ABE2;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+    }
+}
+
+@mixin inputForm($imgurl, $posx, $posy) {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #D1D1D1;
+    background: white url($imgurl) right no-repeat;
+    background-position: $posx $posy;
+}
+
+html,
 body {
     overflow-x: hidden;
     margin: 0;
@@ -13,7 +64,26 @@ body {
     background-color: $pagebackground;
 }
 
+.hidden {
+    height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
 //Global styles
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.create_mobile_active {
+    opacity: 1 !important;
+    z-index: 20 !important;
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+}
 
 .name-input {
     padding: 0px 0px 0px 10px !important;
@@ -43,51 +113,51 @@ input::placeholder {
     display: none !important;
 }
 
-.add_task {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
+.mobile_create_overlay {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 87px;
+    right: 20px;
+    justify-content: center;
+    width: 124px;
+    height: 51px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 21px;
+    color: white;
+    background-color: #2A3647;
+    transition: 300ms;
+
+    img {
+        filter: brightness(0) invert(1);
+    }
+
+}
+
+.add-task {
+    overflow: hidden;
+    position: relative;
+    width: 1116px;
+    height: 920px;
+    background-color: $pagebackground;
+    border-radius: 32px;
 }
 
 @media only screen and (max-width: 1350px) {
     input::placeholder {
         top: 10px;
     }
-}
 
-@media only screen and (max-width: 600px) {}
-
-@keyframes slide-in-blurred-right {
-    0% {
-        transform: translateX(1000px) scaleX(2.5) scaleY(0.2);
-        transform-origin: 0% 50%;
-        opacity: 0;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    100% {
-        transform: translateX(0) scaleY(1) scaleX(1);
-        transform-origin: 50% 50%;
-        opacity: 1;
-        background-color: rgba(0, 0, 0, 0.3);
+    .sticky {
+        z-index: 20;
     }
 }
 
-@keyframes slide-out-blurred-right {
-    0% {
-        transform: translateX(0) scaleY(1) scaleX(1);
-        transform-origin: 50% 50%;
-        background-color: rgba(0, 0, 0, 0.3);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateX(1000px) scaleX(2) scaleY(0.2);
-        transform-origin: 0% 50%;
-        background-color: rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        display: none;
+@media only screen and (max-width: 600px) {
+    .create_mobile_active {
+        visibility: visible;
     }
 }

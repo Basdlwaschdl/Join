@@ -49,9 +49,6 @@ $gray: #a8a8a8
 
         left: 0 !important
 
-    .right_left
-        width: 340px !important
-
 @media only screen and (max-width: 470px)
     .arrowLeftMobile
         left: 325px !important
@@ -63,6 +60,13 @@ $gray: #a8a8a8
         display: none !important
 
 @media only screen and (max-width: 600px)
+
+    .contacts-list
+        height: unset !important
+        padding-bottom: 200px
+
+    .right_left
+        width: 100% !important
 
     .list-contact
         width: 300px !important
@@ -95,17 +99,12 @@ $gray: #a8a8a8
         top: -355px !important
         right: 195px !important
 
-    #overlayContent
-        height: 121vh
-        left: 0 !important
-
     .arrowLeftMobile
         top: 121px !important
         left: 430px
 
     #contacts-container
-        padding-bottom: 200px
-        margin-left: 1px !important
+        margin-left: 0px !important
 
     .new-contact
         height: 60px !important
@@ -113,21 +112,14 @@ $gray: #a8a8a8
         right: 20px !important
         z-index: 10
 
-    .contact-details
-        animation: none !important
-
 @media only screen and (max-width: 750px)
     .contact-name
         font-size: 30px !important
 
 @media only screen and (max-width: 1250px)
 
-    #overlayContent
-        animation: unset !important
-        background-color: rgba(0, 0, 0, 0.3) !important
-
     .contact-info
-        padding: 0px !important
+        padding-bottom: 200px !important
 
     .seperator
         display: block !important
@@ -150,6 +142,7 @@ $gray: #a8a8a8
             margin: 10px 0px !important
 
     .arrowLeftMobile
+        z-index: 19
         display: block !important
         position: absolute
         top: 105px
@@ -160,7 +153,6 @@ $gray: #a8a8a8
     .contacts-list
         width: 100vw !important
         // padding-top: 5rem !important;
-        height: calc(100vh - -32px) !important
         padding-top: 75px
 
     .new-contact
@@ -252,7 +244,6 @@ $gray: #a8a8a8
 
 /**---------------------------------------------------------------------------------------Media Query End-----------------------------------------------------**/
 
-
 .mobile-icon
     display: flex
     position: absolute
@@ -286,10 +277,9 @@ $gray: #a8a8a8
     overflow: hidden !important
 
 #contacts-container
-    padding-top: 78px
     margin-left: 200px
     display: flex
-    height: 93vh
+    padding-top: 78px
 
 .contacts-list
     height: 95vh
@@ -383,6 +373,7 @@ $gray: #a8a8a8
             font-size: 27px
 
 .contact-details
+    transform: translateX(500%)
     margin-left: 24px
 
     &-head
@@ -486,22 +477,18 @@ $gray: #a8a8a8
     &:hover
         box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41)
 
-.slide-out-blurred-right
-    animation: slide-out-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
-
-.slide-in-blurred-right
-    animation: slide-in-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
-
-#overlayContent
-    position: absolute
+.overlay-Content
+    transition: transform 500ms ease-in-out
+    transform: translateX(100%)
+    position: fixed
+    width: 100%
+    height: 100%
     top: 0
-    left: 186px
-    right: 0
-    bottom: 0
-    z-index: 10
     display: flex
-    align-items: center
     justify-content: center
+    align-items: center
+    z-index: 10
+    background-color: rgba(0, 0, 0, 0.2)
 
 .right_left
     display: flex
@@ -623,99 +610,5 @@ $gray: #a8a8a8
     &-content
         @include button-darkblue
 
-.overlay-closed
-    position: absolute
-    height: 100%
-    animation: slide-out-blurred-right 0.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both
-
-.animate
-    animation: slide-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards
-
-.slide-in-right
-    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
-
-.slide-out-right
-    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both
-
-@keyframes slide-out-right
-    0%
-        transform: translateX(0)
-        opacity: 1
-
-    100%
-        transform: translateX(1000px)
-        opacity: 0
-
-@keyframes slide-out-from-left
-    from
-        left: 0%
-
-    to
-        left: 100%
-
-/**
- * ----------------------------------------
- * animation slide-top
- * ----------------------------------------
- */
-@keyframes slide-top
-    0%
-        -webkit-transform: translateY(0)
-        transform: translateY(0)
-        opacity: 0
-
-    50%
-        -webkit-transform: translateY(-200px)
-        transform: translateY(-200px)
-        opacity: 1
-
-    100%
-        -webkit-transform: translateY(0)
-        transform: translateY(0)
-        opacity: 0
-
-/**
- * ----------------------------------------
- * animation slide-in-blurred-right
- * ----------------------------------------
- */
-@keyframes slide-in-blurred-right
-    0%
-        transform: translateX(300px) scaleX(2.5) scaleY(0.2)
-        transform-origin: 0% 50%
-        opacity: 0
-        background-color: rgba(0, 0, 0, 0.3)
-
-    100%
-        transform: translateX(0) scaleY(1) scaleX(1)
-        transform-origin: 50% 50%
-        opacity: 1
-        background-color: rgba(0, 0, 0, 0.3)
-
-@keyframes slide-out-blurred-right
-    0%
-        transform: translateX(0) scaleY(1) scaleX(1)
-        transform-origin: 50% 50%
-        background-color: rgba(0, 0, 0, 0.3)
-        opacity: 1
-
-    100%
-        transform: translateX(300px) scaleX(2) scaleY(0.2)
-        transform-origin: 0% 50%
-        background-color: rgba(0, 0, 0, 0.3)
-        opacity: 0
-
-@keyframes slide-in-right
-    0%
-        transform: translateX(1000px)
-        opacity: 0
-
-    100%
-        transform: translateX(0)
-        opacity: 1
-
 .d-none-mobile
     display: block
-
-.d-none
-    display: none

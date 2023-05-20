@@ -1,0 +1,137 @@
+.slide-in-right
+    transform: translateX(0) 
+    transition: transform 500ms ease-in-out 
+
+.slide-in-contact
+    animation: slide-in-right 0.5s ease-in
+    
+
+.animate
+    animation: slide-top 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards
+
+.overlay-closed
+    animation: slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both !important
+
+@keyframes slide-out-right
+    0%
+        transform: translateX(0)
+        opacity: 1
+    100%
+        transform: translateX(1000px)
+        opacity: 0
+
+@keyframes slide-in-right
+    0%
+        transform: translateX(500px)
+        opacity: 0
+    100%
+        transform: translateX(0)
+        opacity: 1
+
+@keyframes movetoleft
+    from
+        transform: translate(-50%, -50%) scale(1.5)
+        top: 50%
+        left: 50%
+    to
+        transform: translate(-50%, -50%) scale(1)
+        top: 130px
+        left: 100px
+
+@keyframes point
+    from
+        transform: translate(-2000px, 0)
+    to
+        transform: translate(0, 0)
+
+@keyframes disappear
+    from
+        opacity: 1
+    to
+        opacity: 0
+
+@keyframes appear
+    0%
+        opacity: 0
+    to
+        opacity: 1
+
+@keyframes logo-bg
+    0%
+        background-color: rgb(41, 54, 70)
+    100%
+        background-color: rgb(247, 247, 247)
+
+@keyframes hide
+    0%
+        opacity: 0
+    100%
+        opacity: 1
+
+@keyframes start-fade-out-background
+    0%
+        opacity: 1
+
+    100%
+        opacity: 0
+        z-index: 0
+
+@keyframes start-desktop-animation
+    0%
+        opacity: 1
+        transform: translate(-50%, -50%) scale(1)
+
+    70%
+        opacity: 0.5
+        transform: scale(0.1)
+        top: 5%
+        left: 5%
+
+    100%
+        opacity: 0
+        transform: scale(0)
+        z-index: 0
+        top: 5%
+        left: 5%
+
+@keyframes fade-out-background
+    0%
+        opacity: 1
+
+    100%
+        opacity: 0
+        z-index: 0
+
+@keyframes start-mobile-animation
+    0%
+        opacity: 1
+        transform: translate(-50%, -50%) scale(3)
+
+    70%
+        opacity: 0.5
+        transform: scale(0.1)
+        top: 5%
+        left: 5%
+
+    100%
+        opacity: 0
+        transform: scale(0)
+        z-index: 0
+        top: 5%
+        left: 5%
+
+@keyframes slide-top
+    0%
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+        opacity: 0
+
+    50%
+        -webkit-transform: translateY(-200px)
+        transform: translateY(-200px)
+        opacity: 1
+
+    100%
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+        opacity: 0
