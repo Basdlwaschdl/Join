@@ -43,7 +43,7 @@ function renderTasks(inputArray) {
     deleteTasksOnBoard();
     for (let i = 0; i < inputArray.length; i++) {
         const task = inputArray[i];
-        renderSingleTask(task);
+        renderSingleTask(task, i);
     }
 };
 
@@ -51,17 +51,50 @@ function renderTasks(inputArray) {
  * render card for single task
  */
 
-function renderSingleTask(task) {
+function renderSingleTask(task, i) {
+    let id = task.task_id;
     let destination = document.getElementById(`${checkTaskStatus(task)}`);//${task['category']}`);
     destination.innerHTML += `
         <div draggable="true" onclick="openTaskDetailView(${task['task_id']})" ondragstart="startDragging(${task['task_id']})" class="single-task" id="task${task['task_id']}">
-            ${htmlTaskTopic(task)}
+        <div class='status_menu_box' id='statusMenu${id}' onclick='noClose(event)'></div>
+                <div class="ham_menu_box">
+                ${htmlTaskTopic(task)}
+                <div onclick='noClose(event)'>
+                    <div onclick='renderStatusMenu(${id}, ${i})'><img src="assets/img/menu-4-48.ico" class="ham_menu"></div>
+                </div>
+            </div>
             ${htmlTaskTitle(task)}
             ${htmlTaskDescription(task)}
             ${htmlTaskSubtasks(task)}
-            ${htmlTaskDivBottom(task)}
+            ${htmlTaskDivBottom(task)} 
         </div>`;
 };
+
+function renderStatusMenu(id, i) {
+    document.getElementById('statusMenu' + id).classList.add('slide-in-right')
+    document.getElementById('statusMenu' + id).innerHTML = `
+        <div onclick='saveStatus(${id}, ${i})'>
+            <div class='status_close'>
+                <span class="editors">Status</span>
+                <img src="assets/img/close.png" class="status_close_img">
+            </div>
+            <div class="status_buttons" onclick='noClose(event)'>
+                <div class="status-button" onclick="setEditStatus(${i},${id}, 'todo')" id="status1${id}">To do</div>
+                <div class="status-button" onclick="setEditStatus(${i},${id}, 'progress')" id="status2${id}">In progress</div>
+                <div class="status-button" onclick="setEditStatus(${i},${id}, 'feedback')" id="status3${id}">Feedback</div>
+                <div class="status-button" onclick="setEditStatus(${i},${id}, 'done')" id="status4${id}">Done</div>
+            </div>
+        </div>`;
+    highlightedButton(i, id);
+}
+
+async function saveStatus(id, i) {
+    let task = tasks[i]
+    document.getElementById('statusMenu' + id).classList.remove('slide-in-right')
+    await saveData('tasks', tasks);
+    setTimeout(() => initBoard(task, i), 500);
+}
+
 
 /**
  *  html code for the topic of the task
@@ -217,7 +250,6 @@ async function editTask(index) {
     icons.innerHTML = htmlCheckIcon(index);
     content.innerHTML = htmlEditTask(index);
     getDateOverlay('editTaskDueDate');
-    highlightedButton(index);
     renderEditSubtask(index);
     checkSubtaskStatus(index)
     setPrioInEditTask(tasks[index]);
@@ -229,31 +261,31 @@ async function editTask(index) {
  * highlights the button that the task had as status
  */
 
-function highlightedButton(i) {
-    if (tasks[i]['status'] == 'todo') document.getElementById('status1').classList.add('highlight-button')
-    if (tasks[i]['status'] == 'progress') document.getElementById('status2').classList.add('highlight-button')
-    if (tasks[i]['status'] == 'feedback') document.getElementById('status3').classList.add('highlight-button')
-    if (tasks[i]['status'] == 'done') document.getElementById('status4').classList.add('highlight-button')
+function highlightedButton(i, id) {
+    if (tasks[i]['status'] == 'todo') document.getElementById('status1' + id).classList.add('highlight-button')
+    if (tasks[i]['status'] == 'progress') document.getElementById('status2' + id).classList.add('highlight-button')
+    if (tasks[i]['status'] == 'feedback') document.getElementById('status3' + id).classList.add('highlight-button')
+    if (tasks[i]['status'] == 'done') document.getElementById('status4' + id).classList.add('highlight-button')
 }
 
 /**
  * changes the status of the task
  */
 
-function setEditStatus(i, status) {
+function setEditStatus(i, id, status) {
     if (status == 'todo') tasks[i]['status'] = 'todo';
     if (status == 'progress') tasks[i]['status'] = 'progress';
     if (status == 'feedback') tasks[i]['status'] = 'feedback';
     if (status == 'done') tasks[i]['status'] = 'done';
-    removeHighLighted();
-    highlightedButton(i);
+    removeHighLighted(id);
+    highlightedButton(i, id);
 };
 
-function removeHighLighted() {
-    document.getElementById('status1').classList.remove('highlight-button')
-    document.getElementById('status2').classList.remove('highlight-button')
-    document.getElementById('status3').classList.remove('highlight-button')
-    document.getElementById('status4').classList.remove('highlight-button')
+function removeHighLighted(id) {
+    document.getElementById('status1'+id).classList.remove('highlight-button')
+    document.getElementById('status2'+id).classList.remove('highlight-button')
+    document.getElementById('status3'+id).classList.remove('highlight-button')
+    document.getElementById('status4'+id).classList.remove('highlight-button')
 };
 
 /**
@@ -581,7 +613,8 @@ function inputValueIsInTask(input, task) {
  * saves the created task from the add task function
  */
 
-function createTaskonBoard() {
+function createTaskonBoard(x) {
+    if (x == 'contacts') createTask();
     if (allFilled()) addTask();
     else showTasknotFull();
 };

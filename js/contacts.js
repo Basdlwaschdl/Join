@@ -238,23 +238,11 @@ function hideContactInfo() {
 };
 
 /**
- * opens the add task menu
- */
-
-function addScroll() {
-    document.getElementById('mobileCreate').classList.add('create_mobile_active');
-    document.getElementById('overlayAddTask').classList.add('slide-in-right');
-    renderOverlayAddTask();
-    getDateOverlay('dateOverlay');
-};
-
-/*Gen HTML Content */
-
-/**
  * 
  * @param {JSON} contact - User from Database
  * @returns html template
  */
+
 function genContactHtml(contact) {
     return /*html */`
     <div class="list-contact" onclick="showDetails(${contact.id}); showDetailsAtMobile(${contact.id})" id="${contact.id}">
@@ -292,7 +280,8 @@ function showDetails(id) {
     document.getElementById('contactDetails').innerHTML = '';
     document.getElementById('contactDetails').innerHTML =
         showDetailsHTML(id, editname)
-    document.getElementById('contactDetails').classList.add('slide-in-right');
+    document.getElementById('contactDetails').classList.remove('slide-in-right');
+    setTimeout(() => document.getElementById('contactDetails').classList.add('slide-in-right'), 1);
 };
 
 
@@ -352,9 +341,9 @@ function showEditContact(id) {
     document.getElementById('overlayContent').innerHTML = showEditContactHTML(id, userId);
 };
 
-window.addEventListener("resize", test);
+window.addEventListener("resize", resize);
 
-function test() {
+function resize() {
     const width = window.innerWidth;
     if (width > 1250) {
         document.getElementById('contacts-list').classList.remove('d-none')

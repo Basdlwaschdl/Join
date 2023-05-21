@@ -118,18 +118,15 @@ function renderOverlayHTML() {
             <!-------------------------------------------------------------input Date------------------------------------------------------------------------->
 
             <span>Due date</span>
-            <input type="date" id="dateOverlay" autofocus>
+            <input type="date" id="dateOverlay">
 
             <!-------------------------------------------------------------input Priority--------------------------------------------------------------------->
 
             <span>Prio</span>
             <div class="prio" id="prio">
-                <div class="prio_button" id="prioUrgent" onclick="setPrio('urgent')">Urgent<img
-                        src="assets/img/prioUrgent.png"></div>
-                <div class="prio_button" id="prioMedium" onclick="setPrio('medium')">Medium <img
-                        src="assets/img/prioMedium.png"></div>
-                <div class="prio_button" id="prioLow" onclick="setPrio('low')">Low <img src="assets/img/prioLow.png">
-                </div>
+                <div class="prio_button" id="prioUrgent" onclick="setPrio('urgent')">Urgent<img src="assets/img/prioUrgent.png"></div>
+                <div class="prio_button" id="prioMedium" onclick="setPrio('medium')">Medium<img src="assets/img/prioMedium.png"></div>       
+                <div class="prio_button" id="prioLow" onclick="setPrio('low')">Low <img src="assets/img/prioLow.png"></div>
             </div>
 
             <!-------------------------------------------------------------input Subtasks--------------------------------------------------------------------->
@@ -141,9 +138,9 @@ function renderOverlayHTML() {
             </div>
             <div class="subtask_box" id="subtaskBox"></div>
             <div class="clear_create_task">
-            <div class="clear_button" onclick="clearAll()">Clear x</div>
-            <div class="create_button" onclick="createTaskonBoard()">Create Task ✔</div>
-        </div>
+                <div class="clear_button" onclick="clearAll()">Clear x</div>
+                <div class="create_button" onclick="createTaskonBoard()">Create Task ✔</div>
+            </div>
         </div>`;
 }
 
@@ -268,13 +265,6 @@ function htmlEditTask(i) {
                     <div class="subtask_box" id="editSubtask"></div>
                 </div>
             </div>
-            <span class="editors">Status</span>
-            <div class="status_buttons">
-                <div class="status-button" onclick="setEditStatus(${i}, 'todo')" id="status1">To do</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'progress')" id="status2">In progress</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'feedback')" id="status3">Feedback</div>
-                <div class="status-button" onclick="setEditStatus(${i}, 'done')" id="status4">Done</div>
-            </div>
             </div>
     `;
 };
@@ -286,7 +276,7 @@ function showDetailsHTML(id, editname) {
     <span class="list-contact-frame" style="background-color: ${contactsA[id].color}">${contactsA[id].initials}</span>
     <div class="contactInfo">
         <span class="contact-name">${contactsA[id].name}</span>
-        <div class="add_task_contact" onclick="addScroll()"> + Add Task</div>
+        <div class="add_task_contact" onclick="overlayAddTask('todo', 'overlayContacts')"> + Add Task</div>
     </div>
     </div>
     <div class="contact-info-box">

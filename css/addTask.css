@@ -7,9 +7,9 @@ input[type="date"] {
     -webkit-text-fill-color: rgb(0, 0, 0);
 }
 
-input[type="date"]:hover {
+input::-webkit-calendar-picker-indicator {
     cursor: pointer;
-}
+  }
 
 .head {
     color: black;

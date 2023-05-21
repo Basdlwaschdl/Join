@@ -24,16 +24,15 @@
 </head>
 
 <body onload="includeHTML(), init()">
-    <div class="hidden">
-        <div w3-include-html="desktop_template.html"></div>
-        <div class="new-contact" onclick="editShowContact()">
+    <div class="hidden" id="hidden">
+        <div id="overlayContent" class="overlay-Content"></div>
+        <div w3-include-html="desktop_template.html" class="sticky"></div>
+        <div class="new-contact" onclick="editShowContact()" id="newContact">
             New Contact
             <img src="./assets/img/contacts-icons/addContact.png" alt="">
         </div>
-        <div id="contacts-container">
-            <div class="contacts-list" id="contacts-list">
-                <div class="list-contact list-contact-activ"></div>
-            </div>
+        <div class="contacts-container">
+            <div class="contacts-list" id="contacts-list"></div>
             <div class="contact-info d-none-mobile">
                 <div class="contact-headline">
                     <span class="sub-headline" style="display: none;">Kanban Project Management Tool</span>
@@ -47,8 +46,6 @@
 
             </div>
         </div>
-        <div class="mobile-icon" id="mobileIcon"></div>
-        <div id="overlayContent" class="overlay-Content"></div>
         <div id="overlayAddTask" class="overlay-add-task">
             <div class="add-task">
                 <div class="close">
@@ -57,6 +54,7 @@
                 <div id="overlay" class="overlay"></div>
             </div>
         </div>
+        <div class="mobile-icon" id="mobileIcon"></div>
         <!-- ---------------------------------------------------------Animation Div's----------------------------------------------------------------------->
         <div class="addBord_box" id="addBordBox">
             Task added to Board

@@ -204,7 +204,7 @@
   float: left;
   width: 200px;
   font-size: 16px;
-  z-index: 21;
+  z-index: 22;
 }
 .menu .menu-content {
   display: flex;
@@ -703,7 +703,6 @@ a {
   height: 60px;
 }
 
-html,
 body {
   overflow-x: hidden;
   margin: 0;
@@ -783,6 +782,11 @@ input::placeholder {
   background-color: #2A3647;
   transition: 300ms;
 }
+.mobile_create_overlay:hover {
+  cursor: pointer;
+  background: #29ABE2;
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+}
 .mobile_create_overlay img {
   filter: brightness(0) invert(1);
 }
@@ -801,7 +805,7 @@ input::placeholder {
     top: 10px;
   }
   .sticky {
-    z-index: 20;
+    z-index: 21;
   }
 }
 @media only screen and (max-width: 600px) {

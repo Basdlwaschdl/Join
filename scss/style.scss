@@ -56,7 +56,6 @@ $gray: #a8a8a8;
     background-position: $posx $posy;
 }
 
-html,
 body {
     overflow-x: hidden;
     margin: 0;
@@ -130,6 +129,11 @@ input::placeholder {
     color: white;
     background-color: #2A3647;
     transition: 300ms;
+    &:hover {
+        cursor: pointer;
+        background: #29ABE2;
+        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.41);
+    }
 
     img {
         filter: brightness(0) invert(1);
@@ -152,7 +156,7 @@ input::placeholder {
     }
 
     .sticky {
-        z-index: 20;
+        z-index: 21;
     }
 }
 

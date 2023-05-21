@@ -3,6 +3,19 @@
   overflow: auto !important;
 }
 
+input[type=date] {
+  font-family: Open Sans;
+}
+
+input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+}
+
 .close {
   display: flex;
   justify-content: flex-end;
@@ -24,7 +37,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 19;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
@@ -38,25 +51,16 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 400px) {
-  .form_contact {
-    left: calc(50% - 157px) !important;
-  }
-}
-@media only screen and (max-width: 600px) {
-  .overlay-add-task {
-    z-index: 0 !important;
-  }
-  .form_contact {
-    top: 150px;
-    left: calc(50% - 176px);
-  }
-  .close-contact-add {
-    top: 20px !important;
-    left: 34px;
-  }
-}
 @media only screen and (max-width: 1350px) {
+  .close {
+    position: absolute;
+    top: 80px;
+    right: 3%;
+  }
+  .overlay_headline {
+    position: unset !important;
+    margin-bottom: 50px;
+  }
   .add-task {
     overflow: auto !important;
     border-radius: 0px !important;
@@ -66,6 +70,11 @@
   .close-contact-add {
     top: 120px;
     right: 40px;
+  }
+  .form_contact {
+    margin-left: 34%;
+    margin-top: 180px;
+    position: unset !important;
   }
   .initials_box {
     position: unset;
@@ -143,5 +152,17 @@
   }
   .form_right {
     margin-top: 0px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .close {
+    right: 74%;
+  }
+  .form_contact {
+    margin-left: 0 !important;
+  }
+  .close-contact-add {
+    top: 20px !important;
+    left: 34px;
   }
 }/*# sourceMappingURL=contactAddTask.css.map */
