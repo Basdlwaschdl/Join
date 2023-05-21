@@ -322,7 +322,16 @@
 }
 
 /*** MEDIA QUERY ***/
+@media only screen and (max-width: 1250px) {
+  .log-out-field {
+    top: 75px !important;
+    right: 67px !important;
+  }
+}
 @media only screen and (max-width: 600px) {
+  .sticky img {
+    margin-left: 0px;
+  }
   .mobile_help {
     display: block !important;
   }
@@ -387,12 +396,6 @@
   .nav-text {
     padding-right: 3px !important;
     padding-left: 3px !important;
-  }
-}
-@media only screen and (max-width: 1250px) {
-  .log-out-field {
-    top: 75px !important;
-    right: 67px !important;
   }
 }
 .legal-notice-content {
