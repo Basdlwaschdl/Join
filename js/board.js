@@ -54,37 +54,15 @@ function renderTasks(inputArray) {
 function renderSingleTask(task, i) {
     let id = task.task_id;
     let destination = document.getElementById(`${checkTaskStatus(task)}`);//${task['category']}`);
-    destination.innerHTML += `
-        <div draggable="true" onclick="openTaskDetailView(${task['task_id']})" ondragstart="startDragging(${task['task_id']})" class="single-task" id="task${task['task_id']}">
-        <div class='status_menu_box' id='statusMenu${id}' onclick='noClose(event)'></div>
-                <div class="ham_menu_box">
-                ${htmlTaskTopic(task)}
-                <div onclick='noClose(event)'>
-                    <div onclick='renderStatusMenu(${id}, ${i})'><img src="assets/img/menu-4-48.ico" class="ham_menu"></div>
-                </div>
-            </div>
-            ${htmlTaskTitle(task)}
-            ${htmlTaskDescription(task)}
-            ${htmlTaskSubtasks(task)}
-            ${htmlTaskDivBottom(task)} 
-        </div>`;
+    destination.innerHTML += 
+    statusMenuHTML(task, id, i);
 };
+
 
 function renderStatusMenu(id, i) {
     document.getElementById('statusMenu' + id).classList.add('slide-in-right')
-    document.getElementById('statusMenu' + id).innerHTML = `
-        <div onclick='saveStatus(${id}, ${i})'>
-            <div class='status_close'>
-                <span class="editors">Status</span>
-                <img src="assets/img/close.png" class="status_close_img">
-            </div>
-            <div class="status_buttons" onclick='noClose(event)'>
-                <div class="status-button" onclick="setEditStatus(${i},${id}, 'todo')" id="status1${id}">To do</div>
-                <div class="status-button" onclick="setEditStatus(${i},${id}, 'progress')" id="status2${id}">In progress</div>
-                <div class="status-button" onclick="setEditStatus(${i},${id}, 'feedback')" id="status3${id}">Feedback</div>
-                <div class="status-button" onclick="setEditStatus(${i},${id}, 'done')" id="status4${id}">Done</div>
-            </div>
-        </div>`;
+    document.getElementById('statusMenu' + id).innerHTML =
+    statusButtonsHTML(i, id); 
     highlightedButton(i, id);
 }
 
