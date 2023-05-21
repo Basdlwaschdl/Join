@@ -443,7 +443,7 @@ span {
 
 .subtask_child img {
     position: absolute;
-    left: 400px;
+    left: 80%;
     top: 1px;
 }
 
@@ -453,7 +453,7 @@ span {
 
 .subtask_box {
     overflow-x: hidden;
-    width: 435px;
+    width: 340px;
     min-height: 110px;
     max-height: 111px;
     overflow-y: scroll;

@@ -76,14 +76,6 @@
         margin-left: 30px;
     }
 
-    .subtask_box {
-        width: 360px;
-    }
-
-    .subtask_child img {
-        left: 330px;
-    }
-
     .custom_checkBox {
         left: 310px;
     }
@@ -279,10 +271,6 @@
     .subtask_box {
         margin-left: 5px;
         width: 283px;
-    }
-
-    .subtask_child img {
-        left: 250px;
     }
 
     .form {
