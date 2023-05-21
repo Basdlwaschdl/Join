@@ -127,7 +127,7 @@
   margin-bottom: 16px;
 }
 .board-content .board-tasks .tasks .single-task:hover {
-  box-shadow: 2px 5px 15px -4px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 5px 15px -4px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 .board-content .board-tasks .tasks .single-task h4 {
